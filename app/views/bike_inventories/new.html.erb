@@ -1,0 +1,19 @@
+<div class="col-sm-6" id="new-bike-form-div">
+	<h1>Add To Truck Run:</h1>
+	<div class="row">
+		<%= simple_form_for(@bike_inventory, :html => {class: 'form-inline col-sm-6 new-bike-inventory', role: 'form' }, remote: true) do |f| %>
+			<%= f.hidden_field :truck_run_id, value: @bike_inventory.truck_run_id %>
+			<%= f.association :bike, prompt: "Bike Model", input_html: {class: "form-control col-sm-12"}  %>
+			<%= f.input :size, placeholder: "Size", input_html: {class: "col-sm-12"} %>
+			<%= f.input :quantity, placeholder: "Quantity", input_html: {class: "col-sm-12", type: "number"} %>
+			<%= f.association :store, prompt: "Location", input_html: {class: "form-control col-sm-12"}  %>
+			<div class="control-group">
+		  	<%= f.button :submit, "Add Inventory", class: "btn btn-default search-btn" %>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div class="col-sm-6" id="truck-run-div">
+	<%= render partial: 'truck_run_info', locals: {truck_run: @truck_run } %>
+</div>
+	

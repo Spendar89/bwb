@@ -1,0 +1,20 @@
+<h2>Current Truck Run</h2>
+<table class="table table-hover">
+	<tr>
+		<th>Brand</th>
+		<th>Model</th>
+		<th>Quantity</th>
+		<th>Size</th>
+		<th>Location</th>
+	</tr>
+	<% @truck_run.bike_inventories.group_by{|inv| [ inv.store.location, inv.bike.brand, inv.bike.model, inv.size ] }.each do |key, inv_group| %>
+		<tr>
+			<% inventory = inv_group[0]%>
+			<td><%= inventory.bike.brand %></td>
+			<td><%= inventory.bike.model %></td>
+			<td><%= inv_group.length %></td>
+			<td><%= inventory.size %></td>
+			<td><%= inventory.store.location %></td>
+		</tr>
+	<% end %>
+</table>

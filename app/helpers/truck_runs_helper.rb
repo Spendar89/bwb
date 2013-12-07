@@ -1,0 +1,2 @@
+module TruckRunsHelper
+end

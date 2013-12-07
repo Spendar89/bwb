@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  store_id: 1
+  brand: MyString
+  model: MyString
+  year: 2013-10-19
+  kind: MyString
+  price: MyString
+  cost: MyString
+
+two:
+  store_id: 1
+  brand: MyString
+  model: MyString
+  year: 2013-10-19
+  kind: MyString
+  price: MyString
+  cost: MyString

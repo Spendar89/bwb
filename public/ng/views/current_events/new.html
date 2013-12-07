@@ -1,0 +1,36 @@
+<h1>New Current Event Post</h1>
+<div class="row" ng-controller="CurrentEventsCtrl">
+	<form novalidate class="form-horizontal col-sm-8 css-form">
+		<div class="form-group">
+			<div class="col-sm-12">		
+				<div class="fileupload fileupload-new" data-provides="fileupload">
+					<input type="hidden" value="" id="imageUrlInput"/>
+					 <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+					<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+					<div>
+						<span class="btn btn-file btn-default"><span class="fileupload-new">Add an Image</span><span class="fileupload-exists">Change</span><input type="file" /></span>
+						<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+					</div>
+				</div>		
+			</div>
+		</div>	
+		<div class="form-group">
+			<label class="control-label col-sm-1 pull-left">Title:</label>
+			<div class="col-sm-12">
+				<input type="text" class="form-control col-sm-12" ng-model="currentEvent.title" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-1 pull-left">Content:</label>
+			<div class="col-sm-12">
+				<textarea class="form-control col-sm-12" rows="10" cols="80" ng-model="currentEvent.content" ></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<button class="btn btn-primary" ng-click="reset()">Reset Form</button>
+				<button  class="btn btn-primary" ng-click="create(currentEvent)">Save Post</button>
+			</div>
+		</div>
+	</form>
+</div>

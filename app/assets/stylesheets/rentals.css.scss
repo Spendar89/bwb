@@ -1,0 +1,20 @@
+// Place all the styles related to the rentals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.rental-step{
+	margin-top: 15%;
+	margin-bottom: 15%;
+	display:none;
+}
+
+#customer-step{
+	display: block;
+}
+
+form.current-bikes-div{
+	padding: 20px;
+	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+}

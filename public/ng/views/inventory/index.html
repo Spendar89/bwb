@@ -1,0 +1,28 @@
+<div class="container" ng-controller="InventoryCtrl">
+	<div class="table-responsive col-sm-12">
+		<table class="table">
+			<tr>
+				<th><a href="" ng-click="order='id';reverse=(idReverse=!idReverse)">Stock Number</a></th>
+				<th><a href="" ng-click="order='bike.brand';reverse=(brandReverse=!brandReverse)">Brand</a></th>
+				<th><a href="" ng-click="order='bike.model';reverse=(modelReverse=!modelReverse)">Model</a></th>
+				<th><a href="" ng-click="order='size';reverse=(sizeReverse=!sizeReverse)">Size</a></th>
+				<th><a href="" ng-click="order='store.location';reverse=(locationReverse=!locationReverse)">Location</a></th>
+				<th><a href="" ng-click="order='truckRunId';reverse=(truckRunReverse=!truckRunReverse)">Truck Run ID</a></th>
+				<th><a href="" ng-click="order='bike.cost';reverse=(costReverse=!costReverse)">Cost</a></th>
+				<th><a href="" ng-click="order='bike.price';reverse=(priceReverse=!priceReverse)">Price</a></th>
+				<th><a href="" ng-click="order='sold';reverse=(soldReverse=!soldReverse)">Sold</a></th>
+			</tr>
+			<tr ng-repeat="inv in inventories|orderBy:order:reverse">
+				<td>{{getStockNumber(inv.id)}}</td>
+				<td>{{inv.bike.brand}}</td>
+				<td>{{inv.bike.model}}</td>
+				<td>{{inv.size}}</td>
+				<td>{{inv.store.location}}</td>
+				<td>{{inv.truckRunId}}</td>
+				<td>{{inv.bike.cost}}</td>
+				<td>{{inv.bike.price}}</td>
+				<td>false</td>
+			</tr>
+		</table>
+	</div>
+</div>

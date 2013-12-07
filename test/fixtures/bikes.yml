@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  brand: MyString
+  model: MyString
+  kind: MyString
+  stock_number: 1
+  price: 1
+  sale_price: 1
+  quantity: 1
+  description: 1
+  photo: MyString
+  used: false
+
+two:
+  brand: MyString
+  model: MyString
+  kind: MyString
+  stock_number: 1
+  price: 1
+  sale_price: 1
+  quantity: 1
+  description: 1
+  photo: MyString
+  used: false

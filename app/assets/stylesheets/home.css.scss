@@ -1,0 +1,51 @@
+#current-events-div{
+	//background: rgba(255, 255, 255, 0.98);
+//	border-radius: 4px;
+//	width: 69% !important;
+}
+.current-event{
+	padding-top: 10pt;
+	h1{
+		margin-bottom: 40px;
+	}
+	
+	img{
+		margin-bottom: 20px;
+		border-radius: 4px;
+	}
+	
+	p{
+		//font-size: 14pt;
+	}
+}
+
+
+
+#featured-bikes-div{
+	//background: rgba(255, 0, 0, 0.82);
+	//background: #EFF2F5;
+	//color: black;
+	padding-top: 10px;
+	.header-div{
+		text-align: center;
+		//background: rgb(255, 245, 0);
+		//background: black;
+		width: 100%;
+		margin-bottom: 40px;
+	//	margin-top: -5%;
+		//box-shadow: 0px 0px 10px 0.5px black;
+		h1{
+			//font-weight: bold;
+//			margin-bottom: 40px;
+//			padding: 10px;
+//			font-size: 20pt;
+			//color: white;
+		}
+	}
+	.bike-listing{
+		width: 100% !important;
+	}
+	.info-div{
+		//background: white;
+	}
+}

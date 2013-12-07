@@ -1,0 +1,27 @@
+<div class="row home-template">
+	<div id="current-events-div" class="col-sm-9">
+
+		<div class="current-event col-sm-12" ng-repeat="currentEvent in currentEvents">
+			<h1>{{currentEvent.title}}</h1>
+			<img width="400" ng-src="{{currentEvent.imageUrl}}"/>
+			<p>{{currentEvent.content}}</p>
+		</div>
+	</div>
+	<div id="featured-bikes-div" class="col-sm-3">
+		<div class="row">
+			<div class="header-div">
+				<h1>Featured Bikes</h1>
+			</div>
+		</div>
+		<div ng-repeat="bike in bikes" class="bike-listing col-sm-12">
+			<a id="show_bike_{{bike.id}}" class="show-bike" ng-href="/#/bikes/{{bike.id}}">
+				<div class="info-div col-sm-12">
+					<img ng-src="/assets/{{bike.imageUrl}}" class="bike-index-img"/>
+					<h3 class="{{bike.kind.toLowerCase()}}">{{bike.year}} {{bike.brand}} {{bike.model}}</h3>
+					<h4>${{bike.price}}</h4>
+					<p>{{bike.description.split(".")[0]}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,178 @@
+.alert.flash{
+	position: absolute;
+	top: 50px;
+	left: 0%;
+	margin-bottom: 2%;
+	width: 100%;
+}
+
+#img-holder{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.preview-img{
+	height: 195px;
+	margin-bottom: 5px;
+}
+
+.image-controls{
+	display:none;
+}
+
+#image-preview-div{
+	height: 400px;
+}
+
+#image_preview_main{
+	overflow: hidden;
+	.row{
+		margin-bottom: 25px;
+	}
+	
+}
+
+.image_results{
+	height: 100%;
+}
+
+.sim-image{
+	height: 80px;
+	width: auto;
+}
+
+.new-div{
+	
+	h4{
+		color: grey;
+	}
+	label{
+		margin-right: 5px;
+		input[type="radio"]{
+			opacity: 0 !important;
+			width: 0px;
+		}
+		&.selected{
+			background: rgba(196, 196, 196, 0.73);	
+		}
+	} 
+
+}
+
+#submit-div{
+	visibility: hidden;
+	margin-top: 10%;
+	text-align: center;
+	button{
+		padding: 3.5%;
+		background: transparent;
+		img{
+			width: 100px;
+			float: left;
+			opacity: 0.6;
+			&:hover{
+				opacity: 0.9;
+			}
+		}
+	}
+	
+}
+
+h1{
+//	margin-left: 1.5%;
+//	margin-bottom: 2%;
+	//font-weight: lighter;
+}
+
+.bike-listing{
+	width: 280px !important;
+	margin-bottom: 2%;
+	a.show-bike{
+		text-decoration: none;
+		.info-div{
+			background: rgba(207, 215, 223, 1);
+			color: rgb(12, 11, 11);
+			z-index: 2;
+			overflow: hidden;
+			height: 320px;
+			border-radius: 5px !important;
+			&:hover{
+				box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.6)
+			}
+			.bike-index-img{
+				z-index: -1;
+				position: absolute;
+				height: 90%;
+				margin-left: -20%;
+			}
+			h3{
+				margin-top: 0%;
+				font-size: 20px;
+				left: 0%;
+				padding: 3%;
+				background: rgb(248, 8, 8);
+				color: white;
+				width: 100%;
+				position: absolute;
+				&.hybrid{
+					background: #2EF808;
+				}
+				&.mountain{
+					background: #F8EE08;
+					color: black;
+				}
+			}
+			p{
+				background: rgba(0, 0, 0, 1);
+				padding: 3%;
+				position: absolute;
+				bottom: 0%;
+				margin: 0% !important;
+				left: 0;
+				color: rgb(255, 255, 255);
+				width: 100%;
+			}
+			h4{
+				font-size: 28px;
+				margin-top: 70px;
+				color: rgba(0, 0, 0, 1);
+			}
+		}
+	}
+}
+
+#bike-show{
+	h2, h3, h4{
+		font-weight: lighter;
+		background: white;
+	}
+	.availability-size{
+		margin-left: 2px;
+		margin-right: 2px;
+		font-size: 10px;
+	}
+}
+
+#loader-container{
+	position: fixed;
+	width: 100% !important;
+	height: 100%;
+	z-index: 1000;
+	padding: 0%;
+	background: rgba(0, 0, 0, 0.5);
+	left: 0;
+	top: 0;
+	display: none;
+	#loader-div{
+		position:absolute;
+		width: 5%;
+		left: 45%;
+		top: 40%;
+		display: block;
+		img{
+			position:relative;
+			width: 100%;
+		}
+	}
+}

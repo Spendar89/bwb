@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rental_id: 1
+  kind: MyString
+  size: MyString
+
+two:
+  rental_id: 1
+  kind: MyString
+  size: MyString

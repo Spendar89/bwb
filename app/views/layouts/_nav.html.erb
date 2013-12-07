@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default col-sm-10 col-sm-offset-1" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+		<%=link_to "Big Wheel Bikes", "/#/home", class: "navbar-brand" %>
+  </div>
+
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+			<li><%=link_to "bikes", "/#/bikes" %></li>
+      <li><%=link_to "add bike", "/bikes/new" %></li>
+			<li><%=link_to "add used-bike", "/#/used_bikes/new" %></li>
+			<li><%=link_to "new truck run", "/truck_runs/new" %></li>
+			<li><%=link_to "inventory", "/#/inventory" %></li>
+			<li><%=link_to "new current event post", "/#/current_events/new" %></li>
+    </ul>
+  </div>
+</nav>

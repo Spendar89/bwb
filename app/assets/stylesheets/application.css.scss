@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+ 
+ *= require jquery.ui.datepicker
+ *= require_self
+ *= require_tree .
+ */
+
+@import "twitter/bootstrap";
+
+
+
+h1, h2, p{
+	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+#container{
+	padding: 1%;
+	padding-top: 100px;
+	min-height: 1000px;
+	border-radius: 0px;
+//	box-shadow: 0 0 2px grey;
+	border: none;
+	overflow:hidden;
+	border-radius: 4px;
+	width: 100%;
+	//background: white;
+}
+
+html{
+	//background: rgba(255, 255, 255, 0.98);
+	//background: url('background.png');
+}
+
+body{
+	border: 1pt solid black;
+	background: white;
+}
+
+.navbar{
+	height: 100px;
+	width: 100% !important;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	background: rgba(252, 242, 0, 0.8);
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5);
+	border: none;
+	margin: 0px !important;
+	margin-bottom: 20px;
+	padding-top: 50px;
+	box-sizing: border-box;
+	border-radius: 0px;
+	a{
+		color:  #333333 !important;
+		font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+		font-size: 16pt;
+	}
+	.navbar-brand{
+		font-size: 27pt;
+	}
+}
+
+
+//datepicker ovverrides
+.ui-widget-header {
+	background: none;
+	border: none !important;
+
+}
+
+#ui-datepicker-div {
+	font-weight: normal !important;
+}
