@@ -17,4 +17,23 @@ form.current-bikes-div{
 	border-left: 1px solid #dddddd;
 	border-right: 1px solid #dddddd;
 	border-bottom: 1px solid #dddddd;
+
+	.form-label {
+		font-weight: 100;
+	}
+
+	.quant-input {
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+}
+
+#summary-step {
+	h3{
+		font-weight: 400;
+	}
+
+	.light-text {
+		font-weight: 100;
+	}
 }

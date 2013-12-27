@@ -1,0 +1,34 @@
+<div class="container" id="used-bikes-div">
+	<div class="row">
+    <div class="page-header-div col-sm-3">
+      <h1 class="header compact margin-bottom">Used Bikes</h1>
+    </div>
+    <div class="col-sm-4">
+      <select ng-model="location" ng-change="getUsedInventory()" ng-options="locationName for locationName in locationNames" class="form-control col-sm-12">
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="page-description col-sm-12">
+      <h4> All of our used bikes are freshly tuned and carry a six month free adjustments warranty. If you're on a budget, but want good quality, consider our used bikes.</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div id="used-bikes-table" class="table-responsive col-sm-12">
+      <table class="table table-hover">
+       <tr>
+        <th><a href="" ng-click="order='brand';reverse=(brandReverse=!brandReverse)"><h3>Brand</h3></a></th>
+        <th><a href="" ng-click="order='model';reverse=(modelReverse=!modelReverse)"><h3>Model</h3></a></th>
+        <th><a href="" ng-click="order='size';reverse=(sizeReverse=!sizeReverse)"><h3>Size</h3></a></th>
+        <th><a href="" ng-click="order='price';reverse=(priceReverse=!priceReverse)"><h3>Price</h3></a></th>
+      </tr>
+      <tr ng-repeat="inv in usedInv|orderBy:order:reverse">
+        <td><h4>{{ inv.brand }}</h4></td>
+        <td><h4>{{ inv.model }}</h4></td>
+        <td><h4>{{ inv.size }}</h4></td>
+        <td><h4>{{ inv.price }}</h4></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>

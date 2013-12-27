@@ -25,6 +25,7 @@ class Bike < ActiveRecord::Base
     image.combine_options do |c|
       c.fuzz "8%"
       c.transparent "white"
+      c.resize "600x600"
       update_attributes(has_image: true, image_url: image_main_url) if c.write path
     end
   end

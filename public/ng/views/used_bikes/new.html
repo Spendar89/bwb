@@ -1,47 +1,82 @@
-<h1>Add a Used Bike</h1>
-<div class="row" ng-controller="UsedBikesCtrl">
-	<form novalidate class="form-horizontal col-sm-4 css-form">
-		<div class="form-group">
-			<div class="col-sm-12">
-				<input type="text" placeholder="Brand" class="form-control col-sm-12" ng-model="usedBike.brand" required/>
+<div class="used-bikes-mangement" ng-controller="UsedBikesCtrl">
+	<div class="container">
+
+		<div class="row">
+			<h1>Used Bike Management</h1>
+
+			<form novalidate class="form-horizontal col-sm-4 css-form">
+				<h2>Add a Used Bike</h1>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" placeholder="Brand" class="form-control col-sm-12" ng-model="usedBike.brand" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" placeholder="Model" class="form-control col-sm-12" ng-model="usedBike.model" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" placeholder="Type" class="form-control col-sm-12" ng-model="usedBike.kind" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<input type="number" placeholder="Year" class="form-control col-sm-12" ng-model="usedBike.year" required/>
+						</div>
+						<div class="col-sm-6">
+							<input type="number" placeholder="Size" class="form-control col-sm-12" ng-model="usedBike.size" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<input type="number" placeholder="Cost" class="form-control col-sm-12" ng-model="usedBike.cost" required/>
+						</div>
+						<div class="col-sm-6">
+							<input type="number" placeholder="Price" class="form-control col-sm-12" ng-model="usedBike.price" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button class="btn btn-primary" ng-click="reset()">Reset Form</button>
+							<button  class="btn btn-primary" ng-click="create(usedBike)">Add Used Bike</button>
+						</div>
+					</div>
+				</form>
+
+				<div class="col-sm-8">
+					<div id="used-inv-table" class="table-responsive col-sm-11 col-sm-offset-1">
+						<h2>Used Bike Inventory</h2>
+						<table class="table table-hover">
+							<tr>
+								<th><a href="" ng-click="order='id';reverse=(idReverse=!idReverse)">Stock Number</a></th>
+								<th><a href="" ng-click="order='brand';reverse=(brandReverse=!brandReverse)">Brand</a></th>
+								<th><a href="" ng-click="order='model';reverse=(modelReverse=!modelReverse)">Model</a></th>
+								<th><a href="" ng-click="order='size';reverse=(sizeReverse=!sizeReverse)">Size</a></th>
+								<th><a href="" ng-click="order='cost';reverse=(costReverse=!costReverse)">Cost</a></th>
+								<th><a href="" ng-click="order='price';reverse=(priceReverse=!priceReverse)">Price</a></th>
+								<th></th>
+								<th></th>						
+							</tr>
+							<tr ng-repeat="inv in usedInv|orderBy:order:reverse">
+								<td>{{getStockNumber(inv.id)}}</td>								
+								<td><edit-input  ng-model="inv.brand" /></td>
+								<td><edit-input  ng-model="inv.model" /></td>
+								<td><edit-input  ng-model="inv.size" /></td>
+								<td><edit-input  ng-model="inv.cost" /></td>
+								<td><edit-input  ng-model="inv.price" /></td>
+								<td>
+									<i ng-click="inv.editing = true" ng-show="!inv.editing" class="glyphicon glyphicon-large glyphicon-pencil"></i>
+									<i ng-click="update(inv)" ng-show="inv.editing" class="glyphicon glyphicon-large glyphicon-ok"></i>
+								</td>
+								<td>
+									<i class="glyphicon glyphicon-large glyphicon-trash"></i>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-12">
-				<input type="text" placeholder="Model" class="form-control col-sm-12" ng-model="usedBike.model" required/>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-12">
-				<input type="text" placeholder="Location" class="form-control col-sm-12" ng-model="usedBike.location" required/>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-12">
-				<input type="text" placeholder="Type" class="form-control col-sm-12" ng-model="usedBike.kind" required/>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-6">
-				<input type="number" placeholder="Year" class="form-control col-sm-12" ng-model="usedBike.year" required/>
-			</div>
-			<div class="col-sm-6">
-				<input type="number" placeholder="Size" class="form-control col-sm-12" ng-model="usedBike.size" required/>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-6">
-				<input type="number" placeholder="Cost" class="form-control col-sm-12" ng-model="usedBike.cost" required/>
-			</div>
-			<div class="col-sm-6">
-				<input type="number" placeholder="Price" class="form-control col-sm-12" ng-model="usedBike.price" required/>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-12">
-				<button class="btn btn-primary" ng-click="reset()">Reset Form</button>
-				<button  class="btn btn-primary" ng-click="create(usedBike)">Add Used Bike</button>
-			</div>
-		</div>
-	</form>
-</div>
+	</div>

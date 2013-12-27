@@ -1,20 +1,28 @@
-<h2>Current Truck Run</h2>
+<div class="row">
+	<div class="col-sm-5">
+		<h2>Current Additions</h2>
+	</div>
+	<div class="col-sm-4">
+		<%=button_to "Delete Additions", truck_run_path(@truck_run), method: :delete, id: "delete-truck-run-btn", class: "btn btn-default" %>
+	</div>
+</div>
 <table class="table table-hover">
 	<tr>
+		<th>Stock Number</th>
 		<th>Brand</th>
 		<th>Model</th>
-		<th>Quantity</th>
 		<th>Size</th>
 		<th>Location</th>
 	</tr>
-	<% @truck_run.bike_inventories.group_by{|inv| [ inv.store.location, inv.bike.brand, inv.bike.model, inv.size ] }.each do |key, inv_group| %>
+	<% @truck_run.bike_inventories.each do |inventory| %>
 		<tr>
-			<% inventory = inv_group[0]%>
-			<td><%= inventory.bike.brand %></td>
-			<td><%= inventory.bike.model %></td>
-			<td><%= inv_group.length %></td>
+			
+			<% next unless inventory.bike.try(:brand) %>
+			<td><%= inventory.try(:id) %></td>
+			<td><%= inventory.bike.try(:brand) %></td>
+			<td><%= inventory.bike.try(:model) %></td>
 			<td><%= inventory.size %></td>
-			<td><%= inventory.store.location %></td>
+			<td><%= inventory.store.try(:location) %></td>
 		</tr>
 	<% end %>
 </table>

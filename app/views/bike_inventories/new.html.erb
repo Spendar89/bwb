@@ -1,5 +1,5 @@
 <div class="col-sm-6" id="new-bike-form-div">
-	<h1>Add To Truck Run:</h1>
+	<h1>Add Bike Inventory:</h1>
 	<div class="row">
 		<%= simple_form_for(@bike_inventory, :html => {class: 'form-inline col-sm-6 new-bike-inventory', role: 'form' }, remote: true) do |f| %>
 			<%= f.hidden_field :truck_run_id, value: @bike_inventory.truck_run_id %>

@@ -14,13 +14,16 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require twitter/bootstrap
-//= require angular
 //= require underscore
+//= require angular
+//= require angular-route
 //= require angular-resource
+//= require angular-animate
 //= require angularjs/rails/resource
 //= require ./ng/vendor/ui-bootstrap-custom-tpls-0.6.0
 //= require ./ng/vendor/bootstrap.fileupload
 //= require ./ng/vendor/date
+//= require ./ng/vendor/jquery.floatThead
 //= require ./ng/app
 //= require ./ng/directives
 //= require ./ng/filters

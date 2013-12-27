@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://fiddle.jshell.net/samccone/kqRne/show/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> - jsFiddle demo by samccone</title>
+  
+  <script type="text/javascript" src="jquery-1.5.2.js"></script><style type="text/css"></style>
+  <link rel="stylesheet" type="text/css" href="normalize(1).css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="result-light.css">
+  
+  <style type="text/css">
+    
+  </style>
+  
+
+
+<script type="text/javascript">//<![CDATA[ 
+$(window).load(function(){
+$(document).ready(function(){
+    
+    $('div').bind('scroll',chk_scroll);
+});
+
+
+function chk_scroll(e)
+{
+    var elem = $(e.currentTarget);
+    if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) 
+    {
+        console.log("bottom");
+    }
+
+}
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div style="overflow:auto;height:90px;width:160px">
+    Moby-Dick, also known as The Whale,[1] is a novel first published in 1851 by American author Herman Melville. Moby-Dick is widely considered to be a Great American Novel and a treasure of world literature. The story tells the adventures of the wandering sailor Ishmael, and his voyage on the whaleship Pequod, commanded by Captain Ahab. Ishmael soon learns that Ahab seeks one specific whale: Moby Dick, a ferocious, enigmatic white sperm whale. In a previous encounter, the whale destroyed Ahab's boat and bit off his leg. Ahab intends to take revenge.
+    
+</div>
+  
+
+
+
+
+
+</body></html>

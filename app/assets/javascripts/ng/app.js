@@ -30,39 +30,55 @@ angular.module('customer.services', ['rails'])
 angular.module('customer.controllers', ['ui.bootstrap'])
 angular.module('customer', ['customer.services', 'customer.controllers'])
 
-angular.module('app', ['ngResource', 'app.directives', 'app.filters', 'ui.date', 'bike', 'inventory', 'currentEvent', 'usedBike', 'rental', 'customer'])
-	.config(['$locationProvider', '$routeProvider',function($locationProvider, $routeProvider) {
-		$routeProvider
-			.when('/bikes/:bikeId', {
-				templateUrl: '/ng/views/bikes/show.html', 
-				controller: 'BikesCtrl'
-			})
-			.when('/bikes', {
-				templateUrl: '/ng/views/bikes/index.html', 
-				controller: 'BikesCtrl'
-			})
-			.when('/used_bikes/new', {
-				templateUrl: '/ng/views/used_bikes/new.html', 
-				controller: 'UsedBikesCtrl'
-			})
-			.when('/inventory', {
-				templateUrl: '/ng/views/inventory/index.html', 
-				controller: 'InventoryCtrl'
-			})
-			.when('/home', {
-				templateUrl: '/ng/views/home.html',
-				controller: 'HomeCtrl'
-			})
-			.when('/current_events/new', {
-				templateUrl: '/ng/views/current_events/new.html',
-				controller: 'CurrentEventsCtrl'
-			})
-			.when('/rentals/new', {
-				templateUrl: '/ng/views/rentals/new.html',
-				controller: 'RentalsCtrl'
-			})
-			.otherwise({
-					redirectTo: '/home'
-			});
-		}]
+angular.module('app', ['ngResource', 'ngRoute', 'app.directives', 'app.filters', 'ui.date', 'bike', 'inventory', 'currentEvent', 'usedBike', 'rental', 'customer'])
+.config(['$locationProvider', '$routeProvider',function($locationProvider, $routeProvider) {
+	$routeProvider
+	.when('/bikes/new', {
+		templateUrl: '/ng/views/bikes/new.html', 
+		controller: 'BikesCtrl'
+	})
+	.when('/bikes/:bikeId', {
+		templateUrl: '/ng/views/bikes/show.html', 
+		controller: 'BikesCtrl'
+	})
+	.when('/bikes', {
+		templateUrl: '/ng/views/bikes/index.html', 
+		controller: 'BikesCtrl'
+	})
+	.when('/used_bike_inventory/new', {
+		templateUrl: '/ng/views/used_bikes/new.html', 
+		controller: 'UsedBikesCtrl'
+	})
+	.when('/used_bikes', {
+		templateUrl: '/ng/views/used_bikes/index.html', 
+		controller: 'UsedBikesCtrl'
+	})
+	.when('/inventory', {
+		templateUrl: '/ng/views/inventory/index.html', 
+		controller: 'InventoryCtrl'
+	})
+	.when('/new_bike_inventory/new', {
+		templateUrl: '/ng/views/inventory/new.html', 
+		controller: 'InventoryCtrl'
+	})
+	.when('/current_events/new', {
+		templateUrl: '/ng/views/current_events/new.html',
+		controller: 'CurrentEventsCtrl'
+	})
+	.when('/rentals/new', {
+		templateUrl: '/ng/views/rentals/new.html',
+		controller: 'RentalsCtrl'
+	})
+	.when('/home', {
+		templateUrl: '/ng/views/home.html',
+		controller: 'HomeCtrl'
+	})
+	.when('/admin', {
+		templateUrl: '/ng/views/admin.html',
+		controller: 'AdminCtrl'
+	})
+	.otherwise({
+		redirectTo: '/home'
+	});
+}]
 );

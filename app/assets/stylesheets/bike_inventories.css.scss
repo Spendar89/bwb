@@ -1,30 +1,32 @@
 // Place all the styles related to the bike_inventories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#inv-div {
+	#new-inv-div {
+		#add-inv-btn {
+			background: grey;
+			border: none;
+			outline: none;
+			min-width: 112px !important;
+			height: 80%;
+			&.waiting {
+				background: #edf835;
+				color: #d71f28;
+			}
+			&.success {
+				background: #3ec45c;
+			}
+			&.failure {
+				background: #d71f28;
+			}
+		}
+		h2 {
+			letter-spacing: -1px;
+			color: #333;
+		}
 
-.new-bike-inventory{
-	label{
-		display: none;
 	}
-	
-	.control-group{
-		margin: 5%;
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	
-	#bike_inventory_bike_id{
-		border-radius: 0px !important;
-		box-shadow: none !important;
-	}
-	
-	input, .string {
-		height: 33px;
-		padding: 2px;
-		box-sizing: border-box;
-	}
-	
-	.btn{
-		padding: 2% !important;
+
+	#bike-inventory-table {
 	}
 }

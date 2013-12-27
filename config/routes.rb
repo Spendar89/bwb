@@ -19,10 +19,9 @@ Bwb::Application.routes.draw do
   resources :current_events
 
 
-  resources :truck_runs
-
-
   resources :bike_inventories
+
+  post "bike_inventories/transfer" => "bike_inventories#transfer"
 
 
   resources :stores

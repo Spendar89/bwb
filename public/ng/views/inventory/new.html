@@ -1,0 +1,81 @@
+<div id="inv-div">
+	<div class="container full">
+		<div id="new-inv-div" class="col-sm-4 container fit">
+			<form ng-model="inventory" novalidate class="form-horizontal col-sm-12 css-form">
+				<h1 class="row center-text">
+					Add Bike Inventory
+				</h1>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select ng-model="bikeBrand" placeholder="Brands" ng-options="bikeBrand for bikeBrand in bikeBrands" class="form-control col-sm-12" required>
+							<option value="">Select Brand</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<select ng-model="inventory.bike_id" placeholder="Models" ng-options="bikeModel.id as bikeModel.model for bikeModel in bikeModels(bikeBrand)" class="form-control col-sm-12" required ng-disabled="!bikeBrand">
+							<option value="">Select Model</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" placeholder="Size" class="form-control col-sm-12" ng-model="inventory.size" required/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-6">
+						<input type="number" placeholder="Quantity" class="form-control col-sm-12" ng-model="inventory.quantity" required/>
+					</div>
+					<div class="col-sm-6">
+						<select ng-model="inventory.location" ng-options="locationName for locationName in locationNames" class="form-control col-sm-12" required>
+							<option value="">Location</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button  flash-btn="inventoryAdded" flash-failure="Error!" flash-waiting="Adding..." flash-success="Added!" id="add-inv-btn" class="btn btn-primary" ng-click="create(inventory)">Add Inventory</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="bike-inventory-table-div" load-more class="col-sm-8 container">
+			<h1 class="row center-text">
+				View Bike Inventory
+			</h1>
+			<button  flash-btn="transferSuccess" flash-failure="Error!" flash-waiting="Transfering..." flash-success="Transfered!" id="transfer-inv-btn" class="btn btn-primary" ng-click="makeTransfer()">Transfer Inventory</button>
+			<div id="bike-inventory-table" class="table-responsive col-sm-12">
+				<table class="table">
+					<tr>
+						<th><a href="" ng-click="order='id';reverse=(idReverse=!idReverse)">Stock Number</a></th>
+						<th><a href="" ng-click="order='bike.brand';reverse=(brandReverse=!brandReverse)">Brand</a></th>
+						<th><a href="" ng-click="order='bike.model';reverse=(modelReverse=!modelReverse)">Model</a></th>
+						<th><a href="" ng-click="order='bike.cost';reverse=(costReverse=!costReverse)">Cost</a></th>
+						<th><a href="" ng-click="order='bike.price';reverse=(priceReverse=!priceReverse)">Price</a></th>
+						<th><a href="" ng-click="order='size';reverse=(sizeReverse=!sizeReverse)">Size</a></th>
+						<th><a href="" ng-click="order='store.location';reverse=(locationReverse=!locationReverse)">Location</a></th>
+						<th><a href="" ng-click="order='sold';reverse=(soldReverse=!soldReverse)">Sold</a></th>
+						<th><a href="">Edit</a></th>
+					</tr>
+					
+					<tr ng-repeat="inv in inventories|orderBy:order:reverse" ng-show="$index < showNumber">
+						<td>{{ getStockNumber(inv.id) }}</td>
+						<td>{{ inv.bike.brand }}</td>
+						<td>{{ inv.bike.model }}</td>
+						<td>{{ inv.bike.cost || "N/A" }}</td>
+						<td>{{ inv.bike.price }}</td>
+						<td>{{ inv.size }}</td>
+						<td><edit-input  ng-model="inv.store.location" /></td>
+						<td>false</td>
+						<td>
+							<a href="" ng-click="inv.transfer = !inv.transfer" ng-show="!inv.transfer"><i class="col-sm-12 glyphicon glyphicon-large glyphicon-pencil"></i></a>
+							<a href="" ng-click="inv.transfer = !inv.transfer" ng-show="inv.transfer"><i class="col-sm-12 glyphicon glyphicon-large glyphicon-ok"></i></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

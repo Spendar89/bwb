@@ -2,6 +2,8 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 	$scope.currentSmallBikes = []
 	$scope.currentMediumBikes = []
 	$scope.currentLargeBikes = []
+
+	$scope.locationNames = ["Bethesda", "Georgetown", "Old Town", "Arlington", "Potomac"]
 	
 	$scope.scheduleRental = function(rental, customer) {
 		rental.customerId = customer.id
@@ -11,7 +13,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 				small: 0,
 				medium: 0,
 				large: 0
-			},
+			},	
 			mountain: {
 				small: 0,
 				medium: 0,
@@ -23,15 +25,16 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 				large: 0
 			}
 		}
-		$scope.getUsedInventory($scope.rental.location)
+		$scope.getUsedInventory($scope.rental.location, $scope.rental.date, $scope.rental.time)
 		var pos = $('#used-bike-step').show().offset();
 		$('body').animate({ scrollTop: (pos.top) });
 		$scope.showHybrids()
+
 		
 	};
 	
-	$scope.getUsedInventory = function(location) {
-		return UsedBike.query({location: location }).then(function(response) {
+	$scope.getUsedInventory = function(location, date, time) {
+		return UsedBike.query({location: location, date: date, time: time }).then(function(response) {
 			$scope.showCurrent = false;
 			$scope.usedBikes = response;
 			organizeUsedBikes();
@@ -58,24 +61,21 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 	
 	$scope.getCurrentSmallBikes = function() {
 		$scope.currentSmallBikes =  _.filter($scope.currentBikes, function(bike) {
-			var size = parseInt(bike.size)
-			return size < 17
+			return bike.fuzzySize == "small"
 		})
 		return $scope.currentSmallBikes
 	}
 	
 	$scope.getCurrentMediumBikes = function() {
 		$scope.currentMediumBikes = _.filter($scope.currentBikes, function(bike) {
-			var size = parseInt(bike.size)
-			return size >= 17 && size < 19
+			return bike.fuzzySize == "medium"
 		})
 		return $scope.currentMediumBikes
 	}
 	
 	$scope.getCurrentLargeBikes = function() {
 		$scope.currentLargeBikes = _.filter($scope.currentBikes, function(bike) {
-			var size = parseInt(bike.size)
-			return size >= 19
+			return bike.fuzzySize == "large"
 		})
 		return $scope.currentLargeBikes
 	}
@@ -93,27 +93,23 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 	}
 	
 	$scope.showHybrids = function() {
-		$timeout(function(){
-			$scope.resetQuants();
-			$scope.currentType = "hybrid"
-			$scope.currentBikes = $scope.hybrids
-			$scope.setCurrentBikes();
-			$scope.showCurrent = true
-			$('#hybrid-tab').addClass('active')
-			$('#mountain-tab').removeClass('active')
-		}, 100)
+		$scope.resetQuants();
+		$scope.currentType = "hybrid"
+		$scope.currentBikes = $scope.hybrids
+		$scope.setCurrentBikes();
+		$scope.showCurrent = true
+		$('#hybrid-tab').addClass('active')
+		$('#mountain-tab').removeClass('active')
 	}
 	
 	$scope.showMountainBikes = function() {
-		$timeout(function(){
-			$scope.resetQuants();
-			$scope.currentType = "mountain"
-			$scope.currentBikes = $scope.mountainBikes
-			$scope.setCurrentBikes();
-			$scope.showCurrent = true
-			$('#mountain-tab').addClass('active')
-			$('#hybrid-tab').removeClass('active')
-		}, 100)
+		$scope.resetQuants();
+		$scope.currentType = "mountain"
+		$scope.currentBikes = $scope.mountainBikes
+		$scope.setCurrentBikes();
+		$scope.showCurrent = true
+		$('#mountain-tab').addClass('active')
+		$('#hybrid-tab').removeClass('active')
 	}
 	
 	$scope.create = function(rental, customer) {
@@ -121,9 +117,10 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		rental.customerId = customer.id
 		var rentalObj = new Rental(rental)		
 		rentalObj.save().then(function(response){
-			$scope.rental = response;
-			console.log(response)
-
+			$scope.rental = response
+			console.log($scope.rental)
+			var pos = $('#summary-step').show().offset();
+			$('body').animate({ scrollTop: (pos.top) });
 		})
 	}
 
@@ -133,7 +130,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		var smallValid = ($scope.smallQuant <= $scope.currentSmallBikes.length && $scope.smallQuant >= 0)
 		var totalQuant = $scope.smallQuant + $scope.mediumQuant + $scope.largeQuant
 		if(totalQuant <= 0) return false
-		return largeValid && mediumValid && smallValid
+			return largeValid && mediumValid && smallValid
 	}
 
 	$scope.addQuant = function(rental){

@@ -29,7 +29,7 @@
 			<form novalidate class="form-horizontal col-sm-12 css-form">
 				<div class="form-group">
 					<div class="col-sm-6">
-						<input type="text" placeholder="Location" class="form-control col-sm-12" ng-model="rental.location" required/>
+						<select ng-model="rental.location" placeholder="Location" ng-options="location for location in locationNames" class="form-control col-sm-12" required/>
 					</div>
 					<div class="col-sm-6">
 						<input ui-date ui-date-format="m/d/y" type="text" placeholder="Date" class="form-control col-sm-12" ng-model="rental.date" required/>
@@ -37,8 +37,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<select ng-model="rental.time" ng-options="time for time in startTimes | time"></select>
-						<!-- <input type="time" placeholder="Time" class="form-control col-sm-12" ng-model="rental.time" required/> -->
+						<select ng-model="rental.time" placeholder="Time" ng-options="time for time in startTimes | time"></select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -48,47 +47,66 @@
 				</div>
 			</form>
 		</div>
-	
+
 		<div class="col-sm-4 col-sm-offset-4 rental-step" id="used-bike-step">
 			<h1 class="text-muted">3. Select Your Bikes</h1>
-			
-			
-			
-			
-		<ul class="nav nav-tabs">
-		  <li id="hybrid-tab" ><a href="" class="" ng-click="showHybrids()">Hybrid</a></li>
-		  <li id="mountain-tab"><a href="" class="" ng-click="showMountainBikes()">Mountain Bike</a></li>
-		</ul>
-
-
-
-
-
+			<ul class="nav nav-tabs">
+				<li id="hybrid-tab" ><a href="" class="" ng-click="showHybrids()">Hybrid</a></li>
+				<li id="mountain-tab"><a href="" class="" ng-click="showMountainBikes()">Mountain Bike</a></li>
+			</ul>
 			<form name="quantForm" class="form-horizontal css-form current-bikes-div col-sm-12" ng-show="showCurrent">
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="number" ng-change="addQuant(rental)" placeholder="Small ({{currentSmallBikes.length}} Available)" class="form-control col-sm-12" ng-max="{{currentSmallBikes.length}}" ng-model="smallQuant"/>
+						<div class="col-sm-9">
+							<h3 class="form-label">Small ({{currentSmallBikes.length}} Available)</h3>
+						</div>
+						<div class="col-sm-3">
+							<input type="number" ng-change="addQuant(rental)" placeholder="0" class="quant-input form-control col-sm-1" ng-max="{{currentSmallBikes.length}}" ng-model="smallQuant"/>
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="number" ng-change="addQuant(rental)" placeholder="Medium ({{currentMediumBikes.length}} Available)" class="form-control col-sm-12" ng-max="{{currentMediumBikes.length}}" ng-model="mediumQuant"/>
+						<div class="col-sm-9">
+							<h3 class="form-label">Medium ({{currentMediumBikes.length}} Available)</h3>
+						</div>
+						<div class="col-sm-3">
+							<input type="number" ng-change="addQuant(rental)" placeholder="0" class="quant-input form-control col-sm-1" ng-max="{{currentMediumBikes.length}}" ng-model="mediumQuant"/>
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="number" ng-change="addQuant(rental)" placeholder="Large ({{currentLargeBikes.length}} Available)"class="form-control col-sm-12" ng-max="{{currentLargeBikes.length}}" ng-model="largeQuant"/>
+						<div class="col-sm-9">
+							<h3 class="form-label">Large ({{currentLargeBikes.length}} Available)</h3>
+						</div>
+						<div class="col-sm-3">
+							<input type="number" ng-change="addQuant(rental)" placeholder="0" class="form-control col-sm-1 quant-input" ng-max="{{currentLargeBikes.length}}" ng-model="largeQuant"/>
+						</div>
 					</div>
 				</div>
-			
+
 				<div class="form-group">
 					<div class="col-sm-12">
 						<button  ng-disabled="!quantFormValid()" class="btn btn-default" ng-click="create(rental, $parent.customer)">Add Bikes!</button>
 					</div>
 				</div>
 			</form>
+		</div>
+
+		<div class="col-sm-4 col-sm-offset-4 rental-step" id="summary-step">
+			<div class="col-sm-12">
+				<h1 class="text-muted">Confirmation</h1>
+				<h3>Confirmation Number: <span class="light-text"> {{ rental.id }} </span></h3>
+				<h3>Location: <span class="light-text"> {{ rental.location }} </span></h3>
+				<h3>Date: <span class="light-text"> {{ rental.date }} </span></h3>
+				<h3>Time: <span class="light-text"> {{ rental.time }} </span></h3>
+				<h3>Customer Name: <span class="light-text"> {{customer.firstName}} {{customer.lastName}} </span></h3>
+				<h3 ng-repeat="rentalBike in rental.rentalBikes">Bike {{ $index + 1 }}: <span class="light-text">Size {{ rentalBike.size }}, Kind {{ rentalBike.kind }} </span></h3>
+				
+			</div>
 		</div>
 	</div>
 </div>
