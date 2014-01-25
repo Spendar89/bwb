@@ -10,6 +10,19 @@ angular.module('app.directives')
     }
   }
 })
+.directive('fadeIn', function($timeout){
+  return {
+    restrict: 'A',
+    link: function($scope, elem, attrs) {
+      var amount = attrs.fadeIn;
+      console.log(amount);
+      $timeout(function() {
+        elem.css("display", "none").css("visibility", "visible").fadeIn('fast');
+      }, amount);
+
+    }
+  };
+})
 .directive('ngMax', function(){
   return {
     restrict: 'A',
@@ -58,16 +71,16 @@ angular.module('app.directives')
       elem.bind('scroll', function() {
         var scrollAmt = (elem[0].scrollHeight - elem.scrollTop());
         var bottom = elem.outerHeight();
-        
+
         if(scrollAmt == bottom) {
           $scope.$apply(function() {
             $scope.showNumber += 50
           })
         }
-        
+
 
       })
-      
+
     }
   }
 })
@@ -80,7 +93,7 @@ angular.module('app.directives')
     link: function($scope, elem, attrs) {
       elem.bind('click', function() {
         var $target = $(this).parents(attrs["deleteTarget"])
-        $target.remove(); 
+        $target.remove();
       })
     }
   }
@@ -97,8 +110,11 @@ angular.module('app.directives')
   return {
     restrict: "E",
     replace: true,
-    template: '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>'
-  }
+    template: '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>',
+    link: function() {
+      $(".spinner").css("background-color", "white");
+    }
+  };
 })
 .directive("editInput", function () {
   return {
@@ -113,7 +129,7 @@ angular.module('app.directives')
     link: function($scope, elem, attrs, ngModel) {
       ngModel.$parsers.unshift(function(viewValue) {
         if (viewValue.length < attrs.ngValidateLength) {
-          ngModel.$setValidity('length', true);     
+          ngModel.$setValidity('length', true);
         } else {
           ngModel.$setValidity('length', false);
         }

@@ -1,55 +1,51 @@
 
-angular.module('usedBike.controllers').controller('UsedBikesCtrl', ['$scope', '$http', '$routeParams', '$location','UsedBike','$resource', function($scope, $http, $routeParams, $location, UsedBike, $resource){
+angular.module('usedBike.controllers').controller('UsedBikesCtrl', ['$scope', '$routeParams', '$location','UsedBike','Store', function($scope, $routeParams, $location, UsedBike, Store){
 	// $scope.location = ($routeParams.location || "Bethesda");
 
+	Store.smartQuery(function(data){
+		$scope.stores = data;
+	});
 
-	
+	$scope.getUsedInventory = function() {
+		UsedBike.smartQuery($scope.store, function(data) {
+			$scope.usedInv = data;
+		});
 
-	$scope.location = "Bethesda"
+	};
 
-	$scope.locationNames = ["Bethesda", "Georgetown", "Old Town", "Arlington", "Potomac"]
+	$scope.$watch("store", function() {
+		$scope.getUsedInventory();
+	});
 
-	// $scope.$watch($scope.location, function() {
-	// 	$scope.getUsedInventory()
-	// })
-	
+
 	$scope.create = function(usedBike) {
-		usedBike.location = $scope.location
-		$scope.master = angular.copy(usedBike);		
-		var usedBikeObj = new UsedBike(usedBike)
-		console.log(usedBikeObj)
-		
+		usedBike.storeId = $scope.store.id;
+		$scope.master = angular.copy(usedBike);
+		var usedBikeObj = new UsedBike(usedBike);
+
+		//TODO: clear cache when shat changes like new used bike is added to db
 		usedBikeObj.create().then(function(response){
 			$scope.getUsedInventory();
-		})
+		});
 	};
 
 	$scope.update = function(usedBike) {
-		usedBike.location = $scope.location || usedBike.location
-		$scope.master = angular.copy(usedBike);		
-		var usedBikeObj = new UsedBike(usedBike)
+		usedBike.storeId = $scope.store.id || usedBike.storeId;
+		$scope.master = angular.copy(usedBike);
+		var usedBikeObj = new UsedBike(usedBike);
 		usedBikeObj.update().then(function(response){
 			usedBike.editing = false;
-		})
+		});
 	};
 
-	$scope.order="brand"
-
-
-	$scope.getUsedInventory = function() {
-		if(!$scope.location) return $scope.usedInv = []
-		
-		return UsedBike.query({location: $scope.location }).then(function(response) {
-			console.log(response)
-			$scope.usedInv = response;
-		})
-	}
+	//code for table sorting:
+	$scope.order="brand";
+	$scope.directions = [ { alias: 'ascending', value: false }, { alias: 'descending', value: true } ];
+	$scope.reverse = false;
 
 	$scope.getStockNumber = function(id){
-		if (id<=999999) id = ("00000"+id).slice(-6)
-			return id;
-	}
+		if (id<=999999) id = ("00000"+id).slice(-6);
+		return id;
+	};
 
-	$scope.getUsedInventory()
-
-}])
+}]);

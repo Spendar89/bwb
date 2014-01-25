@@ -1,34 +1,77 @@
-<div class="container" id="used-bikes-div">
-	<div class="row">
-    <div class="page-header-div col-sm-3">
-      <h1 class="header compact margin-bottom">Used Bikes</h1>
-    </div>
-    <div class="col-sm-4">
-      <select ng-model="location" ng-change="getUsedInventory()" ng-options="locationName for locationName in locationNames" class="form-control col-sm-12">
-      </select>
-    </div>
-  </div>
+<div class="col-sm-12" id="used-bikes-div" fade-in="200">
   <div class="row">
-    <div class="page-description col-sm-12">
-      <h4> All of our used bikes are freshly tuned and carry a six month free adjustments warranty. If you're on a budget, but want good quality, consider our used bikes.</h4>
+    <!-- <div class="col-sm-12"> -->
+    <div class="col-sm-12">
+      <div class="col-sm-12 used-header photo-header">
+        <h1> Used Bikes</h1>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 section-description">
+        <div class="col-sm-12">
+          <h2>Big Wheel buys and sells used bikes! Select a Big Wheel location to view its used bike inventory. All used bikes are freshly tuned and include six months of free service.</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 table-controls pull-right">
+        <div class="col-sm-4 location-div">
+          <div class="col-sm-5">
+            <h2> Location: </h2>
+          </div>
+          <div class="col-sm-7 select-location">
+            <select ng-model="store" ng-change="getUsedInventory()" ng-options="store as store.location for store in stores" class="form-control">
+              <option value=""  selected>All Locations</option>
+            </select>
+            <i class="fa fa-caret-down"></i>
+          </div>
+        </div>
+
+        <div class="col-sm-4 order-div">
+          <div class="col-sm-5">
+            <h2> Sort By: </h2>
+          </div>
+          <div class="col-sm-7 select-location">
+            <select ng-model="order" ng-options="orderName for orderName in ['brand', 'model', 'year', 'kind', 'size', 'price']" class="form-control">
+            </select>
+            <i class="fa fa-caret-down"></i>
+          </div>
+        </div>
+
+        <div class="col-sm-4 direction-div">
+          <div class="col-sm-4">
+            <h2> Direction: </h2>
+          </div>
+          <div class="col-sm-8 select-location">
+            <select ng-model="reverse" ng-options="d.value as d.alias for d in directions" class="form-control">
+            </select>
+            <i class="fa fa-caret-down"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  </div> -->
   </div>
-  <div class="row">
-    <div id="used-bikes-table" class="table-responsive col-sm-12">
-      <table class="table table-hover">
-       <tr>
+
+  <div id="used-bikes-table" class="table-responsive">
+    <table class="table">
+      <tr>
         <th><a href="" ng-click="order='brand';reverse=(brandReverse=!brandReverse)"><h3>Brand</h3></a></th>
         <th><a href="" ng-click="order='model';reverse=(modelReverse=!modelReverse)"><h3>Model</h3></a></th>
+        <th><a href="" ng-click="order='year';reverse=(yearReverse=!yearReverse)"><h3>Year</h3></a></th>
+        <th><a href="" ng-click="order='kind';reverse=(kindReverse=!kindReverse)"><h3>Kind</h3></a></th>
         <th><a href="" ng-click="order='size';reverse=(sizeReverse=!sizeReverse)"><h3>Size</h3></a></th>
         <th><a href="" ng-click="order='price';reverse=(priceReverse=!priceReverse)"><h3>Price</h3></a></th>
       </tr>
       <tr ng-repeat="inv in usedInv|orderBy:order:reverse">
         <td><h4>{{ inv.brand }}</h4></td>
         <td><h4>{{ inv.model }}</h4></td>
+        <td><h4>{{ inv.year }}</h4></td>
+        <td><h4>{{ inv.kind }}</h4></td>
         <td><h4>{{ inv.size }}</h4></td>
-        <td><h4>{{ inv.price }}</h4></td>
+        <td><h4>${{ inv.price }}</h4></td>
       </tr>
     </table>
   </div>
-</div>
 </div>

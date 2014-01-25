@@ -1,35 +1,42 @@
 <!-- <div id="welcome-div">
 	<div id="welcome-text" class="col-sm-12">
 		<h3>
-			
+
 		</h3>
 	</div>
 </div> -->
-<div id="home-div" class="row">
+<div fade-in="200" id="home-div" ng-controller="HomeCtrl" class="col-sm-12">
 	<div>
-		<div id="current-events-div">
-			<h3 class="page-title">Latest News:</h3>
-			<div class="current-event" ng-repeat="currentEvent in currentEvents">
+		<div id="current-events-div" class="row">
+			<!-- <h3 class="page-title">Latest News:</h3> -->
+			<div class="current-event col-sm-12" ng-show="currentEvent" ng-model="currentEvent">
+				<a href="" ng-click="currentEventIndex = currentEventIndex - 1" class="next-btn left">
+					<i class="fa fa-angle-left fa-5x"></i>
+				</a>
 				<h3>{{currentEvent.title}}</h3>
 				<div class="img-holder">
 					<img ng-src="{{currentEvent.imageUrl}}"/>
 				</div>
 				<h4>{{currentEvent.content}}</h4>
+				<a href="" ng-click="currentEventIndex = currentEventIndex + 1" class="next-btn right">
+					<i  class="fa fa-angle-right fa-5x"></i>
+				</a>
+
 			</div>
 		</div>
 
 		<div id="featured-bikes-div" class="">
-			<h3 class="page-title">January Bikes on Sale:</h3>
-			<a class="brick product-brick" ng-repeat="bike in bikes" id="show_bike_{{bike.id}}" href="/#/bikes/{{bike.id}}" >
-				<h3>
-					<span class="product-title-text">{{bike.year}} {{bike.brand}} {{bike.model}}</span>
-					<span class="flag">${{bike.price}}</span>
-				</h3>
-				<div class="img-holder">
-					<img ng-src="/assets/{{bike.imageUrl}}" class="bike-index-img"/>
-				</div>
-				<h4>{{bike.description}}</h4>
-			</a>
+			<h3 class="page-title">Featured Bikes:</h3>
+			<div ng-repeat="bike in featuredBikes" class="bike-listing index-{{ $index }} col-sm-4">
+				<a id="show_bike_{{bike.id}}" class="show-bike" ng-href="/#/bikes/{{bike.id}}">
+					<div class="info-div col-sm-12">
+						<h2 class="{{bike.kind.toLowerCase()}}">{{bike.year}} {{bike.brand}} {{bike.model}}</h2>
+						<img ng-src="/assets/{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
+						<h4 class="bike-price">${{bike.price}}</h4>
+						<div class="bike-description">{{bike.description.split(".")[0]}}</div>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,27 @@
+<div fade-in="200" ng-controller="RepairsCtrl" id="repairs-div">
+  <div class="col-sm-12">
+
+    <div class="col-sm-12 repairs-header photo-header">
+      <h1>Repairs</h1>
+    </div>
+
+
+    <div class="repairs-section-div" ng-repeat ="(category, services) in services.byCategory">
+      <h2 class="category-header"><b> {{category.slice(2).toUpperCase()}}</b></h2>
+      <div class="service-div" ng-repeat="service in services">
+        <h3 "service-header">
+         <b>{{(service.name)? (service.name + ' :'): null }} {{service.price | currency}}</b>
+       </h3>
+       <div class="service-description-div">
+        <h4>
+          {{service.description}}
+        </h4>
+      </div>
+      <div ng-repeat="(name, price) in service.options">
+        <h4>
+          <i>{{name}}: {{price | currency}}</i>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

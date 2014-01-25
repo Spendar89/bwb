@@ -1,86 +1,97 @@
-<div id="bike-show" class="container">
+<div ng-controller="BikesCtrl" ng-show="bike" ng-model="bike" id="bike-show" class="container">
+	<div class="col-sm-12">
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="bike-header col-sm-12">
 			<h1>{{ bike.brand }} {{ bike.model }} - ${{ bike.price }}</h1>
 		</div>
 		<div class="main-bike-left col-sm-6">
 			<img ng-src="/assets/{{bike.imageUrl}}" class="img col-sm-12"/>
 			<div class="col-sm-12 info-div">
-				<h2>Description</h2>
-				<h4>
-					{{ bike.description }}
-				</h4>
+				<h2 class="headline">{{bike.headline}}</h2>
+				<h4 class="description">{{ bike.description }}</h4>
 			</div>
-			<div class="col-sm-12 sim-div" ng-show="findSimilar().length > 0">
-				<div class="sim-header">
-					<h2>Similar Bikes</h2>
+
+
+				<div class="col-sm-12 sim-div" ng-show="findSimilar().length > 0">
+					<div class="sim-header">
+						<h2>Similar Bikes</h2>
+						<h4><i>It's always a good idea to consider a few bikes before making a final decision.  If you like the {{bike.brand}} {{ bike.model }}, we think you'll like these bikes as well.</i></h4>
+					</div>
+					<div class="row sim-body">
+						<a class="col-sm-5" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
+							<img ng-src="/assets/{{sim.imageUrl}}" class="img sim-image col-sm-12" />
+							<h5> {{ sim.brand + " " + sim.model }} </h5>
+						</a>
+					</div>
 				</div>
-				<div class="row sim-body">
-					<a class="col-sm-4" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
-						<img ng-src="/assets/{{sim.imageUrl}}" class="img sim-image col-sm-12" />
-						<h5> {{ sim.brand + " " + sim.model }} </h5>
-					</a>
-				</div>
-			</div>
+
+
 		</div>
 		<div class="main-bike-right col-sm-5 col-sm-offset-1">
-			<div class="ratings-div">
-				<div class="col-sm-12 ratings-header">
-					<h2>Ratings:</h2>
-				</div>
-				<div class="col-sm-12 ratings-body">
-					<div class="row">
-						<div class="col-sm-3 pull-left">
-							<h4>Comfort:</h4>
-						</div>
-						<div class="col-sm-1 pull-left" ng-repeat="i in range(bike.comfort)">
-							<i class="glyphicon glyphicon-large glyphicon-star"></i>
-						</div>
+			<div class="col-sm-12">
+				<div class="stats-div">
+					<div class="col-sm-12 stats-header">
+						<h2>At a Glance</h2>
 					</div>
-					
-					<div class="row">
-						<div class="col-sm-3 pull-left">
-							<h4>Performance:</h4>
+					<div class="col-sm-12 stats-body">
+						<div class="row">
+							<div class="col-sm-4 pull-left">
+								<h4>Comfort:</h4>
+							</div>
+							<div class="col-sm-1 pull-left" ng-repeat="i in range(bike.comfort)">
+								<i class="fa fa-star-o"></i>
+							</div>
 						</div>
-						<div class="col-sm-1 pull-left" ng-repeat="i in range(bike.performance)">
-							<i class="glyphicon glyphicon-large glyphicon-star"></i>
+
+						<div class="row">
+							<div class="col-sm-4 pull-left">
+								<h4>Performance:</h4>
+							</div>
+							<div class="col-sm-1 pull-left" ng-repeat="i in range(bike.performance)">
+								<i class="fa fa-star-o"></i>
+							</div>
 						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-sm-3 pull-left">
-							<h4>Weight:</h4>
-						</div>
-						<div class="col-sm-1 pull-left" ng-repeat="i in range(bike.weight)">
-							<i class="glyphicon glyphicon-large glyphicon-star"></i>
+
+						<div class="row">
+							<div class="col-sm-4 pull-left">
+								<h4>Weight:</h4>
+							</div>
+							<div class="col-sm-1 pull-left" ng-repeat="i in range(bike.weight)">
+								<i class="fa fa-star-o"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="stats-div">
-				<div class="col-sm-12 stats-header">
-					<h2>Stats:</h2>
-				</div>
-				<div class="col-sm-12 stats-body">
-					<h4>Year: <span>{{ bike.year }}</span> </h4>
-					<h4>Type: <span>{{ bike.kind }}</span> </h4>
-					<h4>Material: <span>{{ bike.material }}</span> </h4>
-					<h4>Speeds: <span>{{ bike.speeds }}</span> </h4>
-					<h4>Components: <span>{{ bike.groupset }}</span> </h4>
+
+			<div class="col-sm-12">
+				<div class="specs-div">
+					<div class="col-sm-12 specs-header">
+						<h2>Specs</h2>
+					</div>
+					<div class="col-sm-12 specs-body">
+						<h4>Year: <span>{{ bike.year }}</span> </h4>
+						<h4>Type: <span>{{ bike.kind }}</span> </h4>
+						<h4>Material: <span>{{ bike.material }}</span> </h4>
+						<h4>Speeds: <span>{{ bike.speeds }}</span> </h4>
+						<h4>Components: <span>{{ bike.groupset }}</span> </h4>
+					</div>
 				</div>
 			</div>
-			
-			<div class="availability-div">
-				<div class="col-sm-12 availability-header">
-					<h2>Availability:</h2>
-				</div>
-				<div class="col-sm-12 text-muted availability-body">
-					<div ng-repeat="location in locations" ng-show="getAvailability(bike, location).length > 0">
-						<h4>{{ location }}: <span ng-repeat="size in getAvailability(bike, location)" class="label label-default availability-size">{{ size }}</span> </h4>
+			<div class="col-sm-12">
+				<div class="availability-div">
+					<div class="col-sm-12 availability-header">
+						<h2>Availability</h2>
+						<h4><i>Visit the following Big Wheel Locations to test ride this model today!  Available sizes are listed alongside each location.</i></h4>
+					</div>
+					<div class="col-sm-12 availability-body">
+						<div ng-repeat="location in locations" ng-show="getAvailability(bike, location).length > 0">
+							<h4><span class="location-name">{{ location }}: </span><span ng-repeat="size in getAvailability(bike, location)" class="label label-default availability-size">{{ size }}</span> </h4>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

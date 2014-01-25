@@ -1,7 +1,37 @@
+$bwb-red: #d71f28;
+$bwb-yellow: #fced00;
+
 #bikes-div{
+  visibility: hidden;
+  min-height: 1000px;
 	.container{
 		padding-top: 50px;
 	}
+
+  .new-header {
+    background: url("/assets/headers/new.jpg" ) 0px -200px;
+
+  }
+
+  #filter-div {
+    // margin-bottom: 50px;
+    h2 {
+      font-size: 22pt;
+      font-weight: bold;
+    }
+
+    h4{
+      font-size:16pt;
+    }
+
+    input {
+      height: 60px;
+      font-size: 20pt;
+      border-radius: 0;
+    }
+  }
+
+
 }
 
 .alert.flash{
@@ -36,7 +66,7 @@
 	.row{
 		margin-bottom: 25px;
 	}
-	
+
 }
 
 .image_results{
@@ -49,7 +79,7 @@
 }
 
 .new-div{
-	
+
 	h4{
 		color: grey;
 	}
@@ -60,9 +90,9 @@
 			width: 0px;
 		}
 		&.selected{
-			background: rgba(196, 196, 196, 0.73);	
+			background: rgba(196, 196, 196, 0.73);
 		}
-	} 
+	}
 
 }
 
@@ -82,7 +112,7 @@
 			}
 		}
 	}
-	
+
 }
 
 h1{
@@ -95,61 +125,164 @@ h1{
 .bike-listing{
 	box-sizing: border-box;
 	padding: 2%;
-	a.show-bike{
-		* {
-				// font-family: 'Anonymous Pro', sans-serif;
-			}
-			text-decoration: none;
-			.info-div{
-				color: rgb(12, 11, 11);
-				z-index: 2;
-				overflow: hidden;
-				height: 400px;
-				
-				img {
-					width: 80%;
-				}
+  &.index-0 {
+    margin-left: -2%;
+  }
+  a.show-bike{
+   text-decoration: none;
+   .info-div{
+    color: rgb(12, 11, 11);
+    z-index: 2;
+    overflow: hidden;
+    height: 400px;
+    padding: 0;
+        // background: #333;
 
-				
-			}
-		}
-	}
+        h2{
+         background: #333;
+         padding: 4%;
+         color: white;
+         text-align: center;
+         margin:0;
+         font-size: 16pt;
+       }
 
-	#bike-show{
-		h2, h3, h4{
-			font-weight: lighter;
-			background: white;
-		}
-		.availability-size{
-			margin-left: 2px;
-			margin-right: 2px;
-			font-size: 10px;
-		}
-	}
+       img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        z-index: -1;
+        background: rgb(243, 243, 243);
+        min-height: 180px;
+      }
 
-	#loader-container{
-		position: fixed;
-		width: 100% !important;
-		height: 100%;
-		z-index: 1000;
-		padding: 0%;
-		background: rgba(0, 0, 0, 0.5);
-		left: 0;
-		top: 0;
-		display: none;
-		#loader-div{
-			position:absolute;
-			width: 5%;
-			left: 45%;
-			top: 40%;
-			display: block;
-			img{
-				position:relative;
-				width: 100%;
-			}
-		}
-	}
+      .bike-description {
+        color: white;
+        background: rgba(51, 51, 51, 0.61);
+        padding: 4%;
+      }
 
-	#filter-div {
-		margin-bottom: 50px;
-	}
+      .bike-price {
+        padding: 2%;
+        margin: 0;
+        margin-top: -40px;
+        z-index: 1;
+        color: white;
+        font-size: 16pt;
+        width: 20%;
+        background: $bwb-red;
+
+      }
+
+    }
+  }
+}
+
+#bike-show{
+  h2, h3, h4{
+    // background: white;
+  }
+  h1 {
+    font-size: 30pt;
+    font-weight: bold;
+    color: #d71f28;
+  }
+
+  h2 {
+    font-size: 22pt;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 15pt;
+  }
+
+  .headline {
+    font-weight: bold;
+  }
+
+  .sim-div {
+    a {
+      text-align: center;
+      font-weight: lighter;
+      // background: #CCCCCC;
+      border: 2pt solid #333;
+      border-radius: 4px;
+      margin: 2%;
+      box-sizing: border-box;
+      padding-top: 2%;
+      img {
+        padding-left: 0%;
+      }
+      h5 {
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+
+  .availability-div {
+    background: #1799dd;
+    padding: 2%;
+    color: white;
+    border-radius:4px;
+    margin-top: 40px;
+    h2 {
+      font-weight: bold;
+      margin-top: 0;
+    }
+    .location-name {
+      // line-height: 30pt;
+      vertical-align: middle;
+    }
+    .availability-size{
+     margin-left: 2%;
+     background: transparent;
+     color: white;
+     font-size: 10pt;
+     margin-top: 0px;
+     border: 2pt solid white;
+   }
+ }
+
+
+ .stats-div, .specs-div {
+  // background: #1799dd;
+  // padding: 2%;
+  // color: white;
+  // border-radius:4px;
+  margin-left: -2%;
+
+
+  .fa-star-o {
+    font-weight: bold
+  }
+  h4 {
+    margin-top: 0px;
+    font-size: 18pt;
+  }
+}
+}
+
+#loader-container{
+  position: fixed;
+  width: 100% !important;
+  height: 100%;
+  z-index: 1000;
+  padding: 0%;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  display: none;
+  #loader-div{
+   position:absolute;
+   width: 5%;
+   left: 45%;
+   top: 40%;
+   display: block;
+   img{
+    position:relative;
+    width: 100%;
+  }
+}
+}

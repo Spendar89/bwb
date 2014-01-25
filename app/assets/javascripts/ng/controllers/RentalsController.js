@@ -4,7 +4,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 	$scope.currentLargeBikes = []
 
 	$scope.locationNames = ["Bethesda", "Georgetown", "Old Town", "Arlington", "Potomac"]
-	
+
 	$scope.scheduleRental = function(rental, customer) {
 		rental.customerId = customer.id
 		$scope.quantErrors = []
@@ -13,7 +13,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 				small: 0,
 				medium: 0,
 				large: 0
-			},	
+			},
 			mountain: {
 				small: 0,
 				medium: 0,
@@ -26,13 +26,14 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 			}
 		}
 		$scope.getUsedInventory($scope.rental.location, $scope.rental.date, $scope.rental.time)
-		var pos = $('#used-bike-step').show().offset();
-		$('body').animate({ scrollTop: (pos.top) });
+		$('#used-bike-step').removeClass("disabled");
+		$("#customer-step, #store-step").addClass("disabled");
+		// $('body').animate({ scrollTop: (pos.top) });
 		$scope.showHybrids()
 
-		
+
 	};
-	
+
 	$scope.getUsedInventory = function(location, date, time) {
 		return UsedBike.query({location: location, date: date, time: time }).then(function(response) {
 			$scope.showCurrent = false;
@@ -40,7 +41,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 			organizeUsedBikes();
 		})
 	}
-	
+
 	var organizeUsedBikes = function(){
 		$scope.hybrids = []
 		$scope.mountainBikes = []
@@ -58,21 +59,21 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 			}
 		})
 	}
-	
+
 	$scope.getCurrentSmallBikes = function() {
 		$scope.currentSmallBikes =  _.filter($scope.currentBikes, function(bike) {
 			return bike.fuzzySize == "small"
 		})
 		return $scope.currentSmallBikes
 	}
-	
+
 	$scope.getCurrentMediumBikes = function() {
 		$scope.currentMediumBikes = _.filter($scope.currentBikes, function(bike) {
 			return bike.fuzzySize == "medium"
 		})
 		return $scope.currentMediumBikes
 	}
-	
+
 	$scope.getCurrentLargeBikes = function() {
 		$scope.currentLargeBikes = _.filter($scope.currentBikes, function(bike) {
 			return bike.fuzzySize == "large"
@@ -91,7 +92,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		$scope.getCurrentMediumBikes();
 		$scope.getCurrentLargeBikes();
 	}
-	
+
 	$scope.showHybrids = function() {
 		$scope.resetQuants();
 		$scope.currentType = "hybrid"
@@ -101,7 +102,7 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		$('#hybrid-tab').addClass('active')
 		$('#mountain-tab').removeClass('active')
 	}
-	
+
 	$scope.showMountainBikes = function() {
 		$scope.resetQuants();
 		$scope.currentType = "mountain"
@@ -111,16 +112,16 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		$('#mountain-tab').addClass('active')
 		$('#hybrid-tab').removeClass('active')
 	}
-	
+
 	$scope.create = function(rental, customer) {
 		rental.date = rental.date.toString();
 		rental.customerId = customer.id
-		var rentalObj = new Rental(rental)		
+		var rentalObj = new Rental(rental)
 		rentalObj.save().then(function(response){
 			$scope.rental = response
 			console.log($scope.rental)
-			var pos = $('#summary-step').show().offset();
-			$('body').animate({ scrollTop: (pos.top) });
+			$('#summary-step').removeClass("disabled");
+			// $('body').animate({ scrollTop: (pos.top) });
 		})
 	}
 
@@ -140,13 +141,13 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		}else if($scope.currentType == "mountain"){
 			var quants = rental.quantities.mountain
 		}
-		quants.small = $scope.smallQuant	
+		quants.small = $scope.smallQuant
 		quants.medium = $scope.mediumQuant
 		quants.large = $scope.largeQuant
 	}
-	
+
 	$scope.startTimes = [11, 12, 13, 14, 15, 16, 17, 18]
-	
-	
+
+
 }])
 

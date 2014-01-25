@@ -7,6 +7,14 @@
 			<form novalidate class="form-horizontal col-sm-4 css-form">
 				<h2>Add a Used Bike</h1>
 					<div class="form-group">
+						<div class="col-sm-12 select-location">
+							<select ng-model="store" ng-options="store as store.location for store in stores" class="form-control">
+								<option value="" disabled selected>Location</option>
+							</select>
+							 <i class="fa fa-caret-down"></i>
+						</div>
+					</div>
+					<div class="form-group">
 						<div class="col-sm-12">
 							<input type="text" placeholder="Brand" class="form-control col-sm-12" ng-model="usedBike.brand" required/>
 						</div>
@@ -57,10 +65,10 @@
 								<th><a href="" ng-click="order='cost';reverse=(costReverse=!costReverse)">Cost</a></th>
 								<th><a href="" ng-click="order='price';reverse=(priceReverse=!priceReverse)">Price</a></th>
 								<th></th>
-								<th></th>						
+								<th></th>
 							</tr>
 							<tr ng-repeat="inv in usedInv|orderBy:order:reverse">
-								<td>{{getStockNumber(inv.id)}}</td>								
+								<td>{{getStockNumber(inv.id)}}</td>
 								<td><edit-input  ng-model="inv.brand" /></td>
 								<td><edit-input  ng-model="inv.model" /></td>
 								<td><edit-input  ng-model="inv.size" /></td>

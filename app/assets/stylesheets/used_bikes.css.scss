@@ -7,3 +7,97 @@
 		cursor: pointer;
 	}
 }
+
+.select-location {
+  select {
+    border: 2pt solid #333;
+    box-shadow: none;
+    background: transparent;
+    -webkit-appearance: none;
+    z-index: 10;
+    cursor: pointer;
+      // color: white;
+      font-size: 16pt;
+      height: 45px;
+      // font-weight: bold;
+    }
+    i.fa-caret-down {
+      position: absolute;
+      right: 20%;
+      top: 16px;
+    }
+  }
+
+  #used-bikes-div {
+    visibility: hidden;
+    min-height: 1000px;
+    h2 {
+      font-size: 16pt;
+      margin-top: 12px;
+    }
+
+    .section-description {
+      margin-bottom: 20px;
+    }
+
+    .used-header {
+      background: url("/assets/headers/used.jpg");
+    }
+
+    .table-controls {
+     // background: #1799dd;
+     margin-bottom: 40px;
+     border-radius: 0px;
+     // margin-right: -4%;
+     padding: 0;
+   }
+
+   .location-div, .order-div, .direction-div {
+
+    // padding: 1%;
+    box-sizing: border-box;
+    border-radius: 0px;
+    h2{
+      font-weight: bold;
+    }
+
+    // margin-bottom: 4%;
+    // color: white;
+    // margin-right: 3%;
+  }
+
+  .direction-div {
+    margin-right: 0%;
+  }
+
+
+
+
+  #used-bikes-table {
+    border: 2pt solid #333;
+    border-radius: 0px;
+    table {
+      border: none;
+
+      color: #333;
+
+      th, td {
+        border: none;
+      }
+      th {
+        border-bottom: 2pt solid #333;
+      }
+      h4 {
+        font-size: 15pt;
+        // font-weight: bold;
+      }
+
+      h3 {
+        font-size: 18pt;
+        color: #333;
+        font-weight: bold
+      }
+    }
+  }
+
+}

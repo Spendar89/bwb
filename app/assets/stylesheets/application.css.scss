@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
 
- 
+ *= require font-awesome
  *= require jquery.ui.datepicker
  *= require_self
  *= require_tree .
@@ -17,64 +17,58 @@
 
  @import "twitter/bootstrap";
  @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
- @import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
- @import url(http://fonts.googleapis.com/css?family=Anonymous+Pro:300,400,700);
- @import url(http://fonts.googleapis.com/css?family=Special+Elite:300,400,700);
- @import url(http://fonts.googleapis.com/css?family=Bowlby+One+SC:300,400,700);
 
-
- $quicksand: "futura-pt", sans-serif;
  $secondary-font: "futura-pt", sans-serif;
- $big-header-font: "futura-pt", sans-serif;
  $primary-font: "futura-pt", sans-serif;
 
- // $secondary-font: 'Anonymous Pro', sans-serif;
- // $big-header-font: 'Open Sans', sans-serif;
- // $primary-font: 'Open Sans', sans-serif;
 
-// #home-div {
-	html, body, div, span, nav, p, img, ul, ol, li, h1, h2, h3, h4, h5, h6, input, a  {
-		font-size: 100%;
-	}
-// }
+ html, body, div, span, nav, p, img, ul, ol, li, h1, h2, h3, h4, h5, h6, input, a  {
+ 	// font-size: 100%;
+ }
+
+ select, input {
+ 	border: 2pt solid #333 !important;
+ 	box-shadow: none;
+ 	background: transparent;
+ 	-webkit-appearance: none;
+ }
 
 
-.btn {
-	&.welcome-btn {
-		width: 200px;
-		height: 50px;
-		border-radius: 0px;
-		box-shadow: none;
-		border: none;
-		padding-top: 15px;
-	}
-}
+ .btn {
+ 	&.welcome-btn {
+ 		width: 200px;
+ 		height: 50px;
+ 		border-radius: 0px;
+ 		box-shadow: none;
+ 		border: none;
+ 		padding-top: 15px;
+ 	}
+ }
 
-div, p, span, td, a, h4, h5 {
-	font-family: $primary-font;
+ div, p, span, td, a, h4, h3, h2, h5, h1 {
+ 	font-family: $primary-font;
  	// color: #333;
  	// font-weight: 400;
  }
 
  h2, h3{
- 	
+
  	// font-weight: 500;
  	// color: #333;
  }
 
  h3 {
- 	font-size: 2.75em;
- 	font-family: $primary-font;
+ 	// font-size: 2.75em;
+ 	// font-family: $primary-font;
 
  	&.page-title {
 
  		font-size: 2em;
  		margin-top: 0px;
  		font-weight: bold;
- 		color: #6D6D6D;
- 		text-shadow: 0 2px 0 rgba(255, 255, 255, 0.75);
+ 		color: #333;
  		text-transform: uppercase;
- 		margin-left: 20px;
+ 		margin-left: 0px;
 
  		&.white {
  			color: white;
@@ -108,28 +102,41 @@ div, p, span, td, a, h4, h5 {
  	padding: 0px;
  }
 
- .margin-bottom {
- 	margin-bottom: 20px !important;
- }
+ .photo-header {
+ 	background-size: cover;
+ 	height: 120px;
+ 	margin-bottom: 20px;
+ 	h1 {
+ 		font-size: 25pt;
+ 		font-weight: bold;
+      // color: #d71f28;
+      margin-left: -2%;
+      margin-top: 30px;
+      float: left;
+      background: white;
+      padding: 1%;
+      text-transform: uppercase;
+    }
+  }
 
- #container{
- 	// padding-top: 100px;
- 	// padding: 1%;
- 	// padding-top: 100px;
- 	// min-height: 1000px;
- 	// border-radius: 0px;
- 	// border: none;
- 	// overflow:hidden;
- 	// border-radius: 4px;
- 	// width: 100%;
-	//background: white;
-}
+  .margin-bottom {
+  	margin-bottom: 20px !important;
+  }
 
-.container{
-	height: 100%;
-	padding-top: 10px;
-	&.full {
-		width: 100%;
+  #container{
+  	min-width: 879px;
+  	max-width: 1200px;
+  	margin-right: auto;
+  	margin-left: auto;
+  	padding-left: 30px;
+  	padding-right: 30px;
+  }
+
+  .container{
+  	height: 100%;
+  	padding-top: 10px;
+  	&.full {
+  		width: 100%;
 		// padding: 0%;
 		// margin-top: 0px;
 		// top: 0px;
@@ -141,32 +148,25 @@ div, p, span, td, a, h4, h5 {
 
 body{
 	padding: 0px !important;
-	background: #f2f2f2;
-	
-	// background: #CFD3D5;
-
 }
 
 .navbar{
-	background: white;
+	background: #333;
 	background-size: 100%;
 	background-repeat: no-repeat;
 	box-shadow: none;
 	border: none;
-	margin-bottom: 0px !important;
+	// margin-bottom: 0px !important;
 	border-radius: 0px;
 	left: 0;
 	right: 0;
 	position: relative;
 	width: 100%;
 	box-sizing: border-box;
-	border-bottom: 1pt solid rgb(201, 201, 211);
 
 	#navbar-row {
-		margin: 0px;
 		padding-right: 0px;
 		padding-left: 0px;
-
 		.navbar-brand{
 
 			text-align: center;
@@ -177,70 +177,58 @@ body{
 				padding: 0px;
 				font-weight: 900;
 				letter-spacing: -3px;
-				color:  #d71f28;
+				color: white;
 				font-family: 'Open Sans', sans-serif;
 			}
-
-			img {
-			// max-height:100%;
-			// position: relative
 		}
-	}
 
-	#navbar-links-div {
-		padding-left:0px;
-		padding-right: 0px;
-		box-sizing: border-box;
-		padding: 1.2em 0 0 0;
-		// width: 100%;
-		#top-nav-div {
-			// background: white;
-			height: 50%;
-			float: left;
-			ul.nav {
-				float: right;
-				li {
-					a{
-						color: #d71f28;
-						letter-spacing: 0.2em;
-						// text-transform: uppercase;
-						-moz-transition: all 0.1s;
-						-ms-transition: all 0.1s;
-						-o-transition: all 0.1s;
-						-webkit-transition: all 0.1s;
-						transition: all 0.1s;
-						font-size: 1em;
-						font-weight: 900;
-						line-height: 1.3em;
-						padding: 0;
-						margin-right: 3.2em;
-						&:hover {
-							color: #d71f28;
+		#navbar-links-div {
+			padding-left:0px;
+			padding-right: 0px;
+			box-sizing: border-box;
+			#top-nav-div {
+				height: 50%;
+				float: left;
+				ul.nav {
+					float: right;
+					li {
+						a{
+							color: white;
+							letter-spacing: 0.2em;
+							font-weight: bold;
+							&:hover {
+								color: #d71f28;
+							}
 						}
 					}
 				}
 			}
-		}
 
-		#bottom-nav-div {
-			// background: grey;
-			height: 50%;
-			float: left;
+			#bottom-nav-div {
+				height: 50%;
+				float: left;
+			}
 		}
 	}
-	
-
 
 }
 
-
-
-
-
-
-
+.footer {
+	// background: #333;
+	border-top: 2pt solid #333;
+	float: left;
+	padding: 2%;
+	margin-top: 40px;
+	height: 200px;
+	text-align: center;
+	li {
+		a {
+			color: #333;
+			// font-weight: bold;
+			font-size: 18pt;
+		}
+	}
 }
-
 
 //datepicker ovverrides
 .ui-widget-header {
@@ -294,15 +282,15 @@ body{
 }
 
 @-webkit-keyframes stretchdelay {
-	0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+	0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
 	20% { -webkit-transform: scaleY(1.0) }
 }
 
 @keyframes stretchdelay {
-	0%, 40%, 100% { 
+	0%, 40%, 100% {
 		transform: scaleY(0.4);
 		-webkit-transform: scaleY(0.4);
-	}  20% { 
+	}  20% {
 		transform: scaleY(1.0);
 		-webkit-transform: scaleY(1.0);
 	}
@@ -342,4 +330,32 @@ form {
 		}
 	}
 }
+
+#repairs-div {
+	visibility: hidden;
+}
+.repairs-header {
+	background: url("/assets/headers/repairs.jpg") 0px -400px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.repairs-section-div {
+	border: 4pt solid #333;
+	padding: 2%;
+	padding-top: 0;
+	overflow: hidden;
+	margin-top: 40px;
+	.category-header {
+		margin-left: -3%;
+		background: #333;
+		color: white;
+		margin-top: 0%;
+		width: 110%;
+		padding: 2%;
+	}
+
+}
+
+
 
