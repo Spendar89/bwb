@@ -4,7 +4,7 @@
 	</div>
 </div>
 
-<div ng-controller="BikesCtrl" >
+<div ng-controller="BikeCtrl" >
 	<h1 class="header inline">Add A Bike:</h1>
 
 	<div class="row new-div">
@@ -18,7 +18,7 @@
 					<input class="form-control" type="text" placeholder="Model:" ng-model="bike.model"/>
 				</div>
 				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Type:" ng-model="bike.kind" typeahead="kind for kind in kinds| filter:$viewValue | limitTo:8"/>	
+					<input class="form-control" type="text" placeholder="Type:" ng-model="bike.kind" typeahead="kind for kind in kinds| filter:$viewValue | limitTo:8"/>
 				</div>
 				<div class="form-group col-sm-12">
 					<textarea class="form-control" rows="3" placeholder="description:" ng-model="bike.description"></textarea>
@@ -64,13 +64,13 @@
 						<input type="radio" ng-model="bike.weight" value="{{i}}" />
 					</label>
 				</div>
-				
+
 				<div class="form-group col-sm-12">
 					<button class="btn btn-default" ng-click="getImages(bike)">Search</button>
 				</div>
 			</form>
 		</div>
-	
+
 		<div id="image-preview-div" class="col-sm-4">
 			<h4>Select Image </h4>
 			<div id="image_preview_main" class="row">
@@ -89,11 +89,11 @@
 						<a href="#" class="btn btn-default next" ng-click="nextImage()">Next</a>
 					</div>
 				</div>
-			
+
 			</div>
 		</div>
-	
-	
+
+
 		<div id="submit-div" class="col-sm-4">
 			<button class="btn" ng-click="create(bike)">
 				<img src="/assets/arrow_right.png"/>

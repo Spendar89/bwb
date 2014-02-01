@@ -26,8 +26,8 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 			}
 		}
 		$scope.getUsedInventory($scope.rental.location, $scope.rental.date, $scope.rental.time)
-		$('#used-bike-step').removeClass("disabled");
-		$("#customer-step, #store-step").addClass("disabled");
+		// $('#used-bike-step').removeClass("disabled");
+		// $("#customer-step, #store-step").addClass("disabled");
 		// $('body').animate({ scrollTop: (pos.top) });
 		$scope.showHybrids()
 
@@ -99,8 +99,8 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		$scope.currentBikes = $scope.hybrids
 		$scope.setCurrentBikes();
 		$scope.showCurrent = true
-		$('#hybrid-tab').addClass('active')
-		$('#mountain-tab').removeClass('active')
+		// $('#hybrid-tab').addClass('active')
+		// $('#mountain-tab').removeClass('active')
 	}
 
 	$scope.showMountainBikes = function() {
@@ -109,8 +109,8 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		$scope.currentBikes = $scope.mountainBikes
 		$scope.setCurrentBikes();
 		$scope.showCurrent = true
-		$('#mountain-tab').addClass('active')
-		$('#hybrid-tab').removeClass('active')
+		// $('#mountain-tab').addClass('active')
+		// $('#hybrid-tab').removeClass('active')
 	}
 
 	$scope.create = function(rental, customer) {
@@ -119,8 +119,8 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$http
 		var rentalObj = new Rental(rental)
 		rentalObj.save().then(function(response){
 			$scope.rental = response
-			console.log($scope.rental)
-			$('#summary-step').removeClass("disabled");
+
+			// $('#summary-step').removeClass("disabled");
 			// $('body').animate({ scrollTop: (pos.top) });
 		})
 	}

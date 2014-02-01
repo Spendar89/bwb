@@ -1,6 +1,15 @@
 // Place all the styles related to the rentals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#rentals-div {
+	.new-header {
+		background: url("/assets/headers/rentals.jpg" )0px -440px;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+	}
+}
 .steps-div {
 	min-height: 1000px;
 

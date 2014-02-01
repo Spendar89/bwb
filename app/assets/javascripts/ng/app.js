@@ -1,7 +1,7 @@
-angular.module('product.services', ['rails']);
-angular.module('product.controllers', ['ui.bootstrap']);
-angular.module('product.directives', []);
-angular.module('product', ['product.services', 'product.controllers', 'product.directives']);
+angular.module('bike.services', ['rails']);
+angular.module('bike.controllers', ['ui.bootstrap']);
+angular.module('bike.directives', []);
+angular.module('bike', ['bike.services', 'bike.controllers', 'bike.directives']);
 
 angular.module('inventory.services', ['rails']);
 angular.module('inventory.controllers', []);
@@ -43,7 +43,7 @@ angular.module('app', ['ngResource', 'ngRoute', 'app.directives', 'app.filters',
 	$routeProvider
 	.when('/bikes/new', {
 		templateUrl: '/ng/views/bikes/new.html',
-		controller: 'ProductCtrl'
+		controller: 'BikeCtrl'
 	})
 	.when('/bikes/:bikeId', {
 		templateUrl: '/ng/views/bikes/show.html'
@@ -53,11 +53,11 @@ angular.module('app', ['ngResource', 'ngRoute', 'app.directives', 'app.filters',
 	})
 	.when('/used_bike_inventory/new', {
 		templateUrl: '/ng/views/used_bikes/new.html',
-		controller: 'UsedBikesCtrl'
+		controller: 'UsedBikeCtrl'
 	})
 	.when('/used_bikes', {
 		templateUrl: '/ng/views/used_bikes/index.html',
-		controller: 'UsedBikesCtrl'
+		controller: 'UsedBikeCtrl'
 	})
 	.when('/inventory', {
 		templateUrl: '/ng/views/inventory/index.html',

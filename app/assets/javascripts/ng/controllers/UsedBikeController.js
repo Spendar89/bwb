@@ -1,5 +1,5 @@
 
-angular.module('usedBike.controllers').controller('UsedBikesCtrl', ['$scope', '$routeParams', '$location','UsedBike','Store', function($scope, $routeParams, $location, UsedBike, Store){
+angular.module('usedBike.controllers').controller('UsedBikeCtrl', ['$scope', '$routeParams', '$location','UsedBike','Store', function($scope, $routeParams, $location, UsedBike, Store){
 	// $scope.location = ($routeParams.location || "Bethesda");
 
 	Store.smartQuery(function(data){
