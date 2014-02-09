@@ -1,135 +1,158 @@
-<div fade-in="200" id="rentals-div">
+<div fade-in="200" id="rentals-div" ng-controller="RentalsCtrl">
+
+	<div class="col-sm-6 col-sm-offset-2 modal-div" id="confirmation-step" modal-slide-down="showConfirmation">
+		<div class="hide-modal-div pull-right col-sm-1">
+			<a class="pull-right" href="" ng-click="showConfirmation = false"><i class="fa fa-times-circle-o fa-2x"></i></a>
+		</div>
+
+		<div class="col-sm-12">
+			<h1 class="step-header">Rental Confirmation</h1>
+			<h3>Confirmation Number: <span class="light-text"> {{ rental.id }} </span></h3>
+			<h3>Location: <span class="light-text"> {{ rental.location }} </span></h3>
+			<h3>Date: <span class="light-text"> {{ rental.date }} </span></h3>
+			<h3>Time: <span class="light-text"> {{ rental.time | date: 'shortTime'}} </span></h3>
+			<h3>Customer Name: <span class="light-text"> {{customer.firstName}} {{customer.lastName}} </span></h3>
+			<h3 ng-repeat="rentalBike in rental.rentalBikes">Bike {{ $index + 1 }}: <span class="light-text">Size {{ rentalBike.size }}, Kind {{ rentalBike.kind }} </span></h3>
+		</div>
+	</div>
+
 	<div class="col-sm-12">
-		<div class="col-sm-12 new-header photo-header">
+		<div opacity-down="showConfirmation" opacity-up="hideConfirmation" class="col-sm-12 new-header photo-header">
 			<h1> Rentals</h1>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12 section-description">
+		<div opacity-down="showConfirmation" opacity-up="hideConfirmation" class="col-sm-12 section-description">
 			<div class="col-sm-12">
 				<h2>Each Big Wheel location has its own fleet of unique, high-quality rental bikes. Want to beat the weekend rush?  Reserve your rental online!</h2>
 			</div>
 		</div>
 	</div>
 
-	<div class="col-sm-12 steps-div">
-		<div ng-controller="CustomersCtrl">
-			<div class="col-sm-4 rental-step" id="customer-step">
-				<div class="overlay"></div>
-				<h2 class="step-header">1. Enter Your Info</h2>
-				<form novalidate class="form-horizontal col-sm-12 css-form">
-					<div class="form-group">
-						<div class="col-sm-6">
-							<input type="text" placeholder="First Name" class="form-control col-sm-12" ng-model="customer.firstName" required/>
-						</div>
-						<div class="col-sm-6">
-							<input type="text" placeholder="Last Name" class="form-control col-sm-12" ng-model="customer.lastName" required/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<input type="email" placeholder="Email Address" class="form-control col-sm-12" ng-model="customer.email" required/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<button  class="btn btn-default" ng-click="create(customer)">Continue</button>
-						</div>
-					</div>
-				</form>
-			</div>
-
-			<div ng-controller="RentalsCtrl">
-				<div class="col-sm-4  rental-step disabled" id="store-step">
-					<div class="overlay"></div>
-					<h2 class="step-header">2. Enter Date and Time</h2>
-					<form novalidate class="form-horizontal col-sm-12 css-form">
-						<div class="form-group">
-							<div class="col-sm-6">
-								<select ng-model="rental.location" ng-options="location for location in locationNames" class="form-control col-sm-12 placeholder" required>
-									<option value="" disabled selected>Location</option>
-								</select>
-							</div>
-							<div class="col-sm-6">
-								<input ui-date ui-date-format="m/d/y" type="text" placeholder="Date" class="form-control col-sm-12" ng-model="rental.date" required/>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-12">
-								<select class="placeholder" ng-model="rental.time" ng-options="time for time in startTimes | time">
-									<option value="" disabled selected>Time</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-12">
-								<button  class="btn btn-default" ng-click="scheduleRental(rental, $parent.customer)">Continue</button>
-							</div>
-						</div>
-					</form>
-				</div>
-
-				<div class="col-sm-4 rental-step disabled" id="used-bike-step">
-					<div class="overlay"></div>
-					<h2 class="step-header">3. Select Your Bikes</h2>
-					<ul class="nav nav-tabs">
-						<li id="hybrid-tab" ><a href="" class="" ng-click="showHybrids()">Hybrid</a></li>
-						<li id="mountain-tab"><a href="" class="" ng-click="showMountainBikes()">Mountain Bike</a></li>
-					</ul>
-					<form name="quantForm" class="form-horizontal css-form current-bikes-div col-sm-12" ng-show="showCurrent">
-						<div class="form-group">
-							<div class="col-sm-12">
-								<div class="col-sm-9">
-									<h3 class="form-label">Small ({{currentSmallBikes.length}} Available)</h3>
-								</div>
-								<div class="col-sm-3">
-									<input type="number" ng-change="addQuant(rental)" placeholder="0" class="quant-input form-control col-sm-1" ng-max="{{currentSmallBikes.length}}" ng-model="smallQuant"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-sm-12">
-								<div class="col-sm-9">
-									<h3 class="form-label">Medium ({{currentMediumBikes.length}} Available)</h3>
-								</div>
-								<div class="col-sm-3">
-									<input type="number" ng-change="addQuant(rental)" placeholder="0" class="quant-input form-control col-sm-1" ng-max="{{currentMediumBikes.length}}" ng-model="mediumQuant"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-sm-12">
-								<div class="col-sm-9">
-									<h3 class="form-label">Large ({{currentLargeBikes.length}} Available)</h3>
-								</div>
-								<div class="col-sm-3">
-									<input type="number" ng-change="addQuant(rental)" placeholder="0" class="form-control col-sm-1 quant-input" ng-max="{{currentLargeBikes.length}}" ng-model="largeQuant"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-sm-12">
-								<button  ng-disabled="!quantFormValid()" class="btn btn-default" ng-click="create(rental, $parent.customer)">Add Bikes!</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="col-sm-12">
-				<div class="col-sm-4 col-sm-offset-4 rental-step" id="summary-step">
+	<div opacity-down="showConfirmation" opacity-up="hideConfirmation" class="steps-div col-sm-6">
+		<div class="col-sm-12 rental-step" id="customer-step">
+			<div class="overlay"></div>
+			<h1 class="step-header">Reserve a Rental</h1>
+			<form novalidate name="rentalForm" class="form-horizontal css-form">
+				<div class="form-group">
 					<div class="col-sm-12">
-						<h1 class="step-header">Confirmation</h1>
-						<h3>Confirmation Number: <span class="light-text"> {{ rental.id }} </span></h3>
-						<h3>Location: <span class="light-text"> {{ rental.location }} </span></h3>
-						<h3>Date: <span class="light-text"> {{ rental.date }} </span></h3>
-						<h3>Time: <span class="light-text"> {{ rental.time }} </span></h3>
-						<h3>Customer Name: <span class="light-text"> {{customer.firstName}} {{customer.lastName}} </span></h3>
-						<h3 ng-repeat="rentalBike in rental.rentalBikes">Bike {{ $index + 1 }}: <span class="light-text">Size {{ rentalBike.size }}, Kind {{ rentalBike.kind }} </span></h3>
+						<h3 class="section-label">Customer Info</h3>
 					</div>
+					<div class="col-sm-6">
+						<input type="text" placeholder="First Name" class="form-control col-sm-12" ng-model="customer.firstName" required/>
+					</div>
+					<div class="col-sm-6">
+						<input type="text" placeholder="Last Name" class="form-control col-sm-12" ng-model="customer.lastName" required/>
+					</div>
+					<div class="col-sm-6">
+						<input type="email" placeholder="Email" class="form-control col-sm-12" ng-model="customer.email" required/>
+					</div>
+					<div class="col-sm-6">
+						<input type="tel" placeholder="Phone Number" class="form-control col-sm-12" ng-pattern="/^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/" ng-model="customer.phone_number" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<h3 class="section-label">Where and When?</h3>
+					</div>
+					<div class="col-sm-4">
+						<select ng-model="rental.location" ng-options="location for location in locationNames" class="form-control col-sm-12 placeholder location" required>
+							<option value="" disabled selected>Location</option>
+						</select>
+					</div>
+					<div class="col-sm-4">
+						<input ng-model="rental.date" ui-date ui-date-format="m/d/y" ng-change="rental.date = rental.date.toString()" type="text" placeholder="Date" class="form-control col-sm-12"  required/>
+					</div>
+					<div class="col-sm-4">
+						<select ng-model="rental.time" class="placeholder form-control col-sm-12 time" ng-options="time for time in startTimes | time">
+							<option value="" class="starting" disabled selected>Time</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<h3 class="section-label">Number of Bikes</h3>
+						<h4><i>Note: Online rental reservations are only offered for our basic rentals.  For premium road, triathlon, or mountain bike rentals, please send an email to mike@bigwheelbikes.com or call (202)-320-9730.</i></h4>
+					</div>
+					<div class="col-sm-4">
+						<h4 class="quantity-header">Hybrid/Comfort</h4>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.basicQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="S" class="form-control col-sm-12 quantity-input" />
+						</div>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.basicQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="M" class="form-control col-sm-12 quantity-input" />
+						</div>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.basicQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="L" class="form-control col-sm-12 quantity-input" />
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h4 class="quantity-header">Mountain</h4>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.roadQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="S" class="form-control col-sm-12 quantity-input" />
+						</div>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.roadQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="M" class="form-control col-sm-12 quantity-input" />
+						</div>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.roadQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="L" class="form-control col-sm-12 quantity-input" />
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h4 class="quantity-header">Road</h4>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.mountainQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="S" class="form-control col-sm-12 quantity-input" />
+						</div>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.ountainQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="M" class="form-control col-sm-12 quantity-input" />
+						</div>
+						<div class="col-sm-4 quantity-input-div">
+							<input ng-model="rental.ountainQuantitiesSmallLarge" ng-pattern="/\b\d\b/" placeholder="L" class="form-control col-sm-12 quantity-input" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<h3 class="section-label">Additional Comments</h3>
+					</div>
+					<div class="col-sm-12">
+						<textarea placeholder="Anything else we should know about your rental? Drop us a line!" class="form-control comments"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button  ng-disabled="rentalForm.$invalid" type="submit" class="btn btn-default" ng-click="saveRental()">Submit Reservation</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="col-sm-6">
+		<div class="rentals-prices-div">
+			<div class="row header-div">
+				<h2 class="category-header"><b> RENTAL RATES </b></h2>
+			</div>
+			<div class="col-sm-12">
+				<div class="sub-category-header">
+					<h3><b>Basic Rentals: </b>$7.00 per hour or $35.00 per day</h3>
+					<h4> Choose from a wide selection of comfort, hybrid, and mountain bikes.  Each bike includes a helmet and bottle cage.</h4>
+					<h3><b>Premium Rentals</b></h3>
+					<h4> <b>Mountain Bike:</b> $50.00 per day</h4>
+					<h4> <b>Road and Tri Bike:</b> $50.00 - $100.00 per day</h4>
+					<h4>Our standard road and triathlon rentals include integrated shifters and SPD pedals upon request.  Level 2 rentals come equipped with carbon/aluminum frames and Shimano 105 level components, while Level 3 rentals have full carbon frames and Shimano Ultegra components. </h4>
+					<h3><b>Miscellaneous Rentals</b></h3>
+					<h4><b>Tandem:</b> $10.00 per hour or $50.00 per day</h4>
+					<h4><b>Trail-a-bike:</b> $25.00 per day</h4>
+					<h4><b>Single Trailer:</b> $25.00 per day</h4>
+					<h4><b>Double Trailer:</b> $35.00 per day</h4>
+					<h4><b>Bike with Baby Seat:</b> $35.00 per day</h4>
+					<h4><b>Kids Bike:</b> $5.00 per hour or $25.00 per day</h4>
+					<h3><b>Weekly and Monthly Rentals</b></h3>
+					<h4><b>5-day Rental:</b> Daily Rate x 4</h4>
+					<h4><b>7-day Rental:</b> Daily Rate x 5</h4>
+					<h4><b>Monthly Rental:</b> $250.00</h4>
+					<h4><b>Monthly Road Bike Rental:</b> $300.00</h4>
 				</div>
 			</div>
 		</div>

@@ -121,7 +121,36 @@ angular.module('app.directives')
     restrict: "E",
     replace: true,
     template: '<input class="form-control col-sm-12" type="text" ng-disabled="!inv.editing" required/>'
-  }
+  };
+})
+.directive("opacityDown", function () {
+  return {
+    link: function(scope, elem, attrs) {
+      elem.addClass('opacity-full');
+      scope.$watch(attrs.opacityDown, function() {
+        if(scope[attrs.opacityDown]) {
+          elem.addClass('opacity-faded');
+         } else {
+          elem.removeClass('opacity-faded');
+         }
+
+      });
+    }
+  };
+})
+.directive("modalSlideDown", function () {
+  return {
+    link: function(scope, elem, attrs) {
+      scope.$watch(attrs.modalSlideDown, function() {
+        if(scope[attrs.modalSlideDown]) {
+          elem.addClass('slide-down');
+         } else {
+          elem.removeClass('slide-down');
+         }
+
+      });
+    }
+  };
 })
 .directive('ngValidateLength', function() {
   return {

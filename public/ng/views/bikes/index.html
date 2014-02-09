@@ -1,4 +1,4 @@
-<div fade-in="200" ng-controller="BikeCtrl" id="bikes-div">
+<div ng-controller="BikeCtrl" id="bikes-div">
 	<div class="col-sm-12">
 		<div class="col-sm-12 new-header photo-header">
 			<h1> New Bikes</h1>
@@ -17,8 +17,8 @@
 			</div>
 		</div>
 		<!-- <h1> Bikes </h1> -->
-		<div class="bike-index-div row">
-			<div ng-repeat="bike in bikes" class="bike-listing col-sm-4" ng-show="showBike(bike)">
+		<div class="bike-index-div row" ng-hide="hideBikes">
+			<div ng-repeat="bike in bikes" class="bike-listing col-sm-4" ng-hide="(hideBikes || !showBike(bike))">
 				<a id="show_bike_{{bike.id}}" class="show-bike" ng-href="/#/bikes/{{bike.id}}">
 					<div class="info-div col-sm-12">
 						<h2 class="{{bike.kind.toLowerCase()}}">{{bike.year}} {{bike.brand}} {{bike.model}}</h2>

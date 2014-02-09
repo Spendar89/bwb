@@ -1,9 +1,7 @@
 class Rental < ActiveRecord::Base
-  attr_accessible :customer_id, :date, :paid, :store_id, :time
+  attr_accessible :customer_id, :date, :paid, :store_id, :time, :hybrid_quantities, :road_quantities, :mountain_quantities, :id, :first_name, :last_name, :email, :phone_number
   belongs_to :store
-  belongs_to :customer
-  has_many :rental_bikes, dependent: :destroy
-  validates :time, presence: true
+  validates :time, :store_id, :first_name, :last_name, :email, presence: true
 
   scope :by_time, lambda { |datetime| where(time: datetime) unless datetime.nil? }
 
@@ -18,7 +16,7 @@ class Rental < ActiveRecord::Base
   #returns all rental reservations that overlap within 4 hours of proposed datetime
   scope :by_fuzzy_time, lambda { |datetime|
   	return unless datetime
-  	where("rentals.time IS NOT NULL").select do |rental| 
+  	where("rentals.time IS NOT NULL").select do |rental|
   		(rental.time + 4.hours >= datetime) && (datetime + 4.hours >= rental.time)
   	end
   }

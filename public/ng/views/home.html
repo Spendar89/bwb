@@ -7,21 +7,38 @@
 </div> -->
 <div fade-in="200" id="home-div" ng-controller="HomeCtrl" class="col-sm-12">
 	<div>
-		<div id="current-events-div" class="row">
+		<div id="big-slide-div" class="row">
 			<!-- <h3 class="page-title">Latest News:</h3> -->
 			<div class="current-event col-sm-12" ng-show="currentEvent" ng-model="currentEvent">
-				<a href="" ng-click="currentEventIndex = currentEventIndex - 1" class="next-btn left">
+				<!-- <a href="" ng-click="currentEventIndex = currentEventIndex - 1" class="next-btn left">
 					<i class="fa fa-angle-left fa-5x"></i>
-				</a>
-				<h3>{{currentEvent.title}}</h3>
+				</a> -->
+				<h1 class="text-1">High Quality Bikes at Discount Prices, Since 1971.</h1>
+				<!-- h3 class="text-2">For 43 years, we've maintained our tradition of selling high quality bikes at discount prices to riders of all skill levels.</h4> -->
 				<div class="img-holder">
-					<img ng-src="{{currentEvent.imageUrl}}"/>
+					<img ng-src="assets/wall.jpg"/>
 				</div>
-				<h4>{{currentEvent.content}}</h4>
-				<a href="" ng-click="currentEventIndex = currentEventIndex + 1" class="next-btn right">
+				<!-- <h4>In 1971, Big Wheel Bikes opened for business at 33rd and M street in Georgetown, Washington DC.</h4> -->
+				<!-- 				<h4>Through eight presidents and 43 years, we've maintained our tradition of selling high quality bikes at discount prices to riders of all skill levels.  At every Big Wheel location, you'll find stright talk, courteous service, and an ability to relate to your specific cycling needs.</h4> -->
+				<!-- <a href="" ng-click="currentEventIndex = currentEventIndex + 1" class="next-btn right">
 					<i  class="fa fa-angle-right fa-5x"></i>
-				</a>
+				</a> -->
 
+			</div>
+		</div>
+
+		<div id="current-events-div" class="">
+			<h3 class="page-title">Current Events:</h3>
+			<div ng-repeat="currentEvent in currentEvents" class="event-listing index-{{ $index }} col-sm-4">
+				<div class="show-event" ng-href="">
+					<div class="info-div col-sm-12">
+						<h2 class="">{{currentEvent.title}}</h2>
+						<div class="img-holder row">
+							<img ng-src="{{currentEvent.imageUrl}}" class="row bike-index-img"/>
+						</div>
+						<div class="event-description">{{currentEvent.content}}</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -36,6 +53,13 @@
 						<div class="bike-description">{{bike.description.split(".")[0]}}</div>
 					</div>
 				</a>
+			</div>
+		</div>
+
+		<div id="brands" class="">
+			<h3 class="page-title">Brands We Carry:</h3>
+			<div ng-repeat="brand in brands" class="brand index-{{ $index }} col-sm-2">
+				<img
 			</div>
 		</div>
 	</div>

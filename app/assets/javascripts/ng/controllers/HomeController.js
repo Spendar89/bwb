@@ -20,7 +20,7 @@ angular.module('app').controller('HomeCtrl', ['$scope', '$http', '$routeParams',
   });
 
   Bike.smartQuery(function(bikes) {
-    $scope.featuredBikes = bikes.slice(2, 7);
+    $scope.featuredBikes = bikes.slice(2, 8);
   });
 
 

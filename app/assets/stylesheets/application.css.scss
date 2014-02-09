@@ -11,6 +11,7 @@
 
  *= require font-awesome
  *= require jquery.ui.datepicker
+ *= require animate
  *= require_self
  *= require_tree .
  */
@@ -24,6 +25,21 @@
 
  html, body, div, span, nav, p, img, ul, ol, li, h1, h2, h3, h4, h5, h6, input, a  {
  	// font-size: 100%;
+ }
+
+ .main-template {
+ 	&.ng-leave {
+ 		// -webkit-animation: fadeIn 0.5s;
+   //  -moz-animation: fadeOut 0.5s;
+   //  -ms-animation: fadeOut 0.5s;
+   //  animation: fadeOut 0.5s;
+ 	}
+ 	&.ng-enter {
+ 		// -webkit-animation: fadeIn 1s;
+   //  -moz-animation: fadeIn 1s;
+   //  -ms-animation: fadeIn 1s;
+   //  animation: fadeIn 1s;
+ 	}
  }
 
  select, input {
@@ -150,6 +166,29 @@ body{
 	padding: 0px !important;
 }
 
+.top-nav-div {
+	height: 120px;
+	img#top-nav-logo {
+		width: 100%;
+		max-width: 160px;
+		margin-top: 8px;
+	}
+	.top-nav-info-div {
+		padding-top:30px;
+		.location {
+			text-align: right;
+			float: right;
+			h4 {
+				font-weight: bold;
+			}
+			&.headline {
+				// color:#d71f28;
+			}
+
+		}
+	}
+}
+
 .navbar{
 	background: #333;
 	background-size: 100%;
@@ -176,7 +215,7 @@ body{
 				margin: 0px;
 				padding: 0px;
 				font-weight: 900;
-				letter-spacing: -3px;
+				letter-spacing: -2.5px;
 				color: white;
 				font-family: 'Open Sans', sans-serif;
 			}
@@ -194,7 +233,8 @@ body{
 					li {
 						a{
 							color: white;
-							letter-spacing: 0.2em;
+							letter-spacing: 1px;
+							font-size: 14pt;
 							font-weight: bold;
 							&:hover {
 								color: #d71f28;
@@ -340,7 +380,7 @@ form {
 	background-repeat: no-repeat;
 }
 
-.repairs-section-div {
+.repairs-section-div, .rentals-prices-div {
 	border: 4pt solid #333;
 	padding: 2%;
 	padding-top: 0;
