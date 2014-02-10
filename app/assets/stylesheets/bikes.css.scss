@@ -118,13 +118,6 @@ $bwb-yellow: #fced00;
 
 }
 
-h1{
-//	margin-left: 1.5%;
-//	margin-bottom: 2%;
-	//font-weight: lighter;
-}
-
-
 .bike-listing{
   &.ng-hide-remove {
     -webkit-animation: bounceIn 0.5s;
@@ -147,30 +140,6 @@ h1{
     opacity: 0;
   }
 
-  // &.filtered {
-  //   opacity: 0;
-  // }
-
-  // &:hover {
-  //   -webkit-animation: pulse 0.5s;
-  //   -moz-animation: pulse 0.5s;
-  //   -ms-animation: pulse 0.5s;
-  //   animation: pulse 0.5s;
-  // }
-
-  // &.ng-leave {
-  //       -webkit-animation: bounceOut 1s;
-  //   -moz-animation: bounceOut 1s;
-  //   -ms-animation: bounceOut 1s;
-  //   animation: bounceOut 1s;
-  // }
-
-  // &.ng-hide-add {
-  //   -webkit-animation: bounceOut 1s;
-  //   -moz-animation: bounceOut 1s;
-  //   -ms-animation: bounceOut 1s;
-  //   animation: bounceOut 1s;
-  // }
   box-sizing: border-box;
   padding: 0 2%;
   padding-right: 0;
@@ -225,6 +194,7 @@ h1{
         letter-spacing: 1px;
         width: 100%;
         float: left;
+        font-weight: bold;
       }
 
       .bike-price {

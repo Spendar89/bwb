@@ -8,98 +8,101 @@ $bwb-grey: rgba(51, 51, 51, 0.61);
 	margin: 0px;
 	visibility: hidden;
 	min-height: 1000px;
-}
-#current-events-div, #featured-bikes-div {
-	height: 400px;
-	margin-top: 20px;
-	overflow: hidden;
-}
+	#current-events-div, #featured-bikes-div {
+		// height: 400px;
+		margin-top: 20px;
+		overflow: hidden;
+	}
 
-#current-events-div{
+	#current-events-div{
 
-	.event-listing{
-		box-sizing: border-box;
-		padding-right: 0;
-		&.index-0 {
-			margin-right: 0%;
-			margin-left: -2%;
-		}
-		&.index-1 {
-			margin: 0 1%;
-		}
-		.show-event{
-			text-decoration: none;
-			.info-div{
-				color: rgb(12, 11, 11);
-				z-index: 2;
-				overflow: hidden;
-				height: 400px;
-				padding: 0;
-
-				h2{
-					background: #333;
-					padding: 4%;
-					color: white;
-					text-align: center;
-					margin:0;
-					font-size: 16pt;
-				}
-				.img-holder {
-					height: 200px;
+		.event-listing{
+			box-sizing: border-box;
+			padding-right: 0;
+			&.index-0 {
+				margin-right: 0%;
+				margin-left: -2%;
+			}
+			&.index-1 {
+				margin: 0 1%;
+			}
+			.show-event{
+				text-decoration: none;
+				.info-div{
+					color: rgb(12, 11, 11);
+					z-index: 2;
 					overflow: hidden;
-					img {
-						width: 100%;
-						display: block;
-						margin: 0 auto;
-						z-index: -1;
-						background: rgb(243, 243, 243);
-					}
-				}
-				.event-description {
-					color: white;
-					background: rgba(51, 51, 51, 0.61);
-					padding: 4%;
-				}
+					height: 400px;
+					padding: 0;
 
+					h2{
+						background: #333;
+						padding: 4%;
+						color: white;
+						text-align: center;
+						margin:0;
+						font-size: 16pt;
+						font-weight: bold;
+					}
+					.img-holder {
+						height: 180px;
+						overflow: hidden;
+						img {
+							width: 100%;
+							display: block;
+							margin: 0 auto;
+							z-index: -1;
+							background: rgb(243, 243, 243);
+						}
+					}
+					.event-description {
+						color: white;
+						background: rgba(51, 51, 51, 0.61);
+						padding: 4%;
+						font-weight: bold;
+						font-size: 12pt;
+						letter-spacing: 1px;
+					}
+
+				}
 			}
 		}
 	}
-}
 
-#featured-bikes-div{
-	height: 100%;
-}
-
-#big-slide-div {
-	height: 400px;
-	.current-event{
-		overflow: hidden;
+	#featured-bikes-div{
 		height: 100%;
-		position: relative;
-		margin-top: 0px;
+	}
 
-		.next-btn {
-			position: absolute;
-			display: block;
-			top: 50%;
+	#big-slide-div {
+		height: 400px;
+		.current-event{
+			overflow: hidden;
+			height: 100%;
+			position: relative;
+			margin-top: 0px;
 
-			i {
-				width: 100%;
-				height: 100%;
-				color: white;
-				display:block;
+			.next-btn {
+				position: absolute;
+				display: block;
+				top: 50%;
+
+				i {
+					width: 100%;
+					height: 100%;
+					color: white;
+					display:block;
+				}
+
+				&.right {
+					right: 2%;
+				}
+
+				&.left {
+					left: 2%;
+				}
 			}
 
-			&.right {
-				right: 2%;
-			}
-
-			&.left {
-				left: 2%;
-			}
-		}
-
-		h1{
+			h1{
 			// color: #000;
 			background: rgba(255, 255, 255, 0);
 			z-index: 1;
@@ -171,5 +174,10 @@ $bwb-grey: rgba(51, 51, 51, 0.61);
 			}
 		}
 	}
+}
+.brand-image-div {
+	height: 150px;
+	overflow: hidden;
+}
 }
 

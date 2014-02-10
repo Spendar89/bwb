@@ -40,7 +40,13 @@ $font-weight-placeholder: normal;
 
 }
 
-.rental-step{
+.step-header {
+	margin-top: 0;
+	color: $font-color-header;
+	font-weight: $font-weight-header;
+}
+
+.rental-step, .rentals-prices-div{
 	&.faded-true {
 		opacity: 0.3;
 	}
@@ -52,12 +58,6 @@ $font-weight-placeholder: normal;
 	.overlay {
 		display: none;
 	}
-	.step-header {
-		margin-top: 0;
-		color: $font-color-header;
-		font-weight: $font-weight-header;
-	}
-
 	.form-group {
 		margin-bottom: 0px;
 	}
@@ -110,17 +110,15 @@ $font-weight-placeholder: normal;
 		width: 100%;
 		font-size: 20pt;
 		margin-top: 20px;
-		// border: 4pt solid $border-color;
 		border: none;
 		margin: 0 auto;
 		display: block;
 		margin-top: 20px;
-
+		border-radius: $border-radius-on;
 	}
 
 	&.disabled {
 		border: 2pt solid rgba(0, 0, 0, 0.15);
-
 		.overlay {
 			display: block;
 			height: 300px;
@@ -241,14 +239,7 @@ select.placeholder {
 
 
 .rentals-prices-div {
-	border: 4pt solid #333;
-	padding: 0;
-	margin-top: 0;
-	height: 100%;
 	.header-div {
-		padding: 0 !important;
-		margin: 0 !important;
-		text-align: center;
 
 		.category-header {
 			margin: 0 !important;

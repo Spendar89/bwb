@@ -9,7 +9,7 @@
 	<div>
 		<div id="big-slide-div" class="row">
 			<!-- <h3 class="page-title">Latest News:</h3> -->
-			<div class="current-event col-sm-12" ng-show="currentEvent" ng-model="currentEvent">
+			<div class="current-event col-sm-12" >
 				<!-- <a href="" ng-click="currentEventIndex = currentEventIndex - 1" class="next-btn left">
 					<i class="fa fa-angle-left fa-5x"></i>
 				</a> -->
@@ -60,8 +60,10 @@
 
 		<div id="brands" class="">
 			<h3 class="page-title">Brands We Carry:</h3>
-			<div ng-repeat="brand in brands" class="brand index-{{ $index }} col-sm-2">
-				<img
+			<div class="brands-div row">
+				<div ng-repeat="brand in brands" class="brand-image-div index-{{ $index }} col-sm-2">
+					<img class="brand-img col-sm-12" src="assets/brands/{{brand}}.png"/>
+				</div>
 			</div>
 		</div>
 	</div>
