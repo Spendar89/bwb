@@ -49,7 +49,7 @@
 					<div class="info-div col-sm-12">
 						<h2 class="{{bike.kind.toLowerCase()}}">{{bike.year}} {{bike.brand}} {{bike.model}}</h2>
 						<div class="img-holder">
-							<img ng-src="/assets/{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
+							<img ng-src="{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
 						</div>
 						<h4 class="bike-price">${{bike.price}}</h4>
 						<div class="bike-description">{{bike.description.split(".")[0]}}</div>

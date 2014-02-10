@@ -38,6 +38,8 @@ gem 'angularjs-rails-resource', '~> 0.2.0'
 
 gem "paperclip", "~> 3.0"
 
+gem 'aws-sdk'
+
 gem 'chronic'
 
 gem 'awesome_print'

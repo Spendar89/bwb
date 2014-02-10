@@ -4,10 +4,13 @@ class BikesController < ApplicationController
   end
 
   def create
+    image_url = params[:bike][:raw_image_url]
     @bike = Bike.find_or_initialize_by_brand_and_model_and_year(params[:bike])
     @bike.attributes = params[:bike] if @bike.id
+    @bike.image = Bike.processed_image image_url
+    @bike.has_image = true if @bike.image
     respond_to do |format|
-      if @bike.save && @bike.create_image
+      if @bike.save
         format.json { render json: { bike: @bike.to_json } }
       else
         format.json { render json: { error: "bike was not saved to the database" } }
@@ -23,9 +26,10 @@ class BikesController < ApplicationController
   end
 
   def show
+    @bike = Bike.find(params[:id])
     respond_to do |format|
-      format.html {redirect_to "/#/bikes/#{params[:id]}"}
-      format.json {render json: Bike.find(params[:id]).to_json(include: :inventory, methods: :availability)}
+      format.html { redirect_to "/#/bikes/#{params[:id]}" }
+      format.json { render json: @bike }
     end
   end
 
@@ -39,7 +43,8 @@ class BikesController < ApplicationController
   def add_image
     @image_url = params[:image_url]
     @bike = Bike.find(params[:id])
-    @bike.create_image(@image_url)
+    # @bike.create_image(@image_url)
+    @bike.update_attribute(:image, open(@image_url))
     respond_to do |format|
       format.js {head :ok}
     end

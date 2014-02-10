@@ -32,6 +32,10 @@ GEM
     angularjs-rails-resource (0.2.5)
     arel (3.0.3)
     awesome_print (1.2.0)
+    aws-sdk (1.11.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bootstrap-sass (3.1.0.2)
       sass (~> 3.2)
     builder (3.0.4)
@@ -66,7 +70,10 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
+    mini_portile (0.5.2)
     multi_json (1.8.2)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     paperclip (3.5.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -123,6 +130,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     underscore-rails (1.5.2)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
@@ -131,6 +139,7 @@ DEPENDENCIES
   angularjs-rails
   angularjs-rails-resource (~> 0.2.0)
   awesome_print
+  aws-sdk
   bootstrap-sass (~> 3.1.0)
   chronic
   coffee-rails (~> 3.2.1)

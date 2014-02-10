@@ -5,7 +5,7 @@
 				<h1>{{ bike.brand }} {{ bike.model }} - ${{ bike.price }}</h1>
 			</div>
 			<div class="main-bike-left col-sm-6">
-				<img ng-src="/assets/{{bike.imageUrl}}" class="img col-sm-12"/>
+				<img ng-src="{{bike.imageUrl}}" class="img col-sm-12"/>
 				<div class="col-sm-12 info-div">
 					<h2 class="headline">{{bike.headline}}</h2>
 					<h4 class="description">{{ bike.description }}</h4>
@@ -69,7 +69,7 @@
 						</div>
 						<div class="sim-body">
 							<a class="col-sm-5" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
-								<img ng-src="/assets/{{sim.imageUrl}}" class="img sim-image col-sm-12" />
+								<img ng-src="{{sim.imageUrl}}" class="img sim-image col-sm-12" />
 								<h5> {{ sim.brand + " " + sim.model }} </h5>
 							</a>
 						</div>
