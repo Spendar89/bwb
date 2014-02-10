@@ -48,7 +48,9 @@
 				<a id="show_bike_{{bike.id}}" class="show-bike" ng-href="/#/bikes/{{bike.id}}">
 					<div class="info-div col-sm-12">
 						<h2 class="{{bike.kind.toLowerCase()}}">{{bike.year}} {{bike.brand}} {{bike.model}}</h2>
-						<img ng-src="/assets/{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
+						<div class="img-holder">
+							<img ng-src="/assets/{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
+						</div>
 						<h4 class="bike-price">${{bike.price}}</h4>
 						<div class="bike-description">{{bike.description.split(".")[0]}}</div>
 					</div>
