@@ -10,9 +10,6 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
       }, 100);
     });
 
-
-
-
     //For Bike Show Route
     $scope.bikeId = $routeParams.bikeId;
 
@@ -35,7 +32,7 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
 
     $scope.recentlyAddedBikes = [];
 
-    $scope.filterTerms = undefined;
+  $scope.filterTerms = undefined;
 
     $scope.showBike = function(bike) {
       return bike.filterService.showBike($scope.filterTerms);
@@ -46,7 +43,7 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
       return _.filter($scope.bikes, function(b) {
         if (!bike) return false;
         var inPriceRange = (b.price >= (bike.price - 100) && b.price <= (bike.price + 100));
-        var sameKind = (b.kind == bike.kind);
+        var sameKind = (b.kind === bike.kind);
         var notSame = (b.id != bike.id);
         if (inPriceRange && sameKind && notSame) return b;
       });
@@ -57,14 +54,15 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
     };
 
     $scope.getImages = function(bike) {
-      $('#loader-container').fadeIn();
+      // $('#loader-container').fadeIn();
+      $scope.loadingImages = true;
       BikeImages.query(bike).then(function(response) {
-
+        $scope.loadingImages = false;
         $scope.images = response;
         $scope.current_index = 0;
-        $('.image-controls').show();
-        $('#submit-div').css('visibility', 'visible');
-        $('#loader-container').fadeOut();
+        // $('.image-controls').show();
+        // $('#submit-div').css('visibility', 'visible');
+        // $('#loader-container').fadeOut();
       });
     };
 
@@ -88,12 +86,13 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
     $scope.recentBikes = [];
 
     $scope.create = function(bike) {
-      $('#loader-container').fadeIn();
+      // $('#loader-container').fadeIn();
+      $scope.loadingImages = true;
       bike.raw_image_url = $scope.images[$scope.current_index].url;
       var bikeObj = new Bike(bike).create().then(function(bike) {
         $scope.recentBikes.push(bike);
         $scope.reset();
-        $('#loader-container').fadeOut();
+        $scope.loadingImages = false;
       });
     };
 
@@ -106,7 +105,7 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
     $scope.getAvailability = function(bike, location) {
       if (!bike) return false;
       var avail = _.filter(bike.availability, function(b) {
-        return b.location == location;
+        return b.location === location;
       });
 
       return avail[0].sizes;

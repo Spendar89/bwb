@@ -57,7 +57,7 @@ $bwb-yellow: #fced00;
 }
 
 .image-controls{
-	display:none;
+	// display:none;
 }
 
 #image-preview-div{
@@ -66,9 +66,15 @@ $bwb-yellow: #fced00;
 
 #image_preview_main{
 	overflow: hidden;
-	.row{
-		margin-bottom: 25px;
-	}
+  .current-image-display-div {
+    .display{
+      font-size:15pt;
+    }
+    .btn.back, .btn.next {
+      border: 2pt solid #333;
+    }
+  }
+
 
 }
 
@@ -100,7 +106,6 @@ $bwb-yellow: #fced00;
 }
 
 #submit-div{
-	visibility: hidden;
 	margin-top: 10%;
 	text-align: center;
 	button{
@@ -308,7 +313,6 @@ $bwb-yellow: #fced00;
   background: rgba(0, 0, 0, 0.5);
   left: 0;
   top: 0;
-  display: none;
   #loader-div{
    position:absolute;
    width: 5%;

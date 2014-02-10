@@ -33,36 +33,53 @@
    //  -moz-animation: fadeOut 0.5s;
    //  -ms-animation: fadeOut 0.5s;
    //  animation: fadeOut 0.5s;
- 	}
- 	&.ng-enter {
+ }
+ &.ng-enter {
  		// -webkit-animation: fadeIn 1s;
    //  -moz-animation: fadeIn 1s;
    //  -ms-animation: fadeIn 1s;
    //  animation: fadeIn 1s;
- 	}
  }
+}
 
- select, input {
- 	border: 2pt solid #333 !important;
- 	box-shadow: none;
- 	background: transparent;
- 	-webkit-appearance: none;
- }
+select, input, .form-control, .form-radio {
+	border: 2pt solid #333 !important;
+	box-shadow: none;
+	background: transparent;
+	-webkit-appearance: none;
+
+	&.form-radio {
+		margin: 1.6%;
+	}
+}
 
 
- .btn {
- 	&.welcome-btn {
- 		width: 200px;
- 		height: 50px;
- 		border-radius: 0px;
- 		box-shadow: none;
- 		border: none;
- 		padding-top: 15px;
- 	}
- }
+.btn {
+	&.welcome-btn {
+		width: 200px;
+		height: 50px;
+		border-radius: 0px;
+		box-shadow: none;
+		border: none;
+		padding-top: 15px;
+	}
 
- div, p, span, td, a, h4, h3, h2, h5, h1 {
- 	font-family: $primary-font;
+	&.search-form-btn {
+		background: #424442 !important;
+		color: white;
+		font-weight: bold;
+		padding: 4%;
+		border: none;
+		margin-top: 5%;
+
+		&:hover {
+			background: grey !important;
+		}
+	}
+}
+
+div, p, span, td, a, h4, h3, h2, h5, h1 {
+	font-family: $primary-font;
  	// color: #333;
  	// font-weight: 400;
  }
