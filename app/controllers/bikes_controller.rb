@@ -11,7 +11,7 @@ class BikesController < ApplicationController
     @bike.has_image = true if @bike.image
     respond_to do |format|
       if @bike.save
-        format.json { render json: { bike: @bike.to_json } }
+        format.json { render json: { bike: @bike } }
       else
         format.json { render json: { error: "bike was not saved to the database" } }
       end
@@ -36,7 +36,7 @@ class BikesController < ApplicationController
   def images
     @images = Bike.image_search(params[:brand], params[:model], params[:year])
     respond_to do |format|
-      format.json { render json: @images.to_json }
+      format.json { render json: @images }
     end
   end
 
