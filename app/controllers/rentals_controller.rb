@@ -1,34 +1,61 @@
 class RentalsController < ApplicationController
   respond_to :json
-  
+
   def create
-    store = Store.find_by_location(params[:rental].delete(:location))
-    quantities = params[:rental].delete(:quantities)
-    time = Chronic.parse("#{params[:rental].delete(:date)} #{params[:rental].delete(:time)}").to_datetime
+    store = Store.find_by_location params[:rental].delete(:location)
+    time = parse_time params[:rental].delete(:date), params[:rental].delete(:time)
     @rental = store.rentals.build(params[:rental].merge({time: time}))
-    build_rental_bikes(quantities) if @rental
-    render json: @rental.to_json(include: :rental_bikes) if @rental.save
+    if @rental.save
+      render json: @rental
+    else
+      render json: { errors: @rental.errors.full_messages }, status: 422
+    end
   end
 
+  # def find
+  #   if params[:email]
+  #     @customer = Customer.find_by_email params[:email]
+  #     @rental = Rental.find_by_customer_id @customer.try(:id)
+  #     if @rental
+  #       render json: @rental
+  #     end
+  #   end
+  # end
+
   def update
-    @rental = Rental.find_by_id(params[:rental][:id])
-    @new_quantities = params[:rental].delete(:quantities)
-    if @new_quantities && @rental
-      @rental.rental_bikes.destroy_all
-      build_rental_bikes(@new_quantities) if @rental
+    @rental = Rental.find_by_id params[:rental][:id]
+    store = Store.find_by_location params[:rental].delete(:location)
+    params[:rental][:time] = parse_time(params[:rental].delete(:date), params[:rental].delete(:time))
+    params[:rental][:store_id] = store.try(:id)
+    if @rental.nil?
+      render json: { errors: ["Customer with id #{params[:customer][:id]} could not be found"] }, status: 403
+    elsif @rental.update_attributes params[:rental]
+      render json: @rental
+    else
+      render json: { errors: @rental.errors.full_messages }, status: 422
     end
-    render json: @rental.to_json if @rental.try(:save)
+    # @new_quantities = params[:rental].delete(:quantities)
+    # if @new_quantities && @rental
+    #   @rental.rental_bikes.destroy_all
+    #   build_rental_bikes(@new_quantities) if @rental
+    # end
+    # render json: @rental.to_json if @rental.try(:save)
   end
 
   private
 
-  def build_rental_bikes(quantities)
-    quantities.each do |kind, sizes|
-      sizes.each do |size, quantity|
-        next unless quantity
-        quantity.times { @rental.rental_bikes.build(kind: kind, size: size) }
-      end
-    end
+  # def build_rental_bikes(quantities)
+  #   quantities.each do |kind, sizes|
+  #     sizes.each do |size, quantity|
+  #       next unless quantity
+  #       quantity.times { @rental.rental_bikes.build(kind: kind, size: size) }
+  #     end
+  #   end
+  # end
+
+  def parse_time(date, time)
+    time_string = "#{date} #{time}"
+    Chronic.parse(time_string).to_datetime
   end
-  
+
 end

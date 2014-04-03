@@ -1,0 +1,52 @@
+<div class="col-sm-12" ng-controller="StoresCtrl" id="stores-div" fade-in="200">
+  <div class="col-sm-12 stores-header photo-header">
+    <h1> Locations </h1>
+  </div>
+  <div>
+    <div ng-repeat="store in stores">
+      <div class="row store-info">
+        <div class="left-div col-sm-4 pull-left">
+          <div class="col-sm-12">
+            <h1>{{ store.location }}</h1>
+          </div>
+          <div class="col-sm-12">
+            <h2>Hours of Operation</h2>
+          </div>
+          <div class="col-sm-12">
+            <h4><span class="hours-header">Monday through Friday: </span><span class="hours-value">{{ store.dataStore.hours['monday-friday'] }}</span></h4>
+            <h4><span class="hours-header">Saturday and Sunday: </span><span class="hours-value">{{ store.dataStore.hours['saturday-sunday'] }}</span></h4>
+          </div>
+          <div class="col-sm-12">
+            <h2>Address</h2>
+          </div>
+          <div class="col-sm-12">
+            <h4>{{store.dataStore.address.number}} {{store.dataStore.address.street}}</h4>
+            <h4>{{store.dataStore.address.city}}, {{store.dataStore.address.state}} {{store.dataStore.address.zipcode}}</h4>
+          </div>
+          <div class="col-sm-12">
+            <h2>Phone Number</h2>
+          </div>
+          <div class="col-sm-12">
+            <h4>{{store.dataStore.phone}}</h4>
+          </div>
+          <div class="col-sm-12">
+            <h2>Email</h2>
+          </div>
+          <div class="col-sm-12">
+            <h4>{{store.dataStore.email}}</h4>
+          </div>
+        </div>
+        <div class="right-div col-sm-8 pull-right">
+          <div class="col-sm-6">
+           <iframe src="https://mapsengine.google.com/map/u/0/embed?mid=zDsNhgvwz7H0.k4ru3P4P64zU" class="col-sm-12" frameBorder="0"></iframe>
+         </div>
+         <div class="col-sm-6">
+          <div class="store-img-div row " ng-repeat="storeImg in store.dataStore.images">
+            <img ng-src="/assets/stores/{{storeImg}}" class="col-sm-12"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

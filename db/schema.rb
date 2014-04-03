@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131221202133) do
+ActiveRecord::Schema.define(:version => 20140210051220) do
 
   create_table "average_points", :force => true do |t|
     t.integer  "player_id"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20131221202133) do
     t.text     "description"
     t.string   "photo"
     t.boolean  "used"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "year"
     t.string   "image_url"
     t.boolean  "has_image"
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(:version => 20131221202133) do
     t.string   "material"
     t.string   "brakes"
     t.string   "groupset"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "current_event_tags", :force => true do |t|
@@ -85,8 +89,9 @@ ActiveRecord::Schema.define(:version => 20131221202133) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "phone_number"
   end
 
   create_table "events", :force => true do |t|
@@ -158,9 +163,16 @@ ActiveRecord::Schema.define(:version => 20131221202133) do
     t.integer  "customer_id"
     t.integer  "store_id"
     t.boolean  "paid"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.datetime "time"
+    t.integer  "hybrid_quantities"
+    t.integer  "mountain_quantities"
+    t.integer  "road_quantities"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
   end
 
   create_table "rented_bikes", :force => true do |t|

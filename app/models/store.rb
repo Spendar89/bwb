@@ -5,7 +5,7 @@ class Store < ActiveRecord::Base
   has_many :used_bikes
   has_many :rentals
   has_many :rental_bikes, through: :rentals
-  
+
   def to_s
     "#{location}"
   end
@@ -21,7 +21,7 @@ class Store < ActiveRecord::Base
   def available_used_bikes(datetime)
     rented_bikes = rentals.by_fuzzy_time(datetime).map(&:rental_bikes).flatten
     all_used_bikes = used_bikes
-    rented_bikes.each do |rb| 
+    rented_bikes.each do |rb|
       all_used_bikes.delete_if do |ub|
         ub.kind.downcase == rb.kind.downcase &&
         ub.fuzzy_size.downcase == rb.size.downcase
@@ -29,5 +29,5 @@ class Store < ActiveRecord::Base
     end
     return all_used_bikes.compact
   end
-  
+
 end

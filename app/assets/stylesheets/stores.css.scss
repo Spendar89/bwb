@@ -1,3 +1,49 @@
 // Place all the styles related to the stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#stores-div {
+  visibility: hidden;
+  min-height: 1000px;
+  h1 {
+    font-weight: bold;
+    margin-top: 0px;
+  }
+
+  .stores-header {
+   background: url("/assets/headers/stores.png" ) 0px -200px;
+   background-size: cover;
+   h1 {
+    margin-top: 30px;
+  }
+}
+
+.store-info {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.store-img-div {
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 10px;
+     // border: 3pt solid #333;
+
+
+     img {
+      padding: 0px;
+      // height: 200px;
+    }
+
+  }
+
+  iframe {
+    background: url("/assets/iframe.png");
+    background-size: cover;
+    height: 410px;
+    padding: 0;
+    border: 1pt solid #333;
+
+    // border: 3pt solid #333;
+  }
+}

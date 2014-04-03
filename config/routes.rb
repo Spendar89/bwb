@@ -1,5 +1,5 @@
 Bwb::Application.routes.draw do
- 
+
   resources :customers
 
 
@@ -35,6 +35,6 @@ Bwb::Application.routes.draw do
       get 'images'
     end
   end
-  
+
   root :to => 'application#index'
 end

@@ -1,236 +1,215 @@
 $secondary-font: 'Anonymous Pro', sans-serif;
-body {
-	// background-color: red;
-}
+$bwb-red: #d71f28;
+$bwb-yellow: #fced00;
+$bwb-blue: #1799dd;
+$bwb-grey: rgba(51, 51, 51, 0.61);
 
 #home-div {
 	margin: 0px;
-}
-
-#current-events-div, #featured-bikes-div{
-	overflow: hidden;
-	height: 575px;
-	width: 73em;
-	display: block;
-	margin: 0 auto;
-	margin-top: 50px;
-	
-}
-
-.current-event, .product-brick{
-	float: left;
-	overflow: hidden;
-	margin: 1.1em;
-	width: 16em;
-	height: 30em;
-	position: relative;
-	box-shadow: 0 2px 2px rgba(0,0,0,.1);
-	border-radius: 4px;
-
-	h3{
-		color: white;
-		font-size: 1em;
-		padding: 3%;
-		background: #272727;
-		z-index: 1;
-		position: absolute;
-		// height: 15%;
-		width: 100%;
+	visibility: hidden;
+	min-height: 1000px;
+	#current-events-div, #featured-bikes-div {
+		// height: 400px;
+		margin-top: 20px;
 		overflow: hidden;
-		letter-spacing: .1em;
-		margin-top: 0px;
-		text-align: center;
-		line-height: 1.5em;
-		// text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-		font-weight: bold;
 	}
-	h4{
-		color: #333;
-		font-size: 1em;
-		line-height: 1.5em;
-		padding-left: 10%;
-		padding-right: 10%;
-		background: white;
-		
-		z-index: 1;
-		position: absolute;
-		height: 50%;
-		width: 100%;
-		top: 50%;
-		overflow: hidden;
-		margin: 0;
-		font-weight: bold;
-		padding: 8%;
 
-	}
-	.img-holder {
-		// width: 90%;
-		// height: 75%;
-		// margin-left: 5%;
-		overflow: hidden;
-		width:100%;
-		height: 40%;
-		top:10%;
-		position: absolute;
-		// display: block;
-		// bottom: 4%;
-		img{
-			// margin-bottom: 5px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			min-height: 100%;
-			min-width: 100%;
-			margin:0px;
-			padding: 0px;
+	#current-events-div{
+
+		.event-listing{
+			box-sizing: border-box;
+			padding-right: 0;
+
+			&.index-0 {
+				margin-right: 0%;
+				margin-left: -2%;
+				.info-div{
+					h2{
+						background: #1799dd;
+					}
+					.event-description {
+						background: #252A33;
+					}
+				}
+			}
+
+			&.index-1 {
+				margin: 0 1%;
+				.info-div{
+					h2{
+						background: #e8330f;
+					}
+					.event-description {
+						background: #e8330f;
+					}
+				}
+			}
+
+			&.index-2 {
+				.info-div{
+					h2{
+						background: #8935C2;
+					}
+					.event-description {
+						background: #29352B;
+					}
+				}
+
+
+			}
+			.show-event{
+				text-decoration: none;
+				.info-div{
+					color: rgb(12, 11, 11);
+					z-index: 2;
+					overflow: hidden;
+					padding: 0;
+
+					h2{
+						padding: 4%;
+						color: white;
+						text-align: center;
+						margin:0;
+						font-size: 15pt;
+						font-weight: bold;
+						// background: #1799dd !important;
+					}
+					.img-holder {
+						height: 180px;
+						overflow: hidden;
+						margin: 5% 0;
+						img {
+							width: 100%;
+							display: block;
+							margin: 0 auto;
+							z-index: -1;
+							background: rgb(243, 243, 243);
+						}
+					}
+					.event-description {
+						color: #333;
+						padding: 4%;
+						padding-left: 7%;
+						font-size: 12pt;
+						background: #EBEDF0;
+						font-weight: bold;
+						line-height: 20pt;
+					}
+
+				}
+			}
 		}
 	}
-	
-	
-	
-	p{
-		// font-weight: bold;
-		color: white;
-		font-size: 14pt;
+
+	#featured-bikes-div{
+		height: 100%;
 	}
-	&.double {
-		width: 32em;
-		.img-holder {
-			height: 60%;
-		}
 
-		h3 {
-			height: 15%;
-			font-size: 1.3em;
-			line-height: 2em;
-			// background: white;
-			// color: #d71f28;
-		}
-		h4 {
-			top: 70%;
-			background: #fde700;
-		}
-	}
-}
+	#big-slide-div {
+		height: 400px;
+		.current-event{
+			overflow: hidden;
+			height: 100%;
+			position: relative;
+			margin-top: 0px;
 
-#welcome-div{
+			.next-btn {
+				position: absolute;
+				display: block;
+				top: 50%;
 
-	overflow: hidden;
-	padding: 0 130px 0;
+				i {
+					width: 100%;
+					height: 100%;
+					color: white;
+					display:block;
+				}
 
-	#welcome-text{
-		h3 {
-			color: #333;
-			font-weight: bold;
-			line-height: 1.4em;
-			letter-spacing: .1em;
-		}
-		
-		// padding-top: 150px;
-		// padding-right: 50px;
-		// font-weight: 100;
-		// box-sizing: border-box;
-		
-		.big-text {
-			// position: absolute;
-			// bottom: 200px;
-			// right: 15%;
+				&.right {
+					right: 2%;
+				}
+
+				&.left {
+					left: 2%;
+				}
+			}
+
 			h1{
-				font-size: 80pt;
-				// font-family: $secondary-font;
-				color: white !important;
-				font-family: 'Special Elite', sans-serif !important;
-				font-weight: 100;
+			// color: #000;
+			background: rgba(255, 255, 255, 0);
+			z-index: 1;
+			position: absolute;
+
+			padding: 1%;
+			overflow: hidden;
+			font-weight: bold;
+
+
+			&.text-1 {
+				width: 85%;
+				font-size: 50pt;
+				top: -3%;
+				left: 40px;
+				color: white;
+				margin-left: 7.5%;
+				margin-top: 130px;
+
 			}
 		}
-		.welcome-body{
-			p{
-				font-size: 20pt;
-			}
-		}
-	}
-
-	
-}
-
-#featured-bikes-div{
-	height: 450px;
-	margin-top: 0px;
-	.product-brick {
-		height: 22em;
-		width: 16em;
-		background:white;
 		.img-holder {
-			width: 100%;
-			height: 60%;
-			img {
-				width: 120%;
-				height: auto;
+			overflow: hidden;
+			width:100%;
+			height: 100%;
+			img{
+				display: block;
+				width: 100%;
+				margin: 0 auto;
+				margin-top: -30px;
 			}
 		}
 		h4{
-			top: 60%;
-			padding: 5%;
-			padding-top: 2%;
-			// background: white;
-			// color: #333;
-			height: 40%;
-		}
-	}
-
-}
-
-
-@media (max-width: 1170px) {
-	#current-events-div {
-		width: 55em;
-	}
-
-	#featured-bikes-div{
-		.stripe-liner {
-			width: 46em;
-		}
-	}
-}
-
-@media (max-width: 870px) {
-	#current-events-div {
-		width: 36.4em;
-	}
-
-	#featured-bikes-div{
-		.stripe-liner {
-			width: 30.5em;
+			color: white;
+			background: #333;
+			padding: 2%;
+			z-index: 1;
+			position: absolute;
+			height: 60%;
+			width: 60%;
+			top: 30%;
+			right: 5%;
+			overflow: hidden;
+			font-size: 20pt;
+			line-height: 30pt;
+			margin-right: 15px;
 		}
 
-		h3 {
-			margin-bottom: 0.7em;
+
+
+		p{
+			color: white;
+			font-size: 14pt;
 		}
-	}
-}
+		&.double {
+			width: 32em;
+			.img-holder {
+				height: 60%;
+			}
 
-@media (max-width: 580px) {
-	#current-events-div {
-		width: 100%;
-		margin: 0;
-
-		.current-event {
-			width: 100%;
-			margin: 0;
-			height: 100%;
-		}
-	}
-
-	#featured-bikes-div{
-		.stripe-liner {
-			width: 30.5em;
-		}
-
-		h3 {
-			margin-bottom: 0.7em;
+			h3 {
+				height: 15%;
+				font-size: 1.3em;
+				line-height: 2em;
+			}
+			h4 {
+				top: 70%;
+				background: #fde700;
+			}
 		}
 	}
 }
-
-
+.brand-image-div {
+	height: 150px;
+	overflow: hidden;
+}
+}
 

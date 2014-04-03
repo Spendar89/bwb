@@ -1,11 +1,136 @@
 // Place all the styles related to the rentals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$border-color-primary: #333 !important;
+$border-color-secondary: #333 !important;
 
-.rental-step{
-	margin-top: 15%;
-	margin-bottom: 15%;
-	display:none;
+$border-primary: 2pt solid $border-color-primary;
+$border-secondary: 2pt solid $border-color-secondary;
+
+$border-radius-on: 4px;
+
+// $font-color-header: #1799dd;
+// $font-color: #1799dd;
+$font-color-header: #333;
+$font-color: #333;
+$font-color-secondary: white;
+// $placeholder-color: #1799dd;
+$placeholder-color: #797979;
+
+$background-color-blue: #1799dd;
+// $background-color-grey: #999999;
+$background-color-secondary: #333;
+$background-color-primary: transparent;
+
+$font-weight-header: normal;
+$font-weight-placeholder: normal;
+
+#rentals-div {
+	visibility: hidden;
+	min-height: 1000px;
+	.new-header {
+		background: url("/assets/headers/rentals.jpg" )0px -440px;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+	}
+}
+.steps-div {
+	min-height: 1000px;
+
+}
+
+.step-header {
+	margin-top: 0;
+	color: $font-color-header;
+	font-weight: $font-weight-header;
+}
+
+.rental-step, .rentals-prices-div{
+	&.faded-true {
+		opacity: 0.3;
+	}
+	color: #333 !important;
+	background: $background-color-primary;
+	padding: 3%;
+	border: $border-primary;
+	border-radius: $border-radius-on;
+	.overlay {
+		display: none;
+	}
+	.form-group {
+		margin-bottom: 0px;
+	}
+
+	.quantity-header {
+		text-align: center;
+	}
+
+	.quantity-input-div {
+		padding: 2px;
+	}
+
+	input, select, textarea {
+		border-radius: 0px;
+		height: 60px;
+		font-size: 18pt;
+		margin-bottom: 15px;
+		text-align: center;
+		// border: none !important;
+		border: $border-secondary;
+		border-radius: $border-radius-on;
+		&.quantity-input {
+			font-size: 10pt;
+			padding: 0px;
+			height: 35px;
+		}
+		// &textarea {
+		// 	height: 200px;
+		// }
+	}
+
+	textarea {
+		height: 120px;
+		text-align: left;
+		color: #333;
+	}
+
+	.section-label {
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 20pt;
+		line-height: 25pt;
+	}
+
+	.btn-default {
+		background: $background-color-secondary;
+		color: $font-color-secondary;
+		font-weight: $font-weight-header;
+		padding: 10px;
+		width: 100%;
+		font-size: 20pt;
+		margin-top: 20px;
+		border: none;
+		margin: 0 auto;
+		display: block;
+		margin-top: 20px;
+		border-radius: $border-radius-on;
+	}
+
+	&.disabled {
+		border: 2pt solid rgba(0, 0, 0, 0.15);
+		.overlay {
+			display: block;
+			height: 300px;
+			position: absolute;
+			width: 100%;
+			padding: 2%;
+			background: rgba(255, 255, 255, 0.8);
+			left: 0;
+			top: 0;
+			z-index: 1;
+		}
+	}
 }
 
 #customer-step{
@@ -28,12 +153,97 @@ form.current-bikes-div{
 	}
 }
 
-#summary-step {
-	h3{
-		font-weight: 400;
+#confirmation-step {
+	z-index: 10;
+	display: block;
+	position: fixed;
+	top: -1000px;
+	background: #333;
+	border: none !important;
+	color: white;
+	font-weight: bold;
+	-webkit-transition: top 0.3s ease-in-out;
+	-moz-transition: top 0.3s ease-in-out;
+	-o-transition: top 0.3s ease-in-out;
+	transition: top 0.3s ease-in-out 1s;
+
+	&.slide-down {
+		-webkit-transition: top 0.3s ease-in-out;
+		-moz-transition: top 0.3s ease-in-out;
+		-o-transition: top 0.3s ease-in-out;
+		transition: top 0.3s ease-in-out 1s;
+		top: 200px;
 	}
 
-	.light-text {
-		font-weight: 100;
+	.hide-modal-div {
+		margin-top: 1.5%;
+		height: 50px;
+		z-index: 1;
+		padding: 0;
+		a {
+			color: white;
+			text-decoration: none;
+			&:hover {
+				color: $background-color-blue;
+			}
+		}
+	}
+
+}
+
+select.placeholder {
+	padding-top: 5px;
+	// color: #999999;
+	color: $placeholder-color;
+	font-weight: normal;
+	// padding-left: 20px;
+	&.location {
+		font-weight: $font-weight-placeholder !important;
+		text-indent: 10%;
+	}
+	&.time {
+		font-weight: $font-weight-placeholder !important;
+		text-indent: 30%;
+	}
+
+	.starting {
+		&:checked{
+			text-align: center;
+		}
+
+	}
+}
+
+::-webkit-input-placeholder {
+	font-weight: $font-weight-placeholder !important;
+	color: $placeholder-color !important;
+}
+:-moz-placeholder {
+	font-weight: bold;
+}
+::-moz-placeholder {
+	font-weight: bold;
+}
+:-ms-input-placeholder {
+	font-weight: bold;
+}
+
+.opacity-full {
+	opacity: 1;
+	-webkit-transition: opacity 0.2s ease-in-out;
+}
+
+.opacity-faded {
+	opacity: 0.1;
+}
+
+
+.rentals-prices-div {
+	.header-div {
+
+		.category-header {
+			margin: 0 !important;
+			width: 100%;
+		}
 	}
 }

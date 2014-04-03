@@ -1,24 +1,33 @@
-<div ng-controller="BikesCtrl" id="bikes-div">
-	<div class="container">
-		<div id="filter-div" class="col-sm-12 row">
-			<div class="pull-right clearfix col-sm-10">
+<div ng-controller="BikeCtrl" id="bikes-div">
+	<div class="col-sm-12">
+		<div class="col-sm-12 new-header photo-header">
+			<h1> New Bikes</h1>
+		</div>
+	</div>
+	<div>
+		<div id="filter-div" class="row">
+			<div class="filter-div-inner pull-right clearfix col-sm-12">
 				<div class="col-sm-6">
 					<h2 class="header compact">Find The Perfect Bike!</h2>
+					<h4>Browsing our new road, mountain, and hybrid bikes has never been easier!  Filter bikes that are displayed by entering search terms. </h4>
+					<h4>Price Lists: <a href="/hybrid_price_list.pdf">Hybrid Bikes</a>, <a href="/mountain_price_list.pdf">Mountain Bikes</a>, <a href="/road_price_list.pdf">Road Bikes</a>, <a href="/kids_price_list.pdf">Kids Bikes</a></h4>
 				</div>
 				<div class="col-sm-6">
-					<input ng-model="filterTerms" type="text" class="form-control" placeholder="Ex: 2014 Marin Hybrids"/>
+					<input ng-model="filterTerms" type="text" class="form-control" placeholder="Example: 2014 Marin Hybrids"/>
 				</div>
 			</div>
 		</div>
 		<!-- <h1> Bikes </h1> -->
-		<div class="bike-index-div row">
-			<div ng-repeat="bike in bikes" class="bike-listing col-sm-4" ng-show="showBike(bike)">
+		<div class="bike-index-div row" ng-hide="hideBikes">
+			<div ng-repeat="bike in bikes" class="bike-listing col-sm-4" ng-hide="(hideBikes || !showBike(bike))">
 				<a id="show_bike_{{bike.id}}" class="show-bike" ng-href="/#/bikes/{{bike.id}}">
 					<div class="info-div col-sm-12">
-						<img ng-src="/assets/{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
 						<h2 class="{{bike.kind.toLowerCase()}}">{{bike.year}} {{bike.brand}} {{bike.model}}</h2>
-						<h4>${{bike.price}}</h4>
-						<span>{{bike.description.split(".")[0]}}</span>
+						<div class="img-holder">
+							<img ng-src="{{bike.imageUrl}}" class="col-sm-12 bike-index-img"/>
+						</div>
+						<h4 class="bike-price">${{bike.price}}</h4>
+						<div class="bike-description">{{bike.description.split(".")[0]}}</div>
 					</div>
 				</a>
 			</div>

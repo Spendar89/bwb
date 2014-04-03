@@ -1,21 +1,22 @@
 class UsedBikesController < ApplicationController
   respond_to :json
-  
+
   def create
-    @location = params[:used_bike].delete(:location)
-    store_id = Store.find_by_location(@location.try(:capitalize)).id
-    @used_bike = UsedBike.new(params[:used_bike].merge({store_id: store_id}))
+    # @location = params[:used_bike].delete(:location)
+    # store_id = Store.find_by_location(@location.try(:capitalize)).id
+    @used_bike = UsedBike.new(params[:used_bike])
     @used_bike.fuzzy_size = @used_bike.get_fuzzy_size
     if @used_bike.save!
-       render json: { used_bike: @used_bike.to_json } 
+       render json: { used_bike: @used_bike.to_json }
     else
       render json: { error: "used bike was not saved to the database" }
     end
   end
-  
+
   def index
-    @location = params[:location].try(:capitalize)
-    if @store = Store.find_by_location(@location)
+    # @location = params[:location].try(:capitalize)
+    @store = Store.find_by_id(params[:store_id])
+    if @store
       time = Chronic.parse("#{params[:date]} #{params[:time]}").to_datetime if params[:time]
       @used_bikes = time ? @store.available_used_bikes(time) : @store.used_bikes
     else
@@ -33,5 +34,5 @@ class UsedBikesController < ApplicationController
       render json: { error: "used bike was not updated" }
     end
   end
-  
+
 end
