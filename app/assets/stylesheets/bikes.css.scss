@@ -245,6 +245,9 @@ $bwb-yellow: #fced00;
   }
 
   .sim-div {
+    .sim-body {
+      display: flex;
+    }
     a {
       text-align: center;
       font-weight: lighter;

@@ -61,18 +61,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-12">
-					<div class="sim-div" ng-show="findSimilar().length > 0">
-						<div class="sim-header">
-							<h2>Similar Bikes</h2>
-							<h4><i>It's always a good idea to consider a few bikes before making a final decision.  If you like the {{bike.brand}} {{ bike.model }}, we think you'll like these bikes as well.</i></h4>
-						</div>
-						<div class="sim-body">
-							<a class="col-sm-5" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
-								<img ng-src="{{sim.imageUrl}}" class="img sim-image col-sm-12" />
-								<h5> {{ sim.brand + " " + sim.model }} </h5>
-							</a>
-						</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="sim-div" ng-show="findSimilar().length > 0">
+					<div class="sim-header">
+						<h2>Similar Bikes</h2>
+						<h4><i>It's always a good idea to consider a few bikes before making a final decision.  If you like the {{bike.brand}} {{ bike.model }}, we think you'll like these bikes as well.</i></h4>
+					</div>
+					<div class="sim-body">
+						<a class="col-sm-5" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
+							<img ng-src="{{sim.imageUrl}}" class="img sim-image col-sm-12" />
+							<h5> {{ sim.brand + " " + sim.model }} </h5>
+						</a>
 					</div>
 				</div>
 			</div>
