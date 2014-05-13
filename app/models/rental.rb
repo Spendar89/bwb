@@ -5,7 +5,8 @@ class Rental < ActiveRecord::Base
                   :mountain_quantities_medium, :mountain_quantities_large,
                   :road_quantities_small, :road_quantities_medium,
                   :road_quantities_large, :hybrid_quantities_small,
-                  :hybrid_quantities_medium, :hybrid_quantities_large
+                  :hybrid_quantities_medium, :hybrid_quantities_large,
+                  :created_at, :updated_at
 
   belongs_to :store
   validates :time, :store_id, :first_name, :last_name, :email, presence: true

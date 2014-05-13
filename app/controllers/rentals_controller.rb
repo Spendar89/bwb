@@ -25,11 +25,12 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find_by_id params[:rental][:id]
     store = Store.find_by_location params[:rental].delete(:location)
-    params[:rental][:time] = parse_time(params[:rental].delete(:date),
-                                        params[:rental].delete(:time))
+    time = parse_time params[:rental].delete(:date), params[:rental].delete(:time)
+    params[:rental][:time] = time if time
     params[:rental][:store_id] = store.try(:id)
     if @rental.nil?
-      render json: { errors: ["Customer with id #{params[:customer][:id]} could not be found"] }, status: 403
+      customer_id = params[:customer][:id]
+      render json: { errors: ["Customer with id #{customer_id} could not be found"] }, status: 403
     elsif @rental.update_attributes params[:rental]
       render json: @rental
     else
@@ -55,8 +56,9 @@ class RentalsController < ApplicationController
   # end
 
   def parse_time(date, time)
+    return unless date.present? && time.present?
     time_string = "#{date} #{time}"
-    Chronic.parse(time_string).to_datetime
+    Chronic.parse(time_string).try :to_datetime
   end
 
 end
