@@ -21,7 +21,8 @@ class BikesController < ApplicationController
   def index
     respond_to do |format|
       format.html { redirect_to "/#/bikes"}
-      format.json {render json: Bike.where(has_image: true).to_json(include: :inventory, methods: :availability)}
+      format.json {render json: Bike.where(has_image: true)
+        .to_json(include: :inventory, methods: :availability)}
     end
   end
 

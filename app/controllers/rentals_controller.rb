@@ -25,7 +25,8 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find_by_id params[:rental][:id]
     store = Store.find_by_location params[:rental].delete(:location)
-    params[:rental][:time] = parse_time(params[:rental].delete(:date), params[:rental].delete(:time))
+    params[:rental][:time] = parse_time(params[:rental].delete(:date),
+                                        params[:rental].delete(:time))
     params[:rental][:store_id] = store.try(:id)
     if @rental.nil?
       render json: { errors: ["Customer with id #{params[:customer][:id]} could not be found"] }, status: 403

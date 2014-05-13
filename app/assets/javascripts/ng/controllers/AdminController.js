@@ -1,5 +1,6 @@
-angular.module('app').controller('AdminCtrl', ['$scope', '$http', '$routeParams', '$location', '$resource',
-  function($scope, $http, $routeParams, $location, $resource) {
+angular.module('app').controller('AdminCtrl', ['$scope', '$http', '$routeParams',
+                                 '$location', '$resource',
+  function ($scope, $http, $routeParams, $location, $resource) {
 
     $scope.adminLinks = [{
         href: "#/current_events/new",

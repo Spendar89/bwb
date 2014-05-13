@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140210051220) do
+ActiveRecord::Schema.define(:version => 20140513034426) do
 
   create_table "average_points", :force => true do |t|
     t.integer  "player_id"
@@ -151,6 +151,9 @@ ActiveRecord::Schema.define(:version => 20140210051220) do
     t.datetime "updated_at", :null => false
   end
 
+# Could not dump table "products" because of following StandardError
+#   Unknown type 'json' for column 'properties'
+
   create_table "rental_bikes", :force => true do |t|
     t.integer  "rental_id"
     t.string   "kind"
@@ -163,16 +166,22 @@ ActiveRecord::Schema.define(:version => 20140210051220) do
     t.integer  "customer_id"
     t.integer  "store_id"
     t.boolean  "paid"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.datetime "time"
-    t.integer  "hybrid_quantities"
-    t.integer  "mountain_quantities"
-    t.integer  "road_quantities"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "phone_number"
+    t.integer  "hybrid_quantities_small"
+    t.integer  "hybrid_quantities_medium"
+    t.integer  "hybrid_quantities_large"
+    t.integer  "mountain_quantities_small"
+    t.integer  "mountain_quantities_medium"
+    t.integer  "mountain_quantities_large"
+    t.integer  "road_quantities_small"
+    t.integer  "road_quantities_medium"
+    t.integer  "road_quantities_large"
   end
 
   create_table "rented_bikes", :force => true do |t|
