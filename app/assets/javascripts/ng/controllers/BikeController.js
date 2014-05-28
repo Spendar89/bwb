@@ -32,7 +32,7 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
 
     $scope.recentlyAddedBikes = [];
 
-  $scope.filterTerms = undefined;
+    $scope.filterTerms = undefined;
 
     $scope.showBike = function(bike) {
       return bike.filterService.showBike($scope.filterTerms);
