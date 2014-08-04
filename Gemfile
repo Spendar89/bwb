@@ -43,3 +43,5 @@ gem 'aws-sdk'
 gem 'chronic'
 
 gem 'awesome_print'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

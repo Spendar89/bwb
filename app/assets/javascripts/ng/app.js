@@ -76,6 +76,10 @@ angular.module('app', ['ngResource', 'ngRoute', 'ngAnimate', 'app.directives', '
           templateUrl: '/ng/views/rentals/new.html',
           controller: 'RentalsCtrl'
         })
+        .when('/rentals', {
+          templateUrl: '/ng/views/rentals/index.html',
+          controller: 'RentalsCtrl'
+        })
         .when('/stores', {
           templateUrl: '/ng/views/stores/index.html'
         })

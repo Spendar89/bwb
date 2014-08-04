@@ -15,6 +15,10 @@ class Rental < ActiveRecord::Base
     where(time: datetime) unless datetime.nil?
   }
 
+  scope :current, lambda {
+    where("rentals.time >= ?", DateTime.now)
+  }
+
   scope :by_day, lambda { |datetime|
   	return unless datetime
     pds = "#{datetime.month}-#{datetime.day}-#{datetime.year}"

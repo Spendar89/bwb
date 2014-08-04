@@ -25,11 +25,11 @@
 				<div class="form-group">
 					<label class="col-sm-12">
 						<span class="pull-left">Content: </span>
-						<span ng-show="form.content.$error.length" class="error-message col-sm-10 pull-left">Post Length Must be Less than 220 Characters.  Length is Currently {{  currentEvent.content.length }} Characters</span>
+						<span ng-show="form.content.$error.length" class="error-message col-sm-10 pull-left">Post Length Must be Less than 600 Characters.  Length is Currently {{  currentEvent.content.length }} Characters</span>
 					</label>
 
 					<div class="col-sm-12 input-div">
-						<textarea ng-validate-length="220" class="form-control col-sm-12" rows="10" cols="80" name="content" ng-model="currentEvent.content" required></textarea>
+						<textarea ng-validate-length="600" class="form-control col-sm-12" rows="10" cols="80" name="content" ng-model="currentEvent.content" required></textarea>
 					</div>
 				</div>
 				<div class="form-group">

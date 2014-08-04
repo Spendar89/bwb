@@ -1,6 +1,11 @@
 class RentalsController < ApplicationController
   respond_to :json
 
+  def index
+    @rentals = Rental.all.to_json(include: :store)
+    render json: @rentals
+  end
+
   def create
     store = Store.find_by_location params[:rental].delete(:location)
     time = parse_time params[:rental].delete(:date), params[:rental].delete(:time)

@@ -5,211 +5,224 @@ $bwb-blue: #1799dd;
 $bwb-grey: rgba(51, 51, 51, 0.61);
 
 #home-div {
-	margin: 0px;
-	visibility: hidden;
-	min-height: 1000px;
-	#current-events-div, #featured-bikes-div {
-		// height: 400px;
-		margin-top: 20px;
-		overflow: hidden;
-	}
+  margin: 0px;
+  visibility: hidden;
+  min-height: 1000px;
+  #current-events-div, #featured-bikes-div {
+    // height: 400px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
 
-	#current-events-div{
+  #current-events-div{
 
-		.event-listing{
-			box-sizing: border-box;
-			padding-right: 0;
+    .event-listing{
+      box-sizing: border-box;
+      padding-right: 0;
 
-			&.index-0 {
-				margin-right: 0%;
-				margin-left: -2%;
-				.info-div{
-					h2{
-						background: #1799dd;
-					}
-					.event-description {
-						background: #252A33;
-					}
-				}
-			}
+      &.index-0 {
+        margin-right: 0%;
+        margin-left: -2%;
+        .info-div{
+          h2{
+            background: grey;
+          }
+          .event-description {
+            background: #333;
+          }
+        }
+      }
 
-			&.index-1 {
-				margin: 0 1%;
-				.info-div{
-					h2{
-						background: #e8330f;
-					}
-					.event-description {
-						background: #e8330f;
-					}
-				}
-			}
+      &.index-1 {
+        margin: 0 1%;
+        .info-div{
+          h2{
+            background: grey;
+          }
+          .event-description {
+            background: #333;
+          }
+        }
+      }
 
-			&.index-2 {
-				.info-div{
-					h2{
-						background: #8935C2;
-					}
-					.event-description {
-						background: #29352B;
-					}
-				}
-
-
-			}
-			.show-event{
-				text-decoration: none;
-				.info-div{
-					color: rgb(12, 11, 11);
-					z-index: 2;
-					overflow: hidden;
-					padding: 0;
-
-					h2{
-						padding: 4%;
-						color: white;
-						text-align: center;
-						margin:0;
-						font-size: 15pt;
-						font-weight: bold;
-						// background: #1799dd !important;
-					}
-					.img-holder {
-						height: 180px;
-						overflow: hidden;
-						margin: 5% 0;
-						img {
-							width: 100%;
-							display: block;
-							margin: 0 auto;
-							z-index: -1;
-							background: rgb(243, 243, 243);
-						}
-					}
-					.event-description {
-						color: #333;
-						padding: 4%;
-						padding-left: 7%;
-						font-size: 12pt;
-						background: #EBEDF0;
-						font-weight: bold;
-						line-height: 20pt;
-					}
-
-				}
-			}
-		}
-	}
-
-	#featured-bikes-div{
-		height: 100%;
-	}
-
-	#big-slide-div {
-		height: 400px;
-		.current-event{
-			overflow: hidden;
-			height: 100%;
-			position: relative;
-			margin-top: 0px;
-
-			.next-btn {
-				position: absolute;
-				display: block;
-				top: 50%;
-
-				i {
-					width: 100%;
-					height: 100%;
-					color: white;
-					display:block;
-				}
-
-				&.right {
-					right: 2%;
-				}
-
-				&.left {
-					left: 2%;
-				}
-			}
-
-			h1{
-			// color: #000;
-			background: rgba(255, 255, 255, 0);
-			z-index: 1;
-			position: absolute;
-
-			padding: 1%;
-			overflow: hidden;
-			font-weight: bold;
+      &.index-2 {
+        .info-div{
+          h2{
+            background: grey;
+          }
+          .event-description {
+            background: #333;
+          }
+        }
 
 
-			&.text-1 {
-				width: 85%;
-				font-size: 50pt;
-				top: -3%;
-				left: 40px;
-				color: white;
-				margin-left: 7.5%;
-				margin-top: 130px;
+      }
+      .show-event{
+        text-decoration: none;
+        .info-div{
+          color: rgb(12, 11, 11);
+          z-index: 2;
+          overflow: hidden;
+          padding: 0;
 
-			}
-		}
-		.img-holder {
-			overflow: hidden;
-			width:100%;
-			height: 100%;
-			img{
-				display: block;
-				width: 100%;
-				margin: 0 auto;
-				margin-top: -30px;
-			}
-		}
-		h4{
-			color: white;
-			background: #333;
-			padding: 2%;
-			z-index: 1;
-			position: absolute;
-			height: 60%;
-			width: 60%;
-			top: 30%;
-			right: 5%;
-			overflow: hidden;
-			font-size: 20pt;
-			line-height: 30pt;
-			margin-right: 15px;
-		}
+          h2{
+            padding: 4%;
+            color: white;
+            text-align: center;
+            margin:0;
+            font-size: 15pt;
+            font-weight: bold;
+            // background: #1799dd !important;
+          }
+          .img-holder {
+            img {
+              position: absolute;
+              top: 0;
+              width: 100%;
+              left: 0;
+              padding: 15px;
+              box-sizing: border-box;
+
+            }
+          }
+          .event-description {
+            color: #333;
+            padding: 4%;
+            padding-left: 7%;
+            font-size: 12pt;
+            background: #EBEDF0;
+            font-weight: bold;
+            line-height: 20pt;
+          }
+
+        }
+      }
+    }
+  }
+
+  #featured-bikes-div{
+    height: 100%;
+  }
+
+  #big-slide-div {
+    height: 400px;
+    overflow: hidden;
+        .next-btn {
+          position: absolute;
+          z-index: 1;
+          text-decoration: none;
+          display: block;
+          top: 38%;
+          i {
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-outline: black;
+            display:block;
+            &:hover {
+              color: #333;
+
+            }
+          }
+
+          &.right {
+            right: 2%;
+          }
+
+          &.left {
+            left: 2%;
+          }
+        }
+    .big-slide-holder {
+      position: relative;
+      width: 2000px;
+      height: 100%;
+      float: left;
+        -webkit-transition:all 0.4s ease-in-out;
+      .current-event {
+        overflow: hidden;
+        height: 100%;
+        float: left;
+        position: relative;
+        margin-top: 0px;
+
+
+        h1{
+          color: white;
+          z-index: 1;
+          position: absolute;
+          padding: 1%;
+          overflow: hidden;
+          &.text-1 {
+            max-width: 78%;
+            left: 0;
+            top: 4%;
+            padding: 2%;
+            box-sizing: border-box;
+            margin: 0;
+            font-size: 45px;
+          }
+        }
+        .img-holder {
+          overflow: hidden;
+          width:100%;
+          height: 100%;
+          img{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 0;
+            padding: 0 15px;
+            box-sizing: border-box;
+          }
+        }
+        h4{
+          &.light {
+            color: white;
+            background: rgba(198, 19, 19, 0.95);
+            font-size: 16px;
+          }
+
+          &.dark {
+            color: white;
+            background: rgba(23, 23, 23, 0.85); 
+          }
+          padding: 2%;
+          position: absolute;
+          width: 60%;
+          overflow: hidden;
+          font-size: 20px;
+          line-height: 28px;
+          bottom: 4%;
+          right: 1.3%;
+        }
 
 
 
-		p{
-			color: white;
-			font-size: 14pt;
-		}
-		&.double {
-			width: 32em;
-			.img-holder {
-				height: 60%;
-			}
+        p{
+          color: white;
+          font-size: 14pt;
+        }
+        &.double {
+          width: 32em;
+          .img-holder {
+            height: 60%;
+          }
 
-			h3 {
-				height: 15%;
-				font-size: 1.3em;
-				line-height: 2em;
-			}
-			h4 {
-				top: 70%;
-				background: #fde700;
-			}
-		}
-	}
-}
-.brand-image-div {
-	height: 150px;
-	overflow: hidden;
-}
+          h3 {
+            height: 15%;
+          }
+          h4 {
+            top: 70%;
+            background: #fde700;
+          }
+        }
+      }
+    }
+  }
+  .brand-image-div {
+    height: 150px;
+    overflow: hidden;
+  }
 }
 

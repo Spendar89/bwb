@@ -34,7 +34,7 @@ class BikeInventoriesController < ApplicationController
 
   def transfer
     location = params[:inventory][:location]
-    store_id = Store.find_by_location(location.capitalize).id
+    store_id = Store.find_by_location(location.split.map(&:capitalize).join(" ")).id
     @bike_inventory = BikeInventory.where(id: params[:inventory][:inventory])
     if  @bike_inventory.update_all(store_id: store_id)
        render json: @bike_inventory.to_json

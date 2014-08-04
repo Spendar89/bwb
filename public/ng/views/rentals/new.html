@@ -1,6 +1,6 @@
 <div fade-in="200" id="rentals-div" ng-controller="RentalsCtrl">
 
-	<div class="col-sm-6 col-sm-offset-2 modal-div" id="confirmation-step" modal-slide-down="showConfirmation">
+	<div class="col-sm-12  modal-div" id="confirmation-step" modal-slide-down="showConfirmation">
 		<div class="hide-modal-div pull-right col-sm-1">
 			<a class="pull-right" href="" ng-click="showConfirmation = false"><i class="fa fa-times-circle-o fa-2x"></i></a>
 		</div>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 
-	<div opacity-down="showConfirmation" opacity-up="hideConfirmation" class="steps-div col-sm-6">
+	<div opacity-down="showConfirmation" opacity-up="hideConfirmation" class="steps-div col-sm-12">
 		<div class="col-sm-12 rental-step" id="customer-step">
 			<div class="overlay"></div>
 			<h1 class="step-header">Reserve a Rental</h1>
@@ -77,37 +77,37 @@
 					<div class="col-sm-4">
 						<h4 class="quantity-header">Hybrid/Comfort</h4>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.hybridQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="S" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.hybridQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="Small" class="form-control col-sm-12 quantity-input" />
 						</div>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.hybridQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="M" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.hybridQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="Medium" class="form-control col-sm-12 quantity-input" />
 						</div>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.hybridQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="L" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.hybridQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="Large" class="form-control col-sm-12 quantity-input" />
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<h4 class="quantity-header">Mountain</h4>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.roadQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="S" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.roadQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="Small" class="form-control col-sm-12 quantity-input" />
 						</div>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.roadQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="M" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.roadQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="Medium" class="form-control col-sm-12 quantity-input" />
 						</div>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.roadQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="L" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.roadQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="Large" class="form-control col-sm-12 quantity-input" />
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<h4 class="quantity-header">Road</h4>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.mountainQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="S" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.mountainQuantitiesSmall" ng-pattern="/\b\d\b/" placeholder="Small" class="form-control col-sm-12 quantity-input" />
 						</div>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.mountainQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="M" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.mountainQuantitiesMedium" ng-pattern="/\b\d\b/" placeholder="Medium" class="form-control col-sm-12 quantity-input" />
 						</div>
 						<div class="col-sm-4 quantity-input-div">
-							<input ng-model="rental.mountainQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="L" class="form-control col-sm-12 quantity-input" />
+							<input ng-model="rental.mountainQuantitiesLarge" ng-pattern="/\b\d\b/" placeholder="Large" class="form-control col-sm-12 quantity-input" />
 						</div>
 					</div>
 				</div>
@@ -128,7 +128,7 @@
 		</div>
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-12">
 		<div opacity-down="showConfirmation" opacity-up="hideConfirmation" class="rentals-prices-div pull-left opacity-full opacity-faded">
 			<div class="header-div">
 				<h1 class="step-header">Rental Rates</h1>

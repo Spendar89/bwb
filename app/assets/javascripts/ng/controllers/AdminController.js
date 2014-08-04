@@ -14,6 +14,9 @@ angular.module('app').controller('AdminCtrl', ['$scope', '$http', '$routeParams'
       }, {
         href: "#/bikes/new",
         description: "Add A Bike"
+      }, {
+        href: "#/rentals/",
+        description: "View Rentals"
       }
 
     ];

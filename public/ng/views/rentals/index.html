@@ -1,0 +1,27 @@
+<div class="col-sm-12 header">
+  <h1>View Rentals</h1>
+</div>
+<div id="rentals-table" class="table-responsive col-sm-12">
+  <table class="table">
+    <tr>
+      <th><a href="" ng-click="order='id';reverse=(idReverse=!idReverse)">Confirmation</a></th>
+      <th><a href="" ng-click="order='date';reverse=(dateReverse=!dateReverse)">Date</a></th>
+      <th><a href="" ng-click="order='time';reverse=(timeReverse=!timeReverse)">Time</a></th>
+      <th><a href="" ng-click="order='firstName';reverse=(firstNameReverse=!firstNameReverse)">First Name</a></th>
+      <th><a href="" ng-click="order='lastName';reverse=(lastNameReverse=!lastNameReverse)">Last Name</a></th>
+      <th><a href="" ng-click="order='email';reverse=(emailReverse=!emailReverse)">Email</a></th>
+      <th><a href="" ng-click="order='store.location';reverse=(locationReverse=!locationReverse)">Location</a></th>
+    </tr>
+
+    <tr ng-repeat="rental in rentals|orderBy:order:reverse" ng-show="paginate($index)">
+      <td>{{ rental.id }}</td>
+      <td>{{ convertDate(rental.date) }}</td>
+      <td>{{ rental.time }}</td>
+      <td>{{ rental.firstName }}</td>
+      <td>{{ rental.lastName }}</td>
+      <td>{{ rental.email }}</td>
+      <td>{{ rental.store.location }}</td>
+      <td>
+    </tr>
+  </table>
+</div>

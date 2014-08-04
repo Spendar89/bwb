@@ -1,12 +1,10 @@
 angular.module('inventory.controllers').controller('InventoryCtrl', ['$scope', '$http', '$routeParams', '$location','Inventory', 'Bike', '$resource', '$timeout', '$anchorScroll', function($scope, $http, $routeParams, $location, Inventory, Bike, $resource, $timeout, $anchorScroll){
 
 	$scope.order="bike.brand"
-
 	$scope.locationNames = ["Bethesda", "Georgetown", "Old Town", "Arlington", "Potomac"]
-
 	$scope.disableBtn = false;
-
 	$scope.showNumber = 50;
+    $scope.transferLocation = "Bethesda"
 	
 	Inventory.query().then(function(response){
 		$scope.inventories = response
@@ -47,23 +45,33 @@ angular.module('inventory.controllers').controller('InventoryCtrl', ['$scope', '
 		});
 	};
 
-	$scope.makeTransfer = function() {
-		var filteredTransfers = _.filter($scope.inventories, function(inv) {
+    $scope.anyTransfers = window.anyTransfers = function () {
+        return _.any($scope.selectedTransfers());
+    };
+
+    $scope.selectedTransfers = function () {
+		return _.filter($scope.inventories, function(inv) {
 			return inv.transfer;
-		})
+		});
+    };
 
-		var transfers = _.map(filteredTransfers, function(inv) {
+	$scope.makeTransfer = function() {
+        var transfers = $scope.selectedTransfers();
+		var inventory = _.map(transfers, function(inv) {
 			return inv.id
-		})
+		});
 
-		console.log(transfers)
+        var location = $scope.transferLocation;
 
-		$scope.transferLocation = "Bethesda"
-
-		Inventory.$post("bike_inventories/transfer", { inventory: transfers, location: $scope.transferLocation }).then(function(response) {
-			console.log(response)
-			$scope.transferSuccess = true;
-		})
+		Inventory.$post("bike_inventories/transfer", { inventory: inventory, location: location }).then(function(response) {
+            $timeout(function () {
+                _.each(transfers, function (t) {
+                    t.store.location = location
+                    t.transfer = false;
+                });
+                $scope.transferSuccess = true;
+            });
+        })
 	}
 
 

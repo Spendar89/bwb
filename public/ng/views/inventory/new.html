@@ -42,10 +42,19 @@
 			</form>
 		</div>
 		<div id="bike-inventory-table-div" load-more class="col-sm-8 container">
-			<h1 class="row center-text">
-				View Bike Inventory
-			</h1>
-			<button  flash-btn="transferSuccess" flash-failure="Error!" flash-waiting="Transfering..." flash-success="Transfered!" id="transfer-inv-btn" class="btn btn-primary" ng-click="makeTransfer()">Transfer Inventory</button>
+      <div class="col-sm-12 header-div">
+        <h1 class="row">
+          <div class="col-sm-6">View Bike Inventory</div>
+          <div class="transfer-div col-sm-6">
+            <div class="col-sm-8 transfer-location-div">
+              <select ng-model="transferLocation" placeholder="Transfer To" ng-options="locationName for locationName in locationNames" class="form-control col-sm-12" required>
+                <option value="">Select Location</option>
+              </select>
+            </div>
+            <button  flash-btn="transferSuccess" flash-failure="Error!" flash-waiting="Transfering..." flash-success="Transfered!" id="transfer-inv-btn" class="btn col-sm-4 inv-transfer-btn" ng-disabled="!anyTransfers()" ng-class="{'btn-success': anyTransfers()}" ng-click="makeTransfer()">Transfer</button>
+          </div>
+        </h1>
+      </div>
 			<div id="bike-inventory-table" class="table-responsive col-sm-12">
 				<table class="table">
 					<tr>
@@ -57,7 +66,7 @@
 						<th><a href="" ng-click="order='size';reverse=(sizeReverse=!sizeReverse)">Size</a></th>
 						<th><a href="" ng-click="order='store.location';reverse=(locationReverse=!locationReverse)">Location</a></th>
 						<th><a href="" ng-click="order='sold';reverse=(soldReverse=!soldReverse)">Sold</a></th>
-						<th><a href="">Edit</a></th>
+						<th><a href="">Transfer</a></th>
 					</tr>
 					
 					<tr ng-repeat="inv in inventories|orderBy:order:reverse" ng-show="$index < showNumber">
@@ -67,11 +76,11 @@
 						<td>{{ inv.bike.cost || "N/A" }}</td>
 						<td>{{ inv.bike.price }}</td>
 						<td>{{ inv.size }}</td>
-						<td><edit-input  ng-model="inv.store.location" /></td>
+            <td> {{inv.store.location}}</td>
 						<td>false</td>
 						<td>
-							<a href="" ng-click="inv.transfer = !inv.transfer" ng-show="!inv.transfer"><i class="col-sm-12 glyphicon glyphicon-large glyphicon-pencil"></i></a>
-							<a href="" ng-click="inv.transfer = !inv.transfer" ng-show="inv.transfer"><i class="col-sm-12 glyphicon glyphicon-large glyphicon-ok"></i></a>
+							<a href="" ng-click="inv.transfer = !inv.transfer" ng-show="!inv.transfer"><i class="col-sm-12 glyphicon glyphicon-large muted glyphicon-ok"></i></a>
+							<a href="" ng-click="inv.transfer = !inv.transfer" ng-show="inv.transfer"><i class="col-sm-12 glyphicon glyphicon-large selected glyphicon-ok"></i></a>
 						</td>
 					</tr>
 				</table>

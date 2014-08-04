@@ -1,5 +1,9 @@
-angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$routeParams', '$location', 'Bike', 'FilterService', 'BikeImages', '$timeout', '$resource',
-  function($scope, $http, $routeParams, $location, Bike, FilterService, BikeImages, $timeout, $resource) {
+angular.module('bike.controllers')
+.controller('BikeCtrl', ['$scope', '$http', '$routeParams', 
+            '$location', 'Bike', 'FilterService', 'BikeImages', 
+            '$timeout', '$resource', 
+            function ($scope, $http, $routeParams, $location, Bike, 
+                      FilterService, BikeImages, $timeout, $resource) {
 
     $scope.hideBikes = true;
 
@@ -27,11 +31,8 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
     };
 
     $scope.master = {};
-
     $scope.images = [];
-
     $scope.recentlyAddedBikes = [];
-
     $scope.filterTerms = undefined;
 
     $scope.showBike = function(bike) {
@@ -42,7 +43,8 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
       var bike = $scope.bike;
       return _.filter($scope.bikes, function(b) {
         if (!bike) return false;
-        var inPriceRange = (b.price >= (bike.price - 100) && b.price <= (bike.price + 100));
+        var inPriceRange = (b.price >= (bike.price - 100) 
+                            && b.price <= (bike.price + 100));
         var sameKind = (b.kind === bike.kind);
         var notSame = (b.id != bike.id);
         if (inPriceRange && sameKind && notSame) return b;
@@ -54,15 +56,11 @@ angular.module('bike.controllers').controller('BikeCtrl', ['$scope', '$http', '$
     };
 
     $scope.getImages = function(bike) {
-      // $('#loader-container').fadeIn();
       $scope.loadingImages = true;
       BikeImages.query(bike).then(function(response) {
         $scope.loadingImages = false;
         $scope.images = response;
         $scope.current_index = 0;
-        // $('.image-controls').show();
-        // $('#submit-div').css('visibility', 'visible');
-        // $('#loader-container').fadeOut();
       });
     };
 
