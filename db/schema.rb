@@ -13,20 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20140513034426) do
 
-  create_table "average_points", :force => true do |t|
-    t.integer  "player_id"
-    t.float    "average"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "average_pts", :force => true do |t|
-    t.integer  "player_id"
-    t.float    "average"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "bike_inventories", :force => true do |t|
     t.integer  "bike_id"
     t.string   "size"
@@ -94,66 +80,6 @@ ActiveRecord::Schema.define(:version => 20140513034426) do
     t.integer  "phone_number"
   end
 
-  create_table "events", :force => true do |t|
-    t.integer  "game_id"
-    t.integer  "player_id"
-    t.integer  "count"
-    t.integer  "type"
-    t.integer  "action"
-    t.integer  "period"
-    t.time     "time_rem"
-    t.string   "desc"
-    t.string   "score"
-    t.integer  "margin"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "games", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "home_team_id"
-    t.integer  "away_team_id"
-    t.date     "date"
-    t.string   "season"
-  end
-
-  create_table "inventories", :force => true do |t|
-    t.integer  "store_id"
-    t.integer  "bike_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "lineups", :force => true do |t|
-    t.integer  "game_id"
-    t.integer  "team_id"
-    t.integer  "start_count"
-    t.integer  "end_count"
-    t.float    "start_time"
-    t.float    "end_time"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "players", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "team_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "players_lineups", :force => true do |t|
-    t.integer  "lineup_id"
-    t.integer  "player_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-# Could not dump table "products" because of following StandardError
-#   Unknown type 'json' for column 'properties'
-
   create_table "rental_bikes", :force => true do |t|
     t.integer  "rental_id"
     t.string   "kind"
@@ -184,43 +110,6 @@ ActiveRecord::Schema.define(:version => 20140513034426) do
     t.integer  "road_quantities_large"
   end
 
-  create_table "rented_bikes", :force => true do |t|
-    t.integer  "rental_id"
-    t.integer  "used_bike_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "statlines", :force => true do |t|
-    t.integer  "player_id"
-    t.integer  "game_id"
-    t.integer  "pts"
-    t.integer  "rbs"
-    t.integer  "fgm"
-    t.integer  "fga"
-    t.float    "fg_pct"
-    t.integer  "fg3m"
-    t.integer  "fg3a"
-    t.float    "fg3_pct"
-    t.integer  "ftm"
-    t.integer  "fta"
-    t.float    "ft_pct"
-    t.integer  "oreb"
-    t.integer  "dreb"
-    t.integer  "ast"
-    t.integer  "stl"
-    t.integer  "blk"
-    t.string   "tointeger"
-    t.integer  "pf"
-    t.integer  "plus_minus"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "reb"
-    t.integer  "to"
-    t.integer  "team_id"
-    t.float    "min"
-  end
-
   create_table "stores", :force => true do |t|
     t.string   "location"
     t.datetime "created_at", :null => false
@@ -229,20 +118,6 @@ ActiveRecord::Schema.define(:version => 20140513034426) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "teams", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "city"
-    t.string   "nickname"
-  end
-
-  create_table "truck_runs", :force => true do |t|
-    t.datetime "date"
-    t.boolean  "complete"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
