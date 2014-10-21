@@ -1,102 +1,102 @@
 <div id="loader-container" ng-show="loadingImages">
-	<div id="loader-div">
-		<img id="loader-img" src="/assets/bwb_ajax_loader.gif"/>
-	</div>
+  <div id="loader-div">
+    <img id="loader-img" src="/assets/bwb_ajax_loader.gif"/>
+  </div>
 </div>
 <div>
-	<h1 class="header inline col-sm-12">Add A Bike:</h1>
-	<div class="row new-div">
-		<form novalidate class="simple-form form-horizontal col-sm-12">
-			<div class="col-sm-4 basic-details-div">
-				<h4> Basic Details </h4>
-				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Brand:" ng-model="bike.brand" typeahead="brand for brand in brands| filter:$viewValue |limitTo:8"/>
-				</div>
-				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Model:" ng-model="bike.model"/>
-				</div>
-				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Type:" ng-model="bike.kind" typeahead="kind for kind in kinds| filter:$viewValue | limitTo:8"/>
-				</div>
-				<div class="form-group col-sm-12">
-					<textarea class="form-control" rows="3" placeholder="description:" ng-model="bike.description"></textarea>
-				</div>
-				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Headline:" ng-model="bike.headline"/>
-				</div>
-				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Material:" ng-model="bike.material" typeahead="material for material in materials| filter:$viewValue |limitTo:8"/>
-				</div>
-				<div class="form-group col-sm-12">
-					<input class="form-control" type="text" placeholder="Groupset:" ng-model="bike.groupset" typeahead="groupset for groupset in groupsets| filter:$viewValue |limitTo:8"/>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-4">
-						<input class="form-control" type="number" placeholder="Price:" ng-model="bike.price"/>
-					</div>
-					<div class="col-sm-4">
-						<input class="form-control" type="number" placeholder="Year:" ng-model="bike.year"/>
-					</div>
-					<div class="col-sm-4">
-						<input class="form-control" type="number" placeholder="Speeds:" ng-model="bike.speeds"/>
-					</div>
-				</div>
-			</div>
-			<div class="radios-div col-sm-4">
-				<div class="form-group col-sm-12 radio-div">
-					<h4>Comfort</h4>
-					<label bikeradio ng-repeat="i in [1,2,3,4,5]" class="col-sm-2 btn btn-default form-radio">
-						{{i}}
-						<input type="radio" ng-model="bike.comfort" value="{{i}}" />
-					</label>
-				</div>
-				<div class="form-group col-sm-12 radio-div">
-					<h4>Performance</h4>
-					<label bikeradio ng-repeat="i in [1,2,3,4,5]" class="col-sm-2 btn btn-default form-radio">
-						{{i}}
-						<input type="radio" ng-model="bike.performance" value="{{i}}" />
-					</label>
-				</div>
-				<div class="form-group col-sm-12 radio-div">
-					<h4>Weight</h4>
-					<label bikeradio ng-repeat="i in [1,2,3,4,5]" class="col-sm-2 btn btn-default form-radio">
-						{{i}}
-						<input type="radio" ng-model="bike.weight" value="{{i}}" />
-					</label>
-				</div>
-				<div class="form-group col-sm-12">
-					<button class="btn btn-default search-form-btn col-sm-12" ng-click="getImages(bike)">Search</button>
-				</div>
-			</div>
-			<div id="image-preview-div" class="col-sm-4">
-				<h4>Select Image </h4>
-				<div id="image_preview_main" class="row">
-					<h5 class="col-sm-12">Once you fill out basic details, click the search button to select an image.</h5>
-					<div class="image_results" ng-model="images">
-						<div class="col-sm-12">
-							<div id="img-holder">
-								<div ng-repeat="image in images" ng-show="image.index === current_index">
-									<div class="col-sm-12 row current-image-display-div">
-										<h5 class="row col-sm-5 display">Image {{image.index + 1}}/{{images.length}}</h5>
-										<div class="image-controls col-sm-6">
-											<a href="" class="btn btn-default back col-sm-5" ng-click="lastImage()">Back</a>
-											<a href="" class="btn btn-default next col-sm-5 col-sm-offset-1" ng-click="nextImage()">Next</a>
-										</div>
-									</div>
-									<img  ng-src="{{image.url}}" class="img-rounded preview-img"/>
-								</div>
-							</div>
-						</div>
+  <h1 class="header inline col-sm-12">Add A Bike:</h1>
+  <div class="row new-div">
+    <form novalidate class="simple-form form-horizontal col-sm-12">
+      <div class="col-sm-4 basic-details-div">
+        <h4> Basic Details </h4>
+        <div class="form-group col-sm-12">
+          <input class="form-control" type="text" placeholder="Brand:" ng-model="bike.brand" typeahead="brand for brand in brands| filter:$viewValue |limitTo:8"/>
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="form-control" type="text" placeholder="Model:" ng-model="bike.model"/>
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="form-control" type="text" placeholder="Type:" ng-model="bike.kind" typeahead="kind for kind in kinds| filter:$viewValue | limitTo:8"/>
+        </div>
+        <div class="form-group col-sm-12">
+          <textarea class="form-control" rows="3" placeholder="description:" ng-model="bike.description"></textarea>
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="form-control" type="text" placeholder="Headline:" ng-model="bike.headline"/>
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="form-control" type="text" placeholder="Material:" ng-model="bike.material" typeahead="material for material in materials| filter:$viewValue |limitTo:8"/>
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="form-control" type="text" placeholder="Groupset:" ng-model="bike.groupset" typeahead="groupset for groupset in groupsets| filter:$viewValue |limitTo:8"/>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <input class="form-control" type="number" placeholder="Price:" ng-model="bike.price"/>
+          </div>
+          <div class="col-sm-4">
+            <input class="form-control" type="number" placeholder="Year:" ng-model="bike.year"/>
+          </div>
+          <div class="col-sm-4">
+            <input class="form-control" type="number" placeholder="Speeds:" ng-model="bike.speeds"/>
+          </div>
+        </div>
+      </div>
+      <div class="radios-div col-sm-4">
+        <div class="form-group col-sm-12 radio-div">
+          <h4>Comfort</h4>
+          <label bikeradio ng-repeat="i in [1,2,3,4,5]" class="col-sm-2 btn btn-default form-radio">
+            {{i}}
+            <input type="radio" ng-model="bike.comfort" value="{{i}}" />
+          </label>
+        </div>
+        <div class="form-group col-sm-12 radio-div">
+          <h4>Performance</h4>
+          <label bikeradio ng-repeat="i in [1,2,3,4,5]" class="col-sm-2 btn btn-default form-radio">
+            {{i}}
+            <input type="radio" ng-model="bike.performance" value="{{i}}" />
+          </label>
+        </div>
+        <div class="form-group col-sm-12 radio-div">
+          <h4>Weight</h4>
+          <label bikeradio ng-repeat="i in [1,2,3,4,5]" class="col-sm-2 btn btn-default form-radio">
+            {{i}}
+            <input type="radio" ng-model="bike.weight" value="{{i}}" />
+          </label>
+        </div>
+        <div class="form-group col-sm-12">
+          <button class="btn btn-default search-form-btn col-sm-12" ng-click="getImages(bike)">Search</button>
+        </div>
+      </div>
+      <div id="image-preview-div" class="col-sm-4">
+        <h4>Select Image </h4>
+        <div id="image_preview_main" class="row">
+          <h5 class="col-sm-12">Once you fill out basic details, click the search button to select an image.</h5>
+          <div class="image_results" ng-model="images">
+            <div class="col-sm-12">
+              <div id="img-holder">
+                <div ng-repeat="image in images" ng-show="image.index === current_index">
+                  <div class="col-sm-12 row current-image-display-div">
+                    <h5 class="row col-sm-5 display">Image {{image.index + 1}}/{{images.length}}</h5>
+                    <div class="image-controls col-sm-6">
+                      <a href="" class="btn btn-default back col-sm-5" ng-click="lastImage()">Back</a>
+                      <a href="" class="btn btn-default next col-sm-5 col-sm-offset-1" ng-click="nextImage()">Next</a>
+                    </div>
+                  </div>
+                  <img  ng-src="{{image.url}}" class="img-rounded preview-img"/>
+                </div>
+              </div>
+            </div>
 
-					</div>
-				</div>
-				<div id="submit-div" ng-show="images.length > 0">
-					<button class="btn btn-default col-sm-12 search-form-btn" ng-click="create(bike)">
-						Create Bike
-					</button>
-				</div>
-			</div>
-		</form>
+          </div>
+        </div>
+        <div id="submit-div" ng-show="images.length > 0">
+          <button class="btn btn-default col-sm-12 search-form-btn" ng-click="create(bike)">
+            Create Bike
+          </button>
+        </div>
+      </div>
+    </form>
 
-	</div>
+  </div>
 </div>

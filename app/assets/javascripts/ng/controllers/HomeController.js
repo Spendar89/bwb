@@ -39,6 +39,7 @@ angular.module('app').controller('HomeCtrl', ['$scope', '$http', '$routeParams',
             currentEvent.style = {
                 background: "url(" + imageUrl + ") no-repeat",
                 "background-size": "cover",
+                "color": currentEvent.color,
                 width: $("#big-slide-div").css("width")
             };
             return currentEvent.style;

@@ -1,19 +1,19 @@
 <div ng-controller="BikeCtrl" ng-show="bike" ng-model="bike" id="bike-show">
-	<div class="col-sm-12">
-		<div>
-			<div class="bike-header col-sm-12">
-				<h1>{{ bike.brand }} {{ bike.model }} - ${{ bike.price }}</h1>
-			</div>
-			<div class="main-bike-left col-sm-12 col-md-7">
+  <div class="col-sm-12">
+    <div>
+      <div class="bike-header col-sm-12">
+        <h1>{{ bike.brand }} {{ bike.model }} - ${{ bike.price }}</h1>
+      </div>
+      <div class="main-bike-left col-sm-12 col-md-7">
         <div class="col-sm-12 bike-img-div">
           <img ng-src="{{bike.imageUrl}}" class="img fit"/>
         </div>
-				<div class="col-sm-12 info-div">
-					<h2 class="headline">{{bike.headline}}</h2>
-					<h4 class="description">{{ bike.description }}</h4>
-				</div>
-			</div>
-			<div class="main-bike-right col-sm-12 col-md-4 col-md-offset-1">
+        <div class="col-sm-12 info-div">
+          <h2 class="headline">{{bike.headline}}</h2>
+          <h4 class="description">{{ bike.description }}</h4>
+        </div>
+      </div>
+      <div class="main-bike-right col-sm-12 col-md-4 col-md-offset-1">
         <div class="stats-div col-sm-12">
           <div class="col-sm-12 stats-header">
             <h2>At a Glance</h2>
@@ -23,26 +23,32 @@
               <div class="col-sm-4 pull-left">
                 <h4>Comfort:</h4>
               </div>
-              <div class="col-sm-1 pull-left" ng-repeat="i in range(bike.comfort)">
-                <i class="fa fa-star-o"></i>
+              <div class="col-sm-8 pull-left">
+                <div class="col-sm-1 pull-left" ng-repeat="i in range(bike.comfort)">
+                  <i class="fa fa-star-o"></i>
+                </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-sm-4 pull-left">
-                <h4>Performance:</h4>
+                <h4>Power:</h4>
               </div>
-              <div class="col-sm-1 pull-left" ng-repeat="i in range(bike.performance)">
-                <i class="fa fa-star-o"></i>
+              <div class="col-sm-8 pull-left">
+                <div class="col-sm-1 pull-left" ng-repeat="i in range(bike.performance)">
+                  <i class="fa fa-star-o"></i>
+                </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-sm-4 pull-left">
-                <h4>Weight:</h4>
+                <h4>Agility:</h4>
               </div>
-              <div class="col-sm-1 pull-left" ng-repeat="i in range(bike.weight)">
-                <i class="fa fa-star-o"></i>
+              <div class="col-sm-8 pull-left">
+                <div class="col-sm-1 pull-left" ng-repeat="i in range(bike.weight)">
+                  <i class="fa fa-star-o"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -59,31 +65,31 @@
             <h4>Components: <span>{{ bike.groupset }}</span> </h4>
           </div>
         </div>
-        <form action="" method="POST" class="stripe-form-xtra">
-          <script
-            src="https://checkout.stripe.com/checkout.js" 
-            class="stripe-button"
-            data-key="pk_test_YYIuK8jwSajhJUDJ7HfmcH7Y"
-            data-amount="{{bike.price * 100}}"
-            data-name="Big Wheel Bikes Checkout"
-            data-description="{{bike.brand}} {{bike.model}}"
-          </script>
-        </form>
-			</div>
-			<div class="col-sm-12">
-				<div class="sim-div" ng-show="findSimilar().length > 0">
-					<div class="sim-header">
-						<h2>Similar Bikes</h2>
-						<h4><i>It's always a good idea to consider a few bikes before making a final decision.  If you like the {{bike.brand}} {{ bike.model }}, we think you'll like these bikes as well.</i></h4>
-					</div>
-					<div class="sim-body">
-						<a class="col-sm-5" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
-							<img ng-src="{{sim.imageUrl}}" class="img sim-image col-sm-12" />
-							<h5> {{ sim.brand + " " + sim.model }} </h5>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <!--<form action="" method="POST" class="stripe-form-xtra">-->
+        <!--<script-->
+        <!--src="https://checkout.stripe.com/checkout.js" -->
+        <!--class="stripe-button"-->
+        <!--data-key="pk_test_YYIuK8jwSajhJUDJ7HfmcH7Y"-->
+        <!--data-amount="{{bike.price * 100}}"-->
+        <!--data-name="Big Wheel Bikes Checkout"-->
+        <!--data-description="{{bike.brand}} {{bike.model}}"-->
+        <!--</script>-->
+        <!--</form>-->
+      </div>
+      <div class="col-sm-12">
+        <div class="sim-div" ng-show="findSimilar().length > 0">
+          <div class="sim-header">
+            <h2>Similar Bikes</h2>
+            <h4><i>It's always a good idea to consider a few bikes before making a final decision.  If you like the {{bike.brand}} {{ bike.model }}, we think you'll like these bikes as well.</i></h4>
+          </div>
+          <div class="sim-body">
+            <a class="col-sm-5" ng-repeat="sim in findSimilar()" ng-href="/#/bikes/{{sim.id}}">
+              <img ng-src="{{sim.imageUrl}}" class="img sim-image col-sm-12" />
+              <h5> {{ sim.brand + " " + sim.model }} </h5>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

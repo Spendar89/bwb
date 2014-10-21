@@ -3,14 +3,14 @@ class CurrentEventsController < ApplicationController
 
   def create
     @current_event = CurrentEvent.new(params[:current_event])
-    if @current_event.save
+    if @current_event.save!
       render json: @current_event
     end
   end
 
   def update
     @current_event = CurrentEvent.find_by_id(params[:current_event][:id])
-    if @current_event.update_attributes!(params[:current_event].slice(:content, :image, :title))
+    if @current_event.update_attributes!(params[:current_event].slice(:content, :image, :title, :color, :content_color, :background_color))
       render json: @current_event
     end
 

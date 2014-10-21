@@ -2,8 +2,17 @@ class RentalsController < ApplicationController
   respond_to :json
 
   def index
-    @rentals = Rental.all.to_json(include: :store)
+    if params[:all]
+      @rentals = Rental.all.to_json(include: :store) 
+    else
+      @rentals = Rental.current.to_json(include: :store)
+    end
     render json: @rentals
+  end
+
+  def show
+    @rental = Rental.find(params[:id])
+    render json: @rental
   end
 
   def create
@@ -14,6 +23,15 @@ class RentalsController < ApplicationController
       render json: @rental
     else
       render json: { errors: @rental.errors.full_messages }, status: 422
+    end
+  end
+
+  def destroy
+    @rental = Rental.find_by_id params[:id]
+    if @rental.try(:destroy)
+      render nothing: true, status: 200
+    else
+      render json: {errors: "Rental does not exist"}, status: 404
     end
   end
 

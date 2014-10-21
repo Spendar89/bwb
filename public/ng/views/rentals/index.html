@@ -1,5 +1,13 @@
-<div class="col-sm-12 header">
-  <h1>View Rentals</h1>
+<div class="col-sm-5 header margin-bottom">
+  <h1 style="margin-top:0px">View Rentals</h1>
+</div>
+<div class="col-sm-7 header form-group pull-right">
+        <div class="col-sm-5">
+                <label class="control-label">Find A Rental By Confirmation Number</label>
+        </div>
+        <div class="col-sm-7">
+                <input class="form-control" ng-model="confirmationSearch" placeholder="Start Typing Confirmation Number" ng-change="searchByConfirmation()"/>
+        </div>
 </div>
 <div id="rentals-table" class="table-responsive col-sm-12">
   <table class="table">
@@ -21,7 +29,7 @@
       <td>{{ rental.lastName }}</td>
       <td>{{ rental.email }}</td>
       <td>{{ rental.store.location }}</td>
-      <td>
+      <td><a ng-click="destroyRental(rental, $index)" class="btn btn-danger">Cancel</a></td>
     </tr>
   </table>
 </div>

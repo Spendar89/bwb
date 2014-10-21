@@ -13,10 +13,37 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$rout
       $scope.rental = _.extend($scope.rental, $scope.customer);
       $scope.rental.save().then(function (rental) {
         $scope.showConfirmation = true;
-      }, function (error) {
-        console.log(error);
-      });
+        $(window).scrollTop(0);
+      }, function (error) {});
     };
+
+    $scope.destroyRental = function (rental, i) {
+        rental.remove().then(function (data) {
+            console.log("DATA", data);
+            $scope.rentals.splice(i);
+        })
+    }
+
+    $scope.searchByConfirmation = function () {
+        if (!$scope.confirmationSearch) {
+            $scope.getRentals();
+        } else {
+            Rental.get($scope.confirmationSearch).then(function (rental) {
+                if (rental) {
+                    rental.date = rental.time;
+                    rental.time = $scope.convertTime(rental.time);
+                    $scope.rentals = [rental];
+                } else {
+                    $scope.getRentals();
+                }
+            })
+        }
+    }
+
+    $scope.$watch($scope.confirmationSearch, function (val) {
+        console.log("here", val)
+        if (!val) $scope.getRentals();
+    })
 
     $scope.convertDate = function (time) {
        return new Date(time).toLocaleDateString();
@@ -39,14 +66,15 @@ angular.module('rental.controllers').controller('RentalsCtrl', ['$scope', '$rout
         return index >= $scope.showMin && index < $scope.showMax;
     }
 
-	Rental.query().then(function(response){
-        $scope.rentals = _.map(response, function (r) {
-            r.date = r.time;
-            r.time = $scope.convertTime(r.time);
-            return r;
+    $scope.getRentals = function () {
+        Rental.query().then(function(response){
+            $scope.rentals = _.map(response, function (r) {
+                r.date = r.time;
+                r.time = $scope.convertTime(r.time);
+                return r;
+            });
         });
-	});
-
+    }
     $scope.startTimes = _.range(11, 18);
   }
 ]);

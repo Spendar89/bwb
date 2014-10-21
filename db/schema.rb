@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140513034426) do
+ActiveRecord::Schema.define(:version => 20140922220953) do
 
   create_table "bike_inventories", :force => true do |t|
     t.integer  "bike_id"
@@ -63,12 +63,15 @@ ActiveRecord::Schema.define(:version => 20140513034426) do
     t.string   "title"
     t.text     "content"
     t.string   "key"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "color",              :default => "white"
+    t.string   "content_color",      :default => "#333"
+    t.string   "background_color",   :default => "rgba(255,255,255, 0.9)"
   end
 
   create_table "customers", :force => true do |t|

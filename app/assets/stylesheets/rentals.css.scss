@@ -41,7 +41,6 @@ $font-weight-placeholder: normal;
 }
 
 .step-header {
-	color: $font-color-header;
 	font-weight: $font-weight-header;
 	text-align: center;
 }
@@ -52,14 +51,10 @@ $font-weight-placeholder: normal;
 	}
 	color: #333 !important;
 	background: $background-color-primary;
-	padding: 3%;
-	border: $border-primary;
-	border-radius: $border-radius-on;
 	.overlay {
 		display: none;
 	}
 	.form-group {
-		margin-bottom: 0px;
 	}
 
 	.quantity-header {
@@ -71,14 +66,10 @@ $font-weight-placeholder: normal;
 	}
 
 	input, select, textarea {
-		border-radius: 0px;
 		height: 60px;
+    margin-top: 15px;
 		font-size: 18pt;
-		margin-bottom: 15px;
 		text-align: center;
-		// border: none !important;
-		border: $border-secondary;
-		border-radius: $border-radius-on;
 		&.quantity-input {
 			font-size: 10pt;
 			padding: 0px;
@@ -96,10 +87,7 @@ $font-weight-placeholder: normal;
 	}
 
 	.section-label {
-		margin-top: 0;
-		margin-bottom: 15px;
 		font-size: 20pt;
-		line-height: 25pt;
 	}
 
 	.btn-default {
@@ -109,16 +97,10 @@ $font-weight-placeholder: normal;
 		padding: 10px;
 		width: 100%;
 		font-size: 20pt;
-		margin-top: 20px;
-		border: none;
-		margin: 0 auto;
 		display: block;
-		margin-top: 20px;
-		border-radius: $border-radius-on;
 	}
 
 	&.disabled {
-		border: 2pt solid rgba(0, 0, 0, 0.15);
 		.overlay {
 			display: block;
 			height: 300px;
@@ -139,36 +121,35 @@ $font-weight-placeholder: normal;
 
 form.current-bikes-div{
 	padding: 20px;
-	border-left: 1px solid #dddddd;
-	border-right: 1px solid #dddddd;
-	border-bottom: 1px solid #dddddd;
 
 	.form-label {
 		font-weight: 100;
 	}
 
 	.quant-input {
-		margin-top: 20px;
-		margin-bottom: 10px;
 	}
 }
 
 #confirmation-step {
 	z-index: 10;
 	display: block;
-	position: fixed;
+	/*position: fixed;*/
 	top: -1000px;
 	background: white;
 	color: #333 !important;
-	border: 2pt solid #333 !important;
-	border-radius: $border-radius-on;
 	font-weight: bold;
-	-webkit-transition: top 0.3s ease-in-out;
-	-moz-transition: top 0.3s ease-in-out;
-	-o-transition: top 0.3s ease-in-out;
-	transition: top 0.3s ease-in-out 1s;
+	-webkit-transition: top 0.1s ease-in-out;
+	-moz-transition: top 0.1s ease-in-out;
+	-o-transition: top 0.1s ease-in-out;
+	transition: top 0.1s ease-in-out 1s;
+
+  h1, a {
+    color: white;
+  }
 
 	&.slide-down {
+    background: #333;
+    color: white !important;
 		-webkit-transition: top 0.3s ease-in-out;
 		-moz-transition: top 0.3s ease-in-out;
 		-o-transition: top 0.3s ease-in-out;
@@ -177,14 +158,13 @@ form.current-bikes-div{
 	}
 
 	.hide-modal-div {
-		margin-top: 1.5%;
 		height: 50px;
 		z-index: 1;
 		padding: 15px;
 		position: absolute;
 		right: 0px;
 		a {
-			color: #333;
+			color: white;
 			text-decoration: none;
 			&:hover {
 				color: $background-color-blue;
@@ -237,7 +217,7 @@ select.placeholder {
 }
 
 .opacity-faded {
-	opacity: 0.1;
+	opacity: 0;
 }
 
 
@@ -245,7 +225,6 @@ select.placeholder {
 	.header-div {
 
 		.category-header {
-			margin: 0 !important;
 			width: 100%;
 		}
 	}

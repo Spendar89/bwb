@@ -30,4 +30,9 @@ class Store < ActiveRecord::Base
     return all_used_bikes.compact
   end
 
+  def self.seed_stores
+    loc = ["Georgetown", "Old Town", "Bethesda", "Arlington", "Potomac"]
+    loc.each{ |l| create({ location: l }) }
+  end
+
 end

@@ -6,8 +6,8 @@
       </a> 
       <div class="big-slide-holder" ng-style="slideHolderStyle || setSlideHolderStyle()">
         <div ng-repeat="currentEvent in currentEvents" ng-style="currentEvent.style || setCurrentEventStyle(currentEvent)" class="current-event">
-          <h1 class="text-1 brandon light">{{currentEvent.title}}</h1>
-          <h4 class="light open-sans">{{currentEvent.content}}</h4>
+          <h1 class="text-1 open-sans light" ng-style="{color: currentEvent.color}">{{currentEvent.title}}</h1>
+          <h4 ng-style="{color: currentEvent.contentColor, background: currentEvent.backgroundColor}" class="bold open-sans">{{currentEvent.content}}</h4>
         </div>
       </div>
       <a href="" ng-click="slideRight()" class="next-btn right" ng-hide="isLastIndex()">
@@ -16,7 +16,7 @@
     </div>
 
 
-    <div id="featured-bikes-div" class="col-sm-12 row">
+    <div id="featured-bikes-div" class="col-sm-12">
       <h3 class="page-title brandon">Featured Bikes:</h3>
       <div ng-repeat="bike in featuredBikes" class="bike-listing index-{{ $index }} col-sm-4">
         <a id="show_bike_{{bike.id}}" class="show-bike" ng-href="/#/bikes/{{bike.id}}">
