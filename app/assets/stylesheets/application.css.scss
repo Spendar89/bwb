@@ -9,13 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
 
+ *= require font-awesome
  *= require jquery.ui.datepicker
  *= require animate
  *= require_self
  *= require_tree .
  */
 
-@import "font-awesome";
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 
