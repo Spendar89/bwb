@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/stripe/stripe-ruby
-  revision: b080e9a7d1e2eb56636cb8fe4be3fd4181337047
+  revision: 7087e38bb96d79ce35728bc1cce958edd4d939eb
   specs:
-    stripe (1.17.2)
+    stripe (1.17.3)
       json (~> 1.8.1)
       mime-types (>= 1.25, < 3.0)
       rest-client (~> 1.4)
@@ -120,7 +120,7 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    sass (3.4.9)
+    sass (3.2.19)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -162,7 +162,8 @@ DEPENDENCIES
   paperclip (~> 3.0)
   pg
   rails (= 3.2.13)
-  sass-rails (~> 3.2.3)
+  sass (~> 3.2.0)
+  sass-rails (~> 3.2.6)
   simple_form
   stripe!
   uglifier (>= 1.0.3)
