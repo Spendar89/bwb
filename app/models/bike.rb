@@ -12,7 +12,7 @@ class Bike < ActiveRecord::Base
 
   def self.image_search(brand, model, year)
     images = []
-    api_url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyACFiNUhLYiXeP94_i_9V97-bWO9XwO7MQ&cx=000102622598956013572:cohhec-3ap0&searchType=image&imageSize=large&q="
+    api_url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyC8wP4g3mnm95sljjEdWLlFZrzgbI1PhtM&cx=000102622598956013572:cohhec-3ap0&searchType=image&imageSize=large&q="
     query = URI.escape("#{brand} #{model} #{year}")
     JSON.parse(open(api_url + query).read)["items"].each_with_index{|image, i| images << {index: i, url: image["link"]}}
     images
@@ -73,3 +73,4 @@ class Bike < ActiveRecord::Base
     image.url(:thumb) if image.exists?
   end
 end
+

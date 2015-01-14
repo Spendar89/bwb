@@ -7,14 +7,14 @@
 				</h1>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<select ng-model="bikeBrand" placeholder="Brands" ng-options="bikeBrand for bikeBrand in bikeBrands" class="form-control col-sm-12" required>
+						<select ng-model="bikeBrand" placeholder="Brands" ng-options="bikeBrand for bikeBrand in bikeBrands" class="form-control col-sm-12" ng-change="getBikeModels(bikeBrand)" required>
 							<option value="">Select Brand</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<select ng-model="inventory.bike_id" placeholder="Models" ng-options="bikeModel.id as bikeModel.model for bikeModel in bikeModels(bikeBrand)" class="form-control col-sm-12" required ng-disabled="!bikeBrand">
+						<select ng-model="inventory.bike_id" placeholder="Models" ng-options="bikeModel.id as bikeModel.model for bikeModel in bikeModels" class="form-control col-sm-12" required ng-disabled="!bikeBrand">
 							<option value="">Select Model</option>
 						</select>
 					</div>

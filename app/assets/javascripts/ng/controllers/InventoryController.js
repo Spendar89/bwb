@@ -16,15 +16,18 @@ angular.module('inventory.controllers').controller('InventoryCtrl', ['$scope', '
 			return bike.brand
 		}))
 
-		$scope.bikeModels = function(brand){
+	})
+		$scope.getBikeModels = function(brand){
+            if (!brand) return [];
 			var bikes = $scope.bikes.filter(function(bike){
 				return bike.brand == brand
 			})
-			return window.bikeModels = bikes.map(function(bike){
+			$scope.bikeModels = bikes.map(function(bike){
 				return { model: bike.model, id: bike.id }
-			})
+			});
+            alert("yo")
+            return $scope.bikeModels;
 		}
-	})
 	
 	$scope.getStockNumber = function(id){
 		if (id<=999999) id = ("00000"+id).slice(-6)
