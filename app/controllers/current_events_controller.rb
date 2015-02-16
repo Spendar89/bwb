@@ -10,7 +10,7 @@ class CurrentEventsController < ApplicationController
 
   def update
     @current_event = CurrentEvent.find_by_id(params[:current_event][:id])
-    if @current_event.update_attributes!(params[:current_event].slice(:content, :image, :title, :color, :content_color, :background_color))
+    if @current_event.update_attributes!(params[:current_event].slice(:content, :image, :title, :color, :content_color, :background_color, :page_url))
       render json: @current_event
     end
 

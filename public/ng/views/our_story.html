@@ -1,0 +1,34 @@
+<div fade-in="200" id="our-story-div">
+  <div class="col-sm-12">
+
+    <div class="col-sm-12 our-story-header photo-header">
+      <h1>Our Story</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 section-description">
+        <div class="col-sm-12">
+          <h2>In 1971, Big Wheel Bikes Opened for business at 33rd and M Streets in Georgetown, next to the C&0 Canal.  The big bike on the yellow wall is a Washington, DC landmark.  Through eight presidents and 43 years, we've maintained our tradition of selling high quality bikes at discount prices to riders of all skill levels.</h2> 
+            <h2>Our largest store is in Arlington, VA. off the Spout Run exit of the GW Parkway.  Each of our four stores is next to a bike path and offers bike rentals.  At every Big Wheel Location, you'll find straight talk, courteous service, and an ability to relate to your specific cycling needs, whether you're a beginner or trathlete.  Please visit our stores and eperience first hand the Big Wheel touch.</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="repairs-section-div" ng-repeat ="(category, services) in services.byCategory">
+      <h2 class="category-header"><b> {{category.slice(2).toUpperCase()}}</b></h2>
+      <div class="service-div" ng-repeat="service in services">
+        <h3 "service-header">
+         <b>{{(service.name)? (service.name + ' :'): null }} {{service.price | currency}}</b>
+       </h3>
+       <div class="service-description-div">
+        <h4>
+          {{service.description}}
+        </h4>
+      </div>
+      <div ng-repeat="(name, price) in service.options">
+        <h4>
+          <i>{{name}}: {{price | currency}}</i>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

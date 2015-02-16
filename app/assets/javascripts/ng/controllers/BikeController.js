@@ -6,13 +6,19 @@ angular.module('bike.controllers')
                       FilterService, BikeImages, $timeout, $resource) {
 
     $scope.hideBikes = true;
+	$scope.order="bike.brand"
 
-    Bike.smartQuery(function(bikes) {
-      $scope.bikes = bikes;
-      $timeout(function() {
-        $scope.hideBikes = false;
-      }, 100);
-    });
+
+    var getBikes = function() {
+        Bike.smartQuery(function(bikes) {
+            $scope.bikes = bikes;
+            $timeout(function() {
+                $scope.hideBikes = false;
+            }, 100);
+        });
+    }
+
+    getBikes();
 
     //For Bike Show Route
     $scope.bikeId = $routeParams.bikeId;
@@ -20,7 +26,6 @@ angular.module('bike.controllers')
     Bike.get($scope.bikeId, function(bike) {
       $scope.bike = bike;
     });
-
 
     $scope.range = function(n) {
       var array = [];
@@ -34,6 +39,10 @@ angular.module('bike.controllers')
     $scope.images = [];
     $scope.recentlyAddedBikes = [];
     $scope.filterTerms = undefined;
+
+    if ($routeParams && $routeParams.filterTerms) {
+        $scope.filterTerms = $routeParams.filterTerms;
+    }
 
     $scope.showBike = function(bike) {
       return bike.filterService.showBike($scope.filterTerms);
@@ -91,7 +100,17 @@ angular.module('bike.controllers')
         $scope.recentBikes.push(bike);
         $scope.reset();
         $scope.loadingImages = false;
+        window.location.reload();
       });
+    };
+
+    $scope.destroy = function(bike) {
+      // $('#loader-container').fadeIn();
+        var bikeObj = new Bike(bike);
+        bikeObj.remove().then(function(data) {
+            //this is very dumb...
+            window.location.reload();
+        })
     };
 
     $scope.locations = ["Arlington", "Bethesda", "Old Town", "Potomac", "Georgetown"];
@@ -111,7 +130,7 @@ angular.module('bike.controllers')
 
     //typeahead (autocomplete) stuff:
 
-    $scope.kinds = ['hybrid', 'mountain', 'road', 'cruiser', 'kids', 'triathalon'];
+    $scope.kinds = ['hybrid', 'mountain', 'road', 'cruiser', 'kids', 'triathalon', 'electric'];
 
     $scope.brands = ['Marin', 'Fuji', 'Kona', 'Bianchi', 'Electra', 'Scott'];
 

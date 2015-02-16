@@ -46,6 +46,9 @@ angular.module('app', ['ngResource', 'ngRoute', 'ngAnimate', 'app.directives', '
           templateUrl: '/ng/views/bikes/new.html',
           controller: 'BikeCtrl'
         })
+        .when('/bikes/manage', {
+          templateUrl: '/ng/views/bikes/manage.html',
+        })
         .when('/bikes/:bikeId', {
           templateUrl: '/ng/views/bikes/show.html'
         })
@@ -92,6 +95,9 @@ angular.module('app', ['ngResource', 'ngRoute', 'ngAnimate', 'app.directives', '
         })
         .when('/repairs', {
           templateUrl: '/ng/views/repairs.html'
+        })
+        .when('/our_story', {
+          templateUrl: '/ng/views/our_story.html'
         })
         .otherwise({
           redirectTo: '/home'

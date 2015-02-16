@@ -17,17 +17,16 @@ angular.module('inventory.controllers').controller('InventoryCtrl', ['$scope', '
 		}))
 
 	})
-		$scope.getBikeModels = function(brand){
-            if (!brand) return [];
-			var bikes = $scope.bikes.filter(function(bike){
-				return bike.brand == brand
-			})
-			$scope.bikeModels = bikes.map(function(bike){
-				return { model: bike.model, id: bike.id }
-			});
-            alert("yo")
-            return $scope.bikeModels;
-		}
+    $scope.getBikeModels = function(brand){
+        if (!brand) return [];
+        var bikes = $scope.bikes.filter(function(bike){
+            return bike.brand == brand
+        })
+        $scope.bikeModels = bikes.map(function(bike){
+            return { model: bike.model, id: bike.id }
+        });
+        return $scope.bikeModels;
+    }
 	
 	$scope.getStockNumber = function(id){
 		if (id<=999999) id = ("00000"+id).slice(-6)

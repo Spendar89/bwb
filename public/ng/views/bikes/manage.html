@@ -1,0 +1,28 @@
+<div class="container" ng-controller="BikeCtrl">
+  <h1 class="col-sm-12">
+    Manage New Bikes:
+  </h1>
+  <h3 class="col-sm-12"><a href="#bikes/new">Add A New Bike</a></h3>
+	<div class="table-responsive col-sm-12">
+		<table class="table">
+			<tr>
+				<th><a href="" ng-click="order='bike.brand';reverse=(brandReverse=!brandReverse)">Brand</a></th>
+				<th><a href="" ng-click="order='bike.model';reverse=(modelReverse=!modelReverse)">Model</a></th>
+				<th><a href="" ng-click="order='bike.year';reverse=(yearReverse=!yearReverse)">Year</a></th>
+				<th><a href="" ng-click="order='bike.price';reverse=(priceReverse=!priceReverse)">Price</a></th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="bike in bikes|orderBy:order:reverse">
+				<td>{{bike.brand}}</td>
+				<td>{{bike.model}}</td>
+				<td>{{bike.year}}</td>
+				<td>{{bike.price}}</td>
+        <td>
+          <a href="" ng-click="destroy(bike)">
+            <i class="glyphicon glyphicon-large glyphicon-trash"></i>
+          </a>
+        </td>
+			</tr>
+		</table>
+	</div>
+</div>

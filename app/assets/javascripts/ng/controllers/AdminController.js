@@ -6,6 +6,9 @@ angular.module('app').controller('AdminCtrl', ['$scope', '$http', '$routeParams'
         href: "#/current_events/new",
         description: "Mange Current Event Posts"
       }, {
+        href: "#/bikes/manage",
+        description: "Manage New Bikes"
+      }, {
         href: "#/new_bike_inventory/new",
         description: "Manage New Bike Inventory"
       }, {

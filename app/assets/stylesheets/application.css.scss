@@ -390,6 +390,11 @@ form {
 #repairs-div {
   visibility: hidden;
 }
+.our-story-header {
+  background: url("/assets/headers/our_story.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .repairs-header {
   background: url("/assets/headers/repairs.jpg") 0px -400px;
   background-size: cover;

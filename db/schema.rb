@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140922220953) do
+ActiveRecord::Schema.define(:version => 20150215210626) do
 
   create_table "bike_inventories", :force => true do |t|
     t.integer  "bike_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20140922220953) do
     t.string   "color",              :default => "white"
     t.string   "content_color",      :default => "#333"
     t.string   "background_color",   :default => "rgba(255,255,255, 0.9)"
+    t.string   "page_url"
   end
 
   create_table "customers", :force => true do |t|

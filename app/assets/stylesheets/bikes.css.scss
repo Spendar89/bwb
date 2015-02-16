@@ -18,7 +18,10 @@ $black: #333;
 
   #filter-div {
     .filter-div-inner {
-      margin: 40px 0;
+      margin-bottom: 40px;
+    }
+    .filter-header-text {
+      margin-bottom: 20px;
     }
     h2 {
       font-size: 22pt;
@@ -29,7 +32,7 @@ $black: #333;
       font-size:16pt;
     }
 
-    input {
+    select, input {
       height: 60px;
       font-size: 20pt;
       border-radius: 0;

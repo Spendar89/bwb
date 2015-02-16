@@ -34,6 +34,17 @@ class BikesController < ApplicationController
     end
   end
 
+  def destroy
+    @bike = Bike.find(params[:id])
+    respond_to do |format|
+      if @bike.destroy
+        format.json { render json: @bike }
+      else
+        format.json { render json: "could not destroy" }
+      end
+    end
+  end
+
   def images
     @images = Bike.image_search(params[:brand], params[:model], params[:year])
     respond_to do |format|
