@@ -15,4 +15,5 @@
 /tmp
 .powenv
 
-public/system/current_events/images/*
+public/system/current_events/images/**
+public/system/bikes/images/**
